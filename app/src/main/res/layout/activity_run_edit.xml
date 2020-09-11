@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/runEditLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusableInTouchMode="true"
+    tools:context=".ui.run.TrainingEditActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/runEditToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="@string/title_run_edit" />
+
+    <ScrollView
+        android:id="@+id/allScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/runEditSaveBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/runEditToolbar"
+        app:layout_constraintVertical_bias="1.0">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/runEditData1Label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/run_edit_date_label"
+                app:layout_constraintBaseline_toBaselineOf="@+id/runEditDateText"
+                app:layout_constraintEnd_toStartOf="@+id/guideline6" />
+
+            <TextView
+                android:id="@+id/runEditDurationLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/run_edit_duration_label"
+                app:layout_constraintBaseline_toBaselineOf="@+id/runEditDurationText"
+                app:layout_constraintEnd_toStartOf="@+id/guideline6" />
+
+            <TextView
+                android:id="@+id/runEditDateText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="2020/09/01"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textSize="22sp"
+                app:layout_constraintStart_toStartOf="@+id/guideline2"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/runEditDurationText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="11:00"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textSize="22sp"
+                app:layout_constraintStart_toStartOf="@+id/guideline2"
+                app:layout_constraintTop_toBottomOf="@+id/runEditDateText" />
+
+            <TextView
+                android:id="@+id/runEditTSSLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/run_edit_tss_label"
+                app:layout_constraintBaseline_toBaselineOf="@+id/runEditTssEdit"
+                app:layout_constraintEnd_toStartOf="@+id/guideline6" />
+
+            <EditText
+                android:id="@+id/runEditTssEdit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:ems="5"
+                android:inputType="number"
+                app:layout_constraintStart_toStartOf="@+id/guideline2"
+                app:layout_constraintTop_toBottomOf="@+id/runEditDurationText" />
+
+            <TextView
+                android:id="@+id/runEditMenuLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/run_edit_menu_label"
+                app:layout_constraintBaseline_toBaselineOf="@+id/runEditMenuText"
+                app:layout_constraintEnd_toStartOf="@+id/guideline6" />
+
+            <Button
+                android:id="@+id/runEditMenuText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                android:background="@android:drawable/btn_default_small"
+                android:paddingStart="8dp"
+                android:text="未選択"
+                android:textAlignment="viewStart"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/guideline2"
+                app:layout_constraintTop_toBottomOf="@+id/runEditTssEdit" />
+
+            <TextView
+                android:id="@+id/runEditKmLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/run_edit_km_label"
+                app:layout_constraintBaseline_toBaselineOf="@+id/runEditKmEdit"
+                app:layout_constraintEnd_toStartOf="@+id/guideline6" />
+
+            <TextView
+                android:id="@+id/runEditKmUnitLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="@string/run_edit_km_unit_label"
+                app:layout_constraintBaseline_toBaselineOf="@+id/runEditKmEdit"
+                app:layout_constraintStart_toEndOf="@+id/runEditKmEdit" />
+
+            <EditText
+                android:id="@+id/runEditKmEdit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:ems="5"
+                android:inputType="number"
+                app:layout_constraintStart_toStartOf="@+id/guideline2"
+                app:layout_constraintTop_toBottomOf="@+id/runEditMenuText" />
+
+            <TextView
+                android:id="@+id/runEditKcalLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/run_edit_kcal_label"
+                app:layout_constraintBaseline_toBaselineOf="@+id/runEditKcalEdit"
+                app:layout_constraintEnd_toStartOf="@+id/guideline6" />
+
+            <TextView
+                android:id="@+id/runEditKcalUnitLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="@string/run_edit_kcal_unit_label"
+                app:layout_constraintBaseline_toBaselineOf="@+id/runEditKcalEdit"
+                app:layout_constraintStart_toEndOf="@+id/runEditKcalEdit" />
+
+            <EditText
+                android:id="@+id/runEditKcalEdit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:ems="5"
+                android:inputType="number"
+                app:layout_constraintStart_toStartOf="@+id/guideline2"
+                app:layout_constraintTop_toBottomOf="@+id/runEditKmEdit" />
+
+            <EditText
+                android:id="@+id/runEditMemoEdit"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="24dp"
+                android:ems="5"
+                android:inputType="text"
+                android:lines="2"
+                android:minLines="2"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/guideline2"
+                app:layout_constraintTop_toBottomOf="@+id/runEditPlaceSw" />
+
+            <TextView
+                android:id="@+id/runEditInOutSwLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/run_edit_place_label"
+                app:layout_constraintBaseline_toBaselineOf="@+id/runEditIndoorLabel"
+                app:layout_constraintEnd_toStartOf="@+id/guideline6" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/runEditPlaceSw"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:switchMinWidth="60dp"
+                android:textOff="アイス"
+                android:textOn="ホット"
+                app:layout_constraintStart_toEndOf="@+id/runEditIndoorLabel"
+                app:layout_constraintTop_toBottomOf="@+id/runEditKcalEdit" />
+
+            <TextView
+                android:id="@+id/runEditIndoorLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/run_edit_place_indoor"
+                app:layout_constraintBaseline_toBaselineOf="@+id/runEditPlaceSw"
+                app:layout_constraintStart_toStartOf="@+id/guideline2" />
+
+            <TextView
+                android:id="@+id/runEditOutdoorLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@string/run_edit_place_outdoor"
+                app:layout_constraintBaseline_toBaselineOf="@+id/runEditPlaceSw"
+                app:layout_constraintStart_toEndOf="@+id/runEditPlaceSw" />
+
+
+            <TextView
+                android:id="@+id/runEditMemoLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/run_edit_memo_label"
+                app:layout_constraintBaseline_toBaselineOf="@+id/runEditMemoEdit"
+                app:layout_constraintEnd_toStartOf="@+id/guideline6" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="80dp" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="70dp" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/runEditSaveBtn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/save_btn_label"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toEndOf="@+id/runEditCancelBtn" />
+
+    <Button
+        android:id="@+id/runEditCancelBtn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/cancel_btn_label"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/runEditSaveBtn"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

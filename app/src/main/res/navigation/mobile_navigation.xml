@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.sakuraweb.fotopota.pmcmaker.ui.home.HomeFragment"
+        android:label="@string/nav_title_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/navigation_run"
+        android:name="com.sakuraweb.fotopota.pmcmaker.ui.run.TrainingListFragment"
+        android:label="@string/nav_title_run"
+        tools:layout="@layout/fragment_run_list" />
+
+    <fragment
+        android:id="@+id/navigation_pmc"
+        android:name="com.sakuraweb.fotopota.pmcmaker.ui.pmc.PmcFragment"
+        android:label="@string/nav_title_pmc"
+        tools:layout="@layout/fragment_pmc" />
+
+    <fragment
+        android:id="@+id/navigation_diagnosis"
+        android:name="com.sakuraweb.fotopota.pmcmaker.ui.diag.DiagFragment"
+        android:label="@string/nav_title_diagnosis"
+        tools:layout="@layout/fragment_diagnosis" />
+
+    <fragment
+        android:id="@+id/navigation_setting"
+        android:name="com.sakuraweb.fotopota.pmcmaker.ui.config.ConfigFragment"
+        android:label="@string/nav_title_setting"
+        tools:layout="@layout/fragment_diagnosis" />
+
+</navigation>

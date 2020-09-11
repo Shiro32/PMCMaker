@@ -1,0 +1,81 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="設定画面だよ～"
+    android:summary="設定だす">
+
+    <PreferenceCategory
+        android:title="@string/setting_duration_header"
+        app:iconSpaceReserved="false">
+
+        <EditTextPreference
+            android:key="pmc_duration"
+            android:title="@string/setting_pmc_duration_label"
+            android:dialogTitle="@string/setting_days_prompt"
+            android:defaultValue="31"
+            app:useSimpleSummaryProvider="true" />
+
+        <EditTextPreference
+            android:key="atl_duration"
+            android:title="@string/setting_atl_duration_label"
+            android:dialogTitle="@string/setting_days_prompt"
+            android:defaultValue="7"
+            app:useSimpleSummaryProvider="true" />
+
+        <EditTextPreference
+            android:key="ctl_duration"
+            android:title="@string/setting_ctl_duration_label"
+            android:dialogTitle="@string/setting_days_prompt"
+            android:defaultValue="42"
+            app:useSimpleSummaryProvider="true" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/setting_element_header"
+        app:iconSpaceReserved="false">
+
+        <CheckBoxPreference
+            android:key="date_sw"
+            android:title="@string/setting_date_label"
+            android:enabled="false"
+            android:defaultValue="true" />
+        <CheckBoxPreference
+            android:key="tss_sw"
+            android:title="@string/setting_tss_label"
+            android:enabled="false"
+            android:defaultValue="true" />
+        <CheckBoxPreference
+            android:key="duration_sw"
+            android:title="@string/setting_duration_label"
+            android:defaultValue="true" />
+        <CheckBoxPreference
+            android:key="km_sw"
+            android:title="@string/setting_km_label"
+            android:defaultValue="true" />
+        <CheckBoxPreference
+            android:key="kcal_sw"
+            android:title="@string/setting_kcal_label"
+            android:defaultValue="true" />
+        <CheckBoxPreference
+            android:key="place_sw"
+            android:title="@string/setting_place_label"
+            android:defaultValue="true" />
+        <CheckBoxPreference
+            android:key="memo_sw"
+            android:title="@string/setting_memo_label"
+            android:defaultValue="true" />
+        <CheckBoxPreference
+            android:key="menu_sw"
+            android:title="@string/setting_menu_label"
+            android:defaultValue="true" />
+
+        <Preference
+            app:key="activity"
+            app:title="@string/setting_menu_edit_label">
+            <intent
+                android:targetPackage="com.sakuraweb.fotopota.pmcmaker"
+                android:targetClass="com.sakuraweb.fotopota.pmcmaker.MainActivity" />
+        </Preference>
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <array name="place_list">
+        <item>室内</item>
+        <item>屋外</item>
+    </array>
+
+</resources>
