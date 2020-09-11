@@ -26,7 +26,6 @@ class RunRecyclerViewAdapter(trainingRealm: RealmResults<RunData> ) :
         val view = LayoutInflater.from(parent.context).inflate(R.layout.one_run_card, parent, false)
         if( !settingDurationSw ) {
             view.oneRunDuration.visibility = View.GONE
-            view.oneRunDurationLabel.visibility = View.GONE
         }
         if( !settingKmSw ) {
             view.oneRunKm.visibility = View.GONE

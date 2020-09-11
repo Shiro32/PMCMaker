@@ -28,25 +28,6 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/oneRunDurationLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="@string/one_run_duration_label"
-            android:textSize="12sp"
-            app:layout_constraintStart_toEndOf="@+id/oneRunDate"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/oneRunDuration"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="0時間40分"
-            android:textSize="12sp"
-            app:layout_constraintStart_toStartOf="@+id/oneRunDurationLabel"
-            app:layout_constraintTop_toBottomOf="@+id/oneRunDurationLabel" />
-
-        <TextView
             android:id="@+id/oneRunTSS"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -81,6 +62,40 @@
             app:layout_constraintTop_toBottomOf="@+id/oneRunDate">
 
             <TextView
+                android:id="@+id/oneRunDuration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:text="0時間40分"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/oneRunMenu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:text="FTP 15min X 3"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/oneRunPlace"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:text="屋外"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="4dp"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+            <TextView
                 android:id="@+id/oneRunKm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -111,31 +126,13 @@
                 android:textSize="10sp" />
 
             <TextView
-                android:id="@+id/oneRunPlace"
+                android:id="@+id/oneRunMemo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:text="屋外"
-                android:textSize="14sp" />
-
-            <TextView
-                android:id="@+id/oneRunMenu"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:text="FTP 15min X 3"
+                android:layout_marginStart="4dp"
+                android:text="死ぬほどキツカッタ"
                 android:textSize="14sp" />
         </LinearLayout>
-
-        <TextView
-            android:id="@+id/oneRunMemo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:text="死ぬほどキツカッタ"
-            android:textSize="14sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
