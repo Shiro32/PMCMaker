@@ -21,5 +21,8 @@ class MainActivity : AppCompatActivity() {
                 R.id.navigation_home, R.id.navigation_run, R.id.navigation_pmc))
 //        setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+        // そういえばMainActivityって、なんに使うんだ！？
+        // navViewだけか
     }
 }

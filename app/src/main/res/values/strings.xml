@@ -9,47 +9,57 @@
     <!-- 汎用 -->
     <string name="save_btn_label">保存</string>
     <string name="cancel_btn_label">キャンセル</string>
-    <string name="dateFormat">%d/%02d/%02d</string>
-    <string name="timeFormat">%02d:%02d</string>
-    <string name="durationFormat">%d時間%d分</string>
+    <string name="date_format">%d/%02d/%02d</string>
+    <string name="time_format">%02d:%02d</string>
+    <string name="term_format">%d時間%d分</string>
+
+    <!-- ダイアログ -->
+    <string name="del_confirm_dialog_title">削除確認</string>
+    <string name="del_confirm_dialog_message">データを削除してよろしいですか？</string>
+    <string name="del_confirm_dialog_ok">はい</string>
+    <string name="del_confirm_dialog_cancel">キャンセル</string>
 
     <!-- トレーニングリスト画面 -->
     <string name="title_run2">トレーニングリスト</string>
-    <string name="one_run_duration_label">継続時間</string>
+    <string name="one_run_term_label">継続時間</string>
 
     <!-- トレーニング編集画面 -->
     <string name="title_run_edit">トレーニングデータ編集</string>
     <string name="title_run_new">新規トレーニングデータ</string>
 
     <string name="run_edit_date_label">走行日</string>
-    <string name="run_edit_duration_label">走行時間</string>
+    <string name="run_edit_term_label">走行時間</string>
     <string name="run_edit_tss_label">TSS</string>
+    <string name="run_edit_tss_hint">稼いだTSS</string>
     <string name="run_edit_km_label">距離</string>
+    <string name="run_edit_km_hint">走った距離</string>
     <string name="run_edit_km_unit_label">km</string>
     <string name="run_edit_kcal_label">消費エネ</string>
+    <string name="run_edit_kcal_hint">カロリー</string>
     <string name="run_edit_kcal_unit_label">kcal</string>
     <string name="run_edit_memo_label">メモ</string>
+    <string name="run_edit_memo_hint">感想などご自由に</string>
     <string name="run_edit_place_label">場所</string>
     <string name="run_edit_place_indoor">室内</string>
     <string name="run_edit_place_outdoor">屋外</string>
     <string name="run_edit_menu_label">メニュー</string>
 
-    <string name="ctx_menu_run_edit">トレーニングデータを編集</string>
-    <string name="ctx_menu_run_delete">トレーニングデータを削除</string>
+    <string name="ctx_menu_run_edit">編集</string>
+    <string name="ctx_menu_run_delete">削除</string>
 
     <!-- 設定画面 -->
     <string name="title_setting">各種設定画面</string>
     <string name="setting_element_header">トレーニングデータとして記録する要素</string>
-    <string name="setting_duration_header">PMC計算用の各種期間（日数）</string>
-    <string name="setting_atl_duration_label">ATLの累積期間</string>
-    <string name="setting_ctl_duration_label">CTLの累積期間</string>
-    <string name="setting_pmc_duration_label">PMCの描画期間</string>
+    <string name="setting_term_header">PMC計算用の各種期間（日数）</string>
+    <string name="setting_atl_term_label">ATLの累積期間</string>
+    <string name="setting_ctl_term_label">CTLの累積期間</string>
+    <string name="setting_pmc_term_label">PMCの描画期間</string>
     <string name="setting_days_prompt">日数を入力してください</string>
     <string name="setting_menu_edit_label">トレーニングメニュー編集</string>
 
     <string name="setting_date_label">日付（必須項目）</string>
     <string name="setting_tss_label">TSS（必須項目）</string>
-    <string name="setting_duration_label">継続時間（時：分）</string>
+    <string name="setting_term_label">継続時間（時：分）</string>
     <string name="setting_km_label">走行距離（km）</string>
     <string name="setting_kcal_label">消費エネルギー（kcal）</string>
     <string name="setting_place_label">走行場所（室内・屋外）</string>

@@ -16,7 +16,7 @@ lateinit var trainingRealmConfig: RealmConfiguration
 lateinit var placeList : Array<String>
 
 // 一番最初に実行されるApplicationクラス
-// いつもの、AppCompatActivity（MainActivity）は、manifest.xmlで最初の画面（Acitivity）として実行される
+// いつもの、AppCompatActivity（MainActivity）は、manifest.xmlで最初の画面（Activity）として実行される
 // Application（CustomApplication）も、manifest.xmlで最初のクラスとして実行される
 // で、その実行順位が、Application ＞ AppCompatActivityとなっているので、こっちの方が先
 // 今回は、データベース作成のために最初にここで起動させる
@@ -54,29 +54,29 @@ class StartApplication : Application() {
         if (trainings.size == 0) {
             val trainingList = listOf<RunDataInit>(
                 RunDataInit("2020/9/1 23:00", "2020/9/1 23:30", 50F, 300F, 100F, INDOOR_RIDE, "最高にキツイ"),
-                RunDataInit("2020/9/1 23:00", "2020/9/1 23:30", 50F, 300F, 100F, INDOOR_RIDE, "最高にキツイ"),
-                RunDataInit("2020/9/1 23:00", "2020/9/1 23:30", 50F, 300F, 100F, INDOOR_RIDE, "最高にキツイ"),
-                RunDataInit("2020/9/1 23:00", "2020/9/1 23:30", 50F, 300F, 100F, INDOOR_RIDE, "最高にキツイ"),
-                RunDataInit("2020/9/1 23:00", "2020/9/1 23:30", 50F, 300F, 100F, INDOOR_RIDE, "最高にキツイ"),
-                RunDataInit("2020/9/1 23:00", "2020/9/1 23:30", 50F, 300F, 100F, INDOOR_RIDE, "最高にキツイ"),
-                RunDataInit("2020/9/1 23:00", "2020/9/1 23:30", 50F, 300F, 100F, INDOOR_RIDE, "最高にキツイ"),
-                RunDataInit("2020/9/1 23:00", "2020/9/1 23:30", 50F, 300F, 100F, INDOOR_RIDE, "最高にキツイ"),
-                RunDataInit("2020/9/1 23:00", "2020/9/1 23:30", 50F, 300F, 100F, INDOOR_RIDE, "最高にキツイ"),
-                RunDataInit("2020/9/1 23:00", "2020/9/1 23:30", 50F, 300F, 100F, INDOOR_RIDE, "最高にキツイ"),
-                RunDataInit("2020/9/1 23:00", "2020/9/1 23:30", 50F, 300F, 100F, INDOOR_RIDE, "最高にキツイ"),
-                RunDataInit("2020/9/1 23:00", "2020/9/1 23:30", 50F, 300F, 100F, INDOOR_RIDE, "最高にキツイ"),
-                RunDataInit("2020/9/1 23:00", "2020/9/1 23:30", 50F, 300F, 100F, INDOOR_RIDE, "最高にキツイ"),
-                RunDataInit("2020/9/1 23:00", "2020/9/1 23:30", 50F, 300F, 100F, INDOOR_RIDE, "最高にキツイ"),
-                RunDataInit("2020/9/1 23:00", "2020/9/1 23:30", 50F, 300F, 100F, INDOOR_RIDE, "最高にキツイ"),
-                RunDataInit("2020/9/5 10:00", "2020/9/5 12:30", 10F, 30F, 10F, OUTDOOR_RIDE, "最高にキツイ")
+                RunDataInit("2020/9/2 23:00", "2020/9/1 23:30", 50F, 300F, 100F, INDOOR_RIDE, "最高にキツイ"),
+                RunDataInit("2020/9/3 23:00", "2020/9/1 23:30", 50F, 300F, 100F, INDOOR_RIDE, "最高にキツイ"),
+                RunDataInit("2020/9/4 23:00", "2020/9/1 23:30", 50F, 300F, 100F, INDOOR_RIDE, "最高にキツイ"),
+                RunDataInit("2020/9/5 23:00", "2020/9/1 23:30", 50F, 300F, 100F, INDOOR_RIDE, "最高にキツイ"),
+                RunDataInit("2020/9/6 23:00", "2020/9/1 23:30", 50F, 300F, 100F, INDOOR_RIDE, "最高にキツイ"),
+                RunDataInit("2020/9/7 23:00", "2020/9/1 23:30", 50F, 300F, 100F, INDOOR_RIDE, "最高にキツイ"),
+                RunDataInit("2020/9/8 23:00", "2020/9/1 23:30", 50F, 300F, 100F, INDOOR_RIDE, "最高にキツイ"),
+                RunDataInit("2020/9/9 23:00", "2020/9/1 23:30", 50F, 300F, 100F, INDOOR_RIDE, "最高にキツイ"),
+                RunDataInit("2020/9/10 23:00", "2020/9/1 23:30", 50F, 300F, 100F, INDOOR_RIDE, "最高にキツイ"),
+                RunDataInit("2020/9/11 23:00", "2020/9/1 23:30", 50F, 300F, 100F, INDOOR_RIDE, "最高にキツイ"),
+                RunDataInit("2020/9/12 23:00", "2020/9/1 23:30", 50F, 300F, 100F, INDOOR_RIDE, "最高にキツイ"),
+                RunDataInit("2020/9/13 23:00", "2020/9/1 23:30", 50F, 300F, 100F, INDOOR_RIDE, "最高にキツイ"),
+                RunDataInit("2020/9/14 23:00", "2020/9/1 23:30", 50F, 300F, 100F, INDOOR_RIDE, "最高にキツイ"),
+                RunDataInit("2020/9/15 23:00", "2020/9/1 23:30", 50F, 300F, 100F, INDOOR_RIDE, "最高にキツイ"),
+                RunDataInit("2020/9/16 10:00", "2020/9/5 12:30", 10F, 30F, 10F, OUTDOOR_RIDE, "最高にキツイ")
             )
             // DB書き込み
             realm.beginTransaction()
             var id = 1
             for (i in trainingList.reversed()) {
                 var t = realm.createObject<RunData>(id++)
-                t.date1 = i.date1.toDate("yyyy/MM/dd HH:mm")
-                t.date2 = i.date2.toDate("yyyy/MM/dd HH:mm")
+                t.date = i.date.toDate("yyyy/MM/dd HH:mm")
+                t.term = i.term.toDate("yyyy/MM/dd HH:mm")
                 t.tss = i.tss
                 t.km = i.km
                 t.kcal = i.kcal

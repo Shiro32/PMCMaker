@@ -4,26 +4,26 @@
     android:summary="設定だす">
 
     <PreferenceCategory
-        android:title="@string/setting_duration_header"
+        android:title="@string/setting_term_header"
         app:iconSpaceReserved="false">
 
         <EditTextPreference
-            android:key="pmc_duration"
-            android:title="@string/setting_pmc_duration_label"
+            android:key="pmc_term"
+            android:title="@string/setting_pmc_term_label"
             android:dialogTitle="@string/setting_days_prompt"
             android:defaultValue="31"
             app:useSimpleSummaryProvider="true" />
 
         <EditTextPreference
-            android:key="atl_duration"
-            android:title="@string/setting_atl_duration_label"
+            android:key="atl_term"
+            android:title="@string/setting_atl_term_label"
             android:dialogTitle="@string/setting_days_prompt"
             android:defaultValue="7"
             app:useSimpleSummaryProvider="true" />
 
         <EditTextPreference
-            android:key="ctl_duration"
-            android:title="@string/setting_ctl_duration_label"
+            android:key="ctl_term"
+            android:title="@string/setting_ctl_term_label"
             android:dialogTitle="@string/setting_days_prompt"
             android:defaultValue="42"
             app:useSimpleSummaryProvider="true" />
@@ -44,8 +44,8 @@
             android:enabled="false"
             android:defaultValue="true" />
         <CheckBoxPreference
-            android:key="duration_sw"
-            android:title="@string/setting_duration_label"
+            android:key="term_sw"
+            android:title="@string/setting_term_label"
             android:defaultValue="true" />
         <CheckBoxPreference
             android:key="km_sw"

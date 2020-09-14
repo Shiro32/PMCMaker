@@ -1,5 +1,7 @@
 package com.sakuraweb.fotopota.pmcmaker.ui.run
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.view.*
@@ -18,14 +20,14 @@ import io.realm.kotlin.where
 import kotlinx.android.synthetic.main.fragment_run_list.*
 import kotlinx.android.synthetic.main.fragment_run_list.view.*
 
-var settingDurationSw :Boolean = true
+var settingTermSw :Boolean = true
 var settingKmSw     :Boolean = true
 var settingKcalSw   :Boolean = true
 var settingMemoSw   :Boolean = true
 var settingMenuSw   :Boolean = true
 var settingPlaceSw  :Boolean = true
 
-class TrainingListFragment : Fragment() {
+class RunListFragment : Fragment() {
 
     private lateinit var realm: Realm                               // とりあえず、Realmのインスタンスを作る
     private lateinit var adapter: RunRecyclerViewAdapter       // アダプタのインスタンス
@@ -39,7 +41,7 @@ class TrainingListFragment : Fragment() {
 
         // ーーーーーーーーーー　表示項目のON/OFFをPreferenceから読んでおく　ーーーーーーーーーー
         PreferenceManager.getDefaultSharedPreferences(context).apply {
-            settingDurationSw= getBoolean("duration_sw", true)
+            settingTermSw   = getBoolean("term_sw", true)
             settingKmSw     = getBoolean("km_sw", true)
             settingKcalSw   = getBoolean("kcal_sw", true)
             settingMemoSw   = getBoolean("memo_sw", true)
@@ -80,7 +82,7 @@ class TrainingListFragment : Fragment() {
 
         val ma = activity as MainActivity
         val realmResults: RealmResults<RunData> = realm.where<RunData>()
-            .findAll().sort("date1", Sort.DESCENDING)
+            .findAll().sort("date", Sort.DESCENDING)
 
         // 1行のViewを表示するレイアウトマネージャーを設定する
         // LinearLayout、GridLayout、独自も選べるが無難にLinearLayoutManagerにする
@@ -88,9 +90,26 @@ class TrainingListFragment : Fragment() {
         trainingRecylerView.layoutManager = layoutManager
 
         // アダプターを設定する
-        adapter = RunRecyclerViewAdapter(realmResults)
+        adapter = RunRecyclerViewAdapter(realmResults, realm, this)
         trainingRecylerView.adapter = this.adapter
 
+    }
+
+
+    open fun deleteItem ( runID:Long ) {
+        val builder = AlertDialog.Builder( context )
+        builder.setTitle(R.string.del_confirm_dialog_title)
+        builder.setMessage(R.string.del_confirm_dialog_message)
+        builder.setCancelable(true)
+        builder.setNegativeButton(R.string.del_confirm_dialog_cancel, null)
+        builder.setPositiveButton("OK", object: DialogInterface.OnClickListener {
+            override fun onClick(dialog: DialogInterface?, which: Int) {
+                realm.executeTransaction { realm.where<RunData>().equalTo("id", runID)?.findFirst()?.deleteFromRealm() }
+//                            blackToast(applicationContext, "削除しました")
+                // ここで、RecyclerViewをReDrawしてやるのだけど、どうやって・・・？
+            }
+        })
+        builder.show()
     }
 
     // 終了処理

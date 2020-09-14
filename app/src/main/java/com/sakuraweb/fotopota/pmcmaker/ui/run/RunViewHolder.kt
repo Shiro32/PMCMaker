@@ -7,7 +7,7 @@ import kotlinx.android.synthetic.main.one_run_card.view.*
 
 class RunViewHolder(iv: View) : RecyclerView.ViewHolder(iv) {
     var dateText:   TextView? = null
-    var durationText:  TextView? = null
+    var termText:   TextView? = null
     var tssText:    TextView? = null
     var kmText:     TextView? = null
     var kcalText:   TextView? = null
@@ -16,7 +16,7 @@ class RunViewHolder(iv: View) : RecyclerView.ViewHolder(iv) {
 
     init {
         dateText    = iv.oneRunDate
-        durationText   = iv.oneRunDuration
+        termText    = iv.oneRunDuration
         tssText     = iv.oneRunTSS
         kmText      = iv.oneRunKm
         kcalText    = iv.oneRunKcal

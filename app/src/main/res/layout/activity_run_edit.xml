@@ -52,7 +52,7 @@
                 android:id="@+id/runEditDurationLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/run_edit_duration_label"
+                android:text="@string/run_edit_term_label"
                 app:layout_constraintBaseline_toBaselineOf="@+id/runEditDurationText"
                 app:layout_constraintEnd_toStartOf="@+id/guideline6" />
 
@@ -92,6 +92,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:ems="5"
+                android:hint="@string/run_edit_tss_hint"
                 android:inputType="number"
                 app:layout_constraintStart_toStartOf="@+id/guideline2"
                 app:layout_constraintTop_toBottomOf="@+id/runEditDurationText" />
@@ -141,6 +142,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:ems="5"
+                android:hint="@string/run_edit_km_hint"
                 android:inputType="number"
                 app:layout_constraintStart_toStartOf="@+id/guideline2"
                 app:layout_constraintTop_toBottomOf="@+id/runEditMenuText" />
@@ -168,6 +170,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:ems="5"
+                android:hint="@string/run_edit_kcal_hint"
                 android:inputType="number"
                 app:layout_constraintStart_toStartOf="@+id/guideline2"
                 app:layout_constraintTop_toBottomOf="@+id/runEditKmEdit" />
@@ -180,6 +183,7 @@
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="24dp"
                 android:ems="5"
+                android:hint="@string/run_edit_memo_hint"
                 android:inputType="text"
                 android:lines="2"
                 android:minLines="2"

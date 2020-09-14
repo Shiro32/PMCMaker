@@ -13,7 +13,7 @@
 
     <fragment
         android:id="@+id/navigation_run"
-        android:name="com.sakuraweb.fotopota.pmcmaker.ui.run.TrainingListFragment"
+        android:name="com.sakuraweb.fotopota.pmcmaker.ui.run.RunListFragment"
         android:label="@string/nav_title_run"
         tools:layout="@layout/fragment_run_list" />
 

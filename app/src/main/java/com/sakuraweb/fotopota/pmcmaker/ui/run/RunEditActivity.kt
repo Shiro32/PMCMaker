@@ -29,7 +29,6 @@ const val RUN_EDIT_MODE_EDIT = 2
 // Edit - 当該データのRealm IDをIntentで送ってくる
 // FAB  - もちろん何もない
 
-
 class TrainingEditActivity : AppCompatActivity() {
 
     private var editMode: Int = 0
@@ -49,14 +48,14 @@ class TrainingEditActivity : AppCompatActivity() {
 
         // ーーーーーーーーーー　表示項目のON/OFFをPreferenceから読んでおく　ーーーーーーーーーー
         PreferenceManager.getDefaultSharedPreferences(applicationContext).apply {
-            settingDurationSw=getBoolean("duration_sw", true)
+            settingTermSw   = getBoolean("duration_sw", true)
             settingKmSw     = getBoolean("km_sw", true)
             settingKcalSw   = getBoolean("kcal_sw", true)
             settingMemoSw   = getBoolean("memo_sw", true)
             settingMenuSw   = getBoolean("menu_sw", true)
             settingPlaceSw  = getBoolean("place_sw", true)
         }
-        if( !settingDurationSw ) {
+        if( !settingTermSw ) {
             runEditDurationText.visibility = View.GONE
             runEditDurationLabel.visibility = View.GONE
         }
@@ -118,8 +117,8 @@ class TrainingEditActivity : AppCompatActivity() {
                     runEditKcalEdit .setText(r.kcal.toString())
                     runEditMemoEdit .setText(r.memo)
                     runEditPlaceSw.isChecked = (r.place == OUTDOOR_RIDE)
-                    cal1.time = r.date1
-                    cal2.time = r.date2
+                    cal1.time = r.date
+                    cal2.time = r.term
 
                     // find menu name by idを実装すべし (run.menuIDから探しましょう）
                     menuID = r.menuID
@@ -144,15 +143,15 @@ class TrainingEditActivity : AppCompatActivity() {
         val min1    = cal2.get(Calendar.MINUTE)
 
         // 日付・時刻をTextViewに事前にセット
-        runEditDateText.text = getString(R.string.dateFormat).format(year1,month1+1,day1)
-        runEditDurationText.text = getString(R.string.timeFormat).format(hour1,min1)
+        runEditDateText.text = getString(R.string.date_format).format(year1,month1+1,day1)
+        runEditDurationText.text = getString(R.string.time_format).format(hour1,min1)
 
         // 日付ボタンのリスナ登録と、アンダーライン設定（ほかにやり方ないのかね・・・？）
         runEditDateText.paintFlags = runEditDateText.paintFlags or Paint.UNDERLINE_TEXT_FLAG
         runEditDateText.setOnClickListener {
             DatePickerDialog(
                 this, DatePickerDialog.OnDateSetListener { view, y, m, d ->
-                    runEditDateText.text = getString(R.string.dateFormat).format(y, m+1, d)
+                    runEditDateText.text = getString(R.string.date_format).format(y, m+1, d)
                 }, year1, month1, day1
             ).show()
         }
@@ -160,7 +159,7 @@ class TrainingEditActivity : AppCompatActivity() {
         runEditDurationText.setOnClickListener {
             TimePickerDialog(
                 this, TimePickerDialog.OnTimeSetListener { view, h, m ->
-                    runEditDurationText.text = getString(R.string.timeFormat).format(h, m)
+                    runEditDurationText.text = getString(R.string.time_format).format(h, m)
                 }, hour1, min1, true
             ).show()
         }
@@ -190,9 +189,16 @@ class TrainingEditActivity : AppCompatActivity() {
             val runDate2 = ("2000/01/01 " + runEditDurationText.text as String).toDate()
 
             // ゼロチェックしないといけないんだってさ！！
-            val tss = runEditTssEdit.text.toString().toFloat()
-            val km = runEditKmEdit.text.toString().toFloat()
-            val kcal = runEditKcalEdit.text.toString().toFloat()
+            var s:String = ""
+            s = runEditTssEdit.text.toString()
+            val tss = if(s.isNotBlank()) s.toFloat() else 0F
+
+            s = runEditKmEdit.text.toString()
+            val km = if(s.isNotBlank()) s.toFloat() else 0F
+
+            s = runEditKcalEdit.text.toString()
+            val kcal = if(s.isNotBlank()) s.toFloat() else 0F
+
             val memo = runEditMemoEdit.text.toString()
             val place = if( runEditPlaceSw.isChecked ) OUTDOOR_RIDE else INDOOR_RIDE
 
@@ -205,8 +211,8 @@ class TrainingEditActivity : AppCompatActivity() {
 
                         // ここから書き込み
                         val r= realm.createObject<RunData>(nextID)
-                        r.date1 = runDate1
-                        r.date2 = runDate2
+                        r.date = runDate1
+                        r.term = runDate2
                         r.tss   = tss
                         r.km    = km
                         r.kcal  = kcal
@@ -219,8 +225,8 @@ class TrainingEditActivity : AppCompatActivity() {
                 RUN_EDIT_MODE_EDIT -> {
                     realm.executeTransaction {
                         val r = realm.where<RunData>().equalTo("id", runID).findFirst()
-                        r?.date1 = runDate1
-                        r?.date2 = runDate2
+                        r?.date = runDate1
+                        r?.term = runDate2
                         r?.tss = tss
                         r?.km = km
                         r?.kcal = kcal

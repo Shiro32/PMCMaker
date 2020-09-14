@@ -44,7 +44,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
-                android:text="@string/setting_duration_header"
+                android:text="@string/setting_term_header"
                 android:textColor="@color/labelLightColor"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -54,7 +54,7 @@
               android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="@string/setting_pmc_duration_label"
+                android:text="@string/setting_pmc_term_label"
                 app:layout_constraintBaseline_toBaselineOf="@+id/settingDurationEdit"
                 app:layout_constraintStart_toStartOf="@+id/textView2" />
 
@@ -73,7 +73,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="@string/setting_atl_duration_label"
+                android:text="@string/setting_atl_term_label"
                 app:layout_constraintBaseline_toBaselineOf="@+id/settingAtlEdit"
                 app:layout_constraintStart_toStartOf="@+id/textView2" />
 
@@ -92,7 +92,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="@string/setting_ctl_duration_label"
+                android:text="@string/setting_ctl_term_label"
                 app:layout_constraintBaseline_toBaselineOf="@+id/settingCtlEdit"
                 app:layout_constraintStart_toStartOf="@+id/textView2" />
 

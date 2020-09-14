@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:clickable="false"
-    tools:context=".ui.run.TrainingListFragment">
+    tools:context=".ui.run.RunListFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/trainingRecylerView"
@@ -29,5 +29,6 @@
         android:clickable="true"
         android:src="@android:drawable/ic_input_add"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:focusable="true" />
 </androidx.constraintlayout.widget.ConstraintLayout>
