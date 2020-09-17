@@ -1,7 +1,5 @@
 <PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:title="設定画面だよ～"
-    android:summary="設定だす">
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <PreferenceCategory
         android:title="@string/setting_term_header"
@@ -73,7 +71,7 @@
             app:title="@string/setting_menu_edit_label">
             <intent
                 android:targetPackage="com.sakuraweb.fotopota.pmcmaker"
-                android:targetClass="com.sakuraweb.fotopota.pmcmaker.MainActivity" />
+                android:targetClass="com.sakuraweb.fotopota.pmcmaker.ui.menu.MenuListActivity" />
         </Preference>
 
     </PreferenceCategory>

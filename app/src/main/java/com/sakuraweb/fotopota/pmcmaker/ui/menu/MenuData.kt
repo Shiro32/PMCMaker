@@ -1,4 +1,4 @@
-package com.sakuraweb.fotopota.pmcmaker.ui.run
+package com.sakuraweb.fotopota.pmcmaker.ui.menu
 
 import io.realm.DynamicRealm
 import io.realm.RealmMigration
@@ -48,6 +48,6 @@ class MenuDataMigration : RealmMigration {
 
 class MenuDataInit (
     var name    : String,
-    var desc    : String,
+    var desc    : String
 )
 {}

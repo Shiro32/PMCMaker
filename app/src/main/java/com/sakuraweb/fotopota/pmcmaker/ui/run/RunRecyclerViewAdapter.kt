@@ -11,24 +11,25 @@ import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.sakuraweb.fotopota.pmcmaker.R
 import com.sakuraweb.fotopota.pmcmaker.placeList
+import com.sakuraweb.fotopota.pmcmaker.ui.menu.findMenuNameByID
 import io.realm.Realm
 import io.realm.RealmResults
 import io.realm.kotlin.where
-import kotlinx.android.synthetic.main.one_run_card.view.*
+import kotlinx.android.synthetic.main.run_one_card.view.*
 import java.text.SimpleDateFormat
 
 
-class RunRecyclerViewAdapter(trainingRealm: RealmResults<RunData>, realm: Realm, fmt: RunListFragment ) :
+class RunRecyclerViewAdapter(runRealm: RealmResults<RunData>, realm: Realm, fmt: RunListFragment ) :
         RecyclerView.Adapter<RunViewHolder>() {
 
-    private val trainingList: RealmResults<RunData> = trainingRealm
+    private val runList: RealmResults<RunData> = runRealm
     private val runRealm = realm
     private val runlistFmt = fmt
 
     // 新しく1行分のViewをXMLから生成し、1行分のViewHolderを生成してViewをセットする
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RunViewHolder {
         // 新しいView（1行）を生成する　レイアウト画面で作った、one_Training_card_home（1行）
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.one_run_card, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.run_one_card, parent, false)
         if( !settingTermSw ) {
             view.oneRunDuration.visibility = View.GONE
         }
@@ -60,42 +61,22 @@ class RunRecyclerViewAdapter(trainingRealm: RealmResults<RunData>, realm: Realm,
     // 渡されたビューホルダにデータを書き込む
     // RealmDB内のデータから、具体的なビューの表示文字列を生成してあげる
     override fun onBindViewHolder(holder: RunViewHolder, position: Int) {
-        val training = trainingList[position]
+        val run = runList[position]
 
-        if (training != null) {
-            holder.dateText?.text   = SimpleDateFormat("yyyy/MM/dd").format(training.date)
-            holder.termText?.text   = SimpleDateFormat( "HH時間mm分").format(training.term)
-            holder.tssText?.text    = training.tss.toString()
-            holder.kmText?.text     = training.km.toString()
-            holder.kcalText?.text   = training.kcal.toString()
-            holder.placeText?.text  = placeList[training.place]
-            holder.memoText?.text   = training.memo
+        if (run != null) {
+            holder.dateText?.text   = SimpleDateFormat("yyyy/MM/dd").format(run.date)
+            holder.termText?.text   = SimpleDateFormat( "HH時間mm分").format(run.term)
+            holder.tssText?.text    = run.tss.toString()
+            holder.kmText?.text     = run.km.toString()
+            holder.kcalText?.text   = run.kcal.toString()
+            holder.placeText?.text  = placeList[run.place]
+            holder.memoText?.text   = run.memo
+            holder.menuText?.text   = findMenuNameByID(run.menuID)
 
-/*
-            // 行タップした際のアクションをリスナで登録
-            // ボタンは廃止しました
-            if (isCalledFromBrewEditToTraining) {
-                // Brew-Editから呼び出された場合は、豆を選択なのでタップで決定とする
-                holder.itemView.setOnClickListener {
-                    listener.okBtnTapped(training)
-                }
-            } else {
-                // Naviから呼び出された場合は、豆を編集する
-                holder.itemView.setOnClickListener {
-                    val intent = Intent(it.context, TrainingDetailsActivity::class.java)
-                    intent.putExtra("id", training.id)
-                    val it2 = it.context as Activity
-                    it2.startActivityForResult(intent, REQUEST_CODE_SHOW_Training_DETAILS)
-//                    it.context.startActivity(intent)
-                }
-            }
-*/
             // 行そのもの（Card）のリスナ
             // TODO: 本当はロングタップでやりたいんだけど分からず・・・
-            holder.itemView.setOnClickListener(ItemClickListener(holder.itemView.context, training ))
-
+            holder.itemView.setOnClickListener(ItemClickListener(holder.itemView.context, run ))
         }
-
     } // override onBindViewHolder
 
 
@@ -131,14 +112,14 @@ class RunRecyclerViewAdapter(trainingRealm: RealmResults<RunData>, realm: Realm,
         override fun onMenuItemClick(item: MenuItem?): Boolean {
             when( item?.itemId ) {
                 // 編集メニュー（わかるとは思うけど・・・）
-                R.id.ctxMenuTrainingEdit -> {
-                    ctx.startActivity( Intent(ctx, TrainingEditActivity::class.java).apply {
+                R.id.ctxMenuEdit -> {
+                    ctx.startActivity( Intent(ctx, RunEditActivity::class.java).apply {
                         putExtra("id", rp.id )
                         putExtra( "mode", RUN_EDIT_MODE_EDIT )
                     })
                 }
                 // 削除メニュー（・・・）
-                R.id.ctxMenuTrainingDelete -> {
+                R.id.ctxMenuDelete -> {
                     val builder = AlertDialog.Builder( ctx )
                     builder.setTitle(R.string.del_confirm_dialog_title)
                     builder.setMessage(R.string.del_confirm_dialog_message)
@@ -165,7 +146,7 @@ class RunRecyclerViewAdapter(trainingRealm: RealmResults<RunData>, realm: Realm,
 
     // アダプターの必須昨日の、サイズを返すメソッド
     override fun getItemCount(): Int {
-        return trainingList.size
+        return runList.size
 
     }
 }

@@ -12,13 +12,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.sakuraweb.fotopota.pmcmaker.MainActivity
 import com.sakuraweb.fotopota.pmcmaker.R
-import com.sakuraweb.fotopota.pmcmaker.trainingRealmConfig
+import com.sakuraweb.fotopota.pmcmaker.runRealmConfig
 import io.realm.Realm
 import io.realm.RealmResults
 import io.realm.Sort
 import io.realm.kotlin.where
-import kotlinx.android.synthetic.main.fragment_run_list.*
-import kotlinx.android.synthetic.main.fragment_run_list.view.*
+import kotlinx.android.synthetic.main.run_list_fragment.*
+import kotlinx.android.synthetic.main.run_list_fragment.view.*
 
 var settingTermSw :Boolean = true
 var settingKmSw     :Boolean = true
@@ -37,7 +37,7 @@ class RunListFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) : View? {
 
         // このfragment自身を指す。ボタンなどを指定するには、rootが必要
-        val root = inflater.inflate(R.layout.fragment_run_list, container, false)
+        val root = inflater.inflate(R.layout.run_list_fragment, container, false)
 
         // ーーーーーーーーーー　表示項目のON/OFFをPreferenceから読んでおく　ーーーーーーーーーー
         PreferenceManager.getDefaultSharedPreferences(context).apply {
@@ -51,11 +51,11 @@ class RunListFragment : Fragment() {
 
         // ーーーーーーーーーー　リスト表示（RecyclerView）　ーーーーーーーーーー
         // realmのインスタンスを作る。Configはグローバル化してあるので、そのままインスタンスを作るだけ
-        realm = Realm.getInstance(trainingRealmConfig)
+        realm = Realm.getInstance(runRealmConfig)
 
         // 追加ボタン（fab）のリスナを設定する（EditActivity画面を呼び出す）
         root.trainingFAB.setOnClickListener {
-            startActivity( Intent(activity, TrainingEditActivity::class.java).apply {
+            startActivity( Intent(activity, RunEditActivity::class.java).apply {
                 putExtra("mode", RUN_EDIT_MODE_NEW)
             })
         }
@@ -95,22 +95,6 @@ class RunListFragment : Fragment() {
 
     }
 
-
-    open fun deleteItem ( runID:Long ) {
-        val builder = AlertDialog.Builder( context )
-        builder.setTitle(R.string.del_confirm_dialog_title)
-        builder.setMessage(R.string.del_confirm_dialog_message)
-        builder.setCancelable(true)
-        builder.setNegativeButton(R.string.del_confirm_dialog_cancel, null)
-        builder.setPositiveButton("OK", object: DialogInterface.OnClickListener {
-            override fun onClick(dialog: DialogInterface?, which: Int) {
-                realm.executeTransaction { realm.where<RunData>().equalTo("id", runID)?.findFirst()?.deleteFromRealm() }
-//                            blackToast(applicationContext, "削除しました")
-                // ここで、RecyclerViewをReDrawしてやるのだけど、どうやって・・・？
-            }
-        })
-        builder.show()
-    }
 
     // 終了処理
     // 特にきめがあって書いたわけではなく、HHCのコースセレクトダイアログに従って書いただけ見たい

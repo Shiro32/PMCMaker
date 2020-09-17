@@ -10,8 +10,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-
-        <activity android:name=".ui.run.TrainingEditActivity"></activity>
+        <activity android:name=".ui.menu.MenuEditActivity" />
+        <activity android:name=".ui.menu.MenuListActivity" />
+        <activity android:name=".ui.run.RunEditActivity" />
         <activity android:name=".ui.run.one_run_card" />
         <activity
             android:name=".MainActivity"

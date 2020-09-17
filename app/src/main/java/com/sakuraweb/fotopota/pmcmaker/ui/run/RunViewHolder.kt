@@ -3,7 +3,7 @@ package com.sakuraweb.fotopota.pmcmaker.ui.run
 import android.view.View
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.one_run_card.view.*
+import kotlinx.android.synthetic.main.run_one_card.view.*
 
 class RunViewHolder(iv: View) : RecyclerView.ViewHolder(iv) {
     var dateText:   TextView? = null
@@ -13,6 +13,7 @@ class RunViewHolder(iv: View) : RecyclerView.ViewHolder(iv) {
     var kcalText:   TextView? = null
     var placeText:  TextView? = null
     var memoText:   TextView? = null
+    var menuText:   TextView? = null
 
     init {
         dateText    = iv.oneRunDate
@@ -22,5 +23,6 @@ class RunViewHolder(iv: View) : RecyclerView.ViewHolder(iv) {
         kcalText    = iv.oneRunKcal
         placeText   = iv.oneRunPlace
         memoText    = iv.oneRunMemo
+        menuText    = iv.oneRunMenu
     }
 }

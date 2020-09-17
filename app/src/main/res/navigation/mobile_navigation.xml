@@ -9,30 +9,30 @@
         android:id="@+id/navigation_home"
         android:name="com.sakuraweb.fotopota.pmcmaker.ui.home.HomeFragment"
         android:label="@string/nav_title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/home_fragment" />
 
     <fragment
         android:id="@+id/navigation_run"
         android:name="com.sakuraweb.fotopota.pmcmaker.ui.run.RunListFragment"
         android:label="@string/nav_title_run"
-        tools:layout="@layout/fragment_run_list" />
+        tools:layout="@layout/run_list_fragment" />
 
     <fragment
         android:id="@+id/navigation_pmc"
         android:name="com.sakuraweb.fotopota.pmcmaker.ui.pmc.PmcFragment"
         android:label="@string/nav_title_pmc"
-        tools:layout="@layout/fragment_pmc" />
+        tools:layout="@layout/pmc_fragment" />
 
     <fragment
         android:id="@+id/navigation_diagnosis"
         android:name="com.sakuraweb.fotopota.pmcmaker.ui.diag.DiagFragment"
         android:label="@string/nav_title_diagnosis"
-        tools:layout="@layout/fragment_diagnosis" />
+        tools:layout="@layout/diagnosis_fragment" />
 
     <fragment
         android:id="@+id/navigation_setting"
         android:name="com.sakuraweb.fotopota.pmcmaker.ui.config.ConfigFragment"
         android:label="@string/nav_title_setting"
-        tools:layout="@layout/fragment_diagnosis" />
+        tools:layout="@layout/diagnosis_fragment" />
 
 </navigation>

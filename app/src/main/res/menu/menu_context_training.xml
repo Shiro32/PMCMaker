@@ -3,11 +3,11 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/ctxMenuTrainingEdit"
-        android:title="@string/ctx_menu_run_edit"
+        android:id="@+id/ctxMenuEdit"
+        android:title="@string/ctx_menu_edit"
         app:showAsAction="never" />
     <item
-        android:id="@+id/ctxMenuTrainingDelete"
-        android:title="@string/ctx_menu_run_delete"
+        android:id="@+id/ctxMenuDelete"
+        android:title="@string/ctx_menu_delete"
         app:showAsAction="never" />
 </menu>

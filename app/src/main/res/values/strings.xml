@@ -12,6 +12,9 @@
     <string name="date_format">%d/%02d/%02d</string>
     <string name="time_format">%02d:%02d</string>
     <string name="term_format">%d時間%d分</string>
+    <string name="ctx_menu_edit">編集</string>
+    <string name="ctx_menu_delete">削除</string>
+
 
     <!-- ダイアログ -->
     <string name="del_confirm_dialog_title">削除確認</string>
@@ -44,8 +47,18 @@
     <string name="run_edit_place_outdoor">屋外</string>
     <string name="run_edit_menu_label">メニュー</string>
 
-    <string name="ctx_menu_run_edit">編集</string>
-    <string name="ctx_menu_run_delete">削除</string>
+    <!-- メニューリスト画面 -->
+    <string name="title_menu_from_config">トレーニングメニュー編集</string>
+    <string name="title_menu_from_run_edit">メニューを選択して下さい</string>
+
+    <!-- メニュー編集画面 -->
+    <string name="title_menu_edit">メニューデータ編集</string>
+    <string name="title_menu_new">新規メニューデータ</string>
+
+    <string name="menu_edit_name_label">名前</string>
+    <string name="menu_edit_name_hint">SST60minなど</string>
+    <string name="menu_edit_memo_label">説明</string>
+    <string name="menu_edit_memo_hint">FTP90%など</string>
 
     <!-- 設定画面 -->
     <string name="title_setting">各種設定画面</string>
@@ -65,6 +78,7 @@
     <string name="setting_place_label">走行場所（室内・屋外）</string>
     <string name="setting_memo_label">メモ欄</string>
     <string name="setting_menu_label">トレーニングメニュー名</string>
+    <string name="run_edit_unselected">未選択</string>
 
 
     <!-- セッティング画面 -->

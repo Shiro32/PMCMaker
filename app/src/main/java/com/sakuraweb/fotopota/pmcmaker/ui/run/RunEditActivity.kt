@@ -1,8 +1,10 @@
 package com.sakuraweb.fotopota.pmcmaker.ui.run
 
+import android.app.Activity
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.Context
+import android.content.Intent
 import android.graphics.Paint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -12,16 +14,20 @@ import android.view.inputmethod.InputMethodManager
 import androidx.preference.PreferenceManager
 import com.sakuraweb.fotopota.pmcmaker.R
 import com.sakuraweb.fotopota.pmcmaker.toDate
-import com.sakuraweb.fotopota.pmcmaker.trainingRealmConfig
+import com.sakuraweb.fotopota.pmcmaker.runRealmConfig
+import com.sakuraweb.fotopota.pmcmaker.ui.menu.MenuListActivity
+import com.sakuraweb.fotopota.pmcmaker.ui.menu.findMenuNameByID
 import io.realm.Realm
 import io.realm.kotlin.createObject
 import io.realm.kotlin.where
-import kotlinx.android.synthetic.main.activity_run_edit.*
+import kotlinx.android.synthetic.main.run_edit_activity.*
 import java.util.*
 
 // この画面の呼び出しモード
 const val RUN_EDIT_MODE_NEW = 1
 const val RUN_EDIT_MODE_EDIT = 2
+
+const val REQUEST_CODE_MENU_SELECT = 1
 
 // Trainingの各カードの編集画面
 // 全画面表示のダイアログ
@@ -29,7 +35,7 @@ const val RUN_EDIT_MODE_EDIT = 2
 // Edit - 当該データのRealm IDをIntentで送ってくる
 // FAB  - もちろん何もない
 
-class TrainingEditActivity : AppCompatActivity() {
+class RunEditActivity : AppCompatActivity() {
 
     private var editMode: Int = 0
     private var runID: Long = 0
@@ -39,7 +45,7 @@ class TrainingEditActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_run_edit)
+        setContentView(R.layout.run_edit_activity)
 
         // 背景タッチ確定用
         inputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
@@ -87,7 +93,7 @@ class TrainingEditActivity : AppCompatActivity() {
         // Realmのインスタンスを生成
         // Edit画面終了まで維持（onDestroy）でclose
         // configはStartActivityで生成済み
-        realm = Realm.getInstance(trainingRealmConfig)
+        realm = Realm.getInstance(runRealmConfig)
 
         // 呼び出し元から、どのような動作を求められているか（新規、編集）
         // 新規はFABボタン（TRAINING_EDIT_MODE_NEW）
@@ -122,6 +128,7 @@ class TrainingEditActivity : AppCompatActivity() {
 
                     // find menu name by idを実装すべし (run.menuIDから探しましょう）
                     menuID = r.menuID
+                    runEditMenuText.text = findMenuNameByID(menuID)
                 }
             }
         } // when(editMode )
@@ -129,9 +136,9 @@ class TrainingEditActivity : AppCompatActivity() {
         // ーーーーーーーーーー　ここから各種ボタンのリスナ群設定　－－－－－－－－－－
         runEditMenuText.setOnClickListener {
             // ランメニュー選択画面を呼び出しましょう
-//            val intent = Intent(this, BeansListActivity::class.java)
-//            intent.putExtra("from", "Edit")
-//            startActivityForResult(intent, REQUEST_CODE_BEANS_SELECT)
+            val intent = Intent(this, MenuListActivity::class.java)
+            intent.putExtra("from", "Run")
+            startActivityForResult(intent, REQUEST_CODE_MENU_SELECT)
         }
 
         // 日付・時刻選択のダイアログボタン用
@@ -243,7 +250,25 @@ class TrainingEditActivity : AppCompatActivity() {
         } // onClick
     } // OKListener
 
-    // 入力箇所（EditText）以外をタップしたときに、フォーカスをオフにする
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == REQUEST_CODE_MENU_SELECT) {
+            when (resultCode) {
+                RESULT_OK -> {
+                    val id = data?.getLongExtra("id", 0L)
+                    val name = data?.getStringExtra("name")
+
+                    runEditMenuText.text = name
+                    menuID = id as Long
+                }
+            }
+        }
+    }
+
+
+
+            // 入力箇所（EditText）以外をタップしたときに、フォーカスをオフにする
     // おおもとのLayoutにfocusableInTouchModeをtrueにしないといけない
     override fun dispatchTouchEvent(event: MotionEvent?): Boolean {
         // キーボードを隠す
