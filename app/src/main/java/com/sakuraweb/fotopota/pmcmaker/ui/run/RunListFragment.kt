@@ -80,7 +80,6 @@ class RunListFragment : Fragment() {
     override fun onStart() {
         super.onStart()
 
-        val ma = activity as MainActivity
         val realmResults: RealmResults<RunData> = realm.where<RunData>()
             .findAll().sort("date", Sort.DESCENDING)
 

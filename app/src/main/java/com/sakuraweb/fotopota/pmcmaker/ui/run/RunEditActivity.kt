@@ -196,15 +196,15 @@ class RunEditActivity : AppCompatActivity() {
             val runDate2 = ("2000/01/01 " + runEditDurationText.text as String).toDate()
 
             // ゼロチェックしないといけないんだってさ！！
-            var s:String = ""
+            var s = ""
             s = runEditTssEdit.text.toString()
-            val tss = if(s.isNotBlank()) s.toFloat() else 0F
+            val tss = if(s.isNotBlank()) s.toInt() else 0
 
             s = runEditKmEdit.text.toString()
-            val km = if(s.isNotBlank()) s.toFloat() else 0F
+            val km = if(s.isNotBlank()) s.toInt() else 0
 
             s = runEditKcalEdit.text.toString()
-            val kcal = if(s.isNotBlank()) s.toFloat() else 0F
+            val kcal = if(s.isNotBlank()) s.toInt() else 0
 
             val memo = runEditMemoEdit.text.toString()
             val place = if( runEditPlaceSw.isChecked ) OUTDOOR_RIDE else INDOOR_RIDE

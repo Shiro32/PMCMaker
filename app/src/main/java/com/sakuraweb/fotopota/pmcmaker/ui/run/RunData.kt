@@ -31,9 +31,9 @@ open class RunData : RealmObject() {
     lateinit var date: Date    // 実施日
     lateinit var term: Date    // 継続時間
 
-    var tss     : Float  = -1.0F // もちろんTSS
-    var kcal    : Float = -1.0F // 消費エネルギー
-    var km      : Float   = -1.0F // 走行距離
+    var tss     : Int  = 0 // もちろんTSS
+    var kcal    : Int  = 0 // 消費エネルギー
+    var km      : Int  = 0 // 走行距離
     var place   : Int  = -1    // 実施場所（INDOOR_RIDE:インドア、OUTDOOR_RIDE:外）
     var memo    : String = ""   // メモ
     var menuID  : Long = -1   // トレーニングメニューＩＤ
@@ -58,9 +58,9 @@ class RunDataMigration : RealmMigration {
 class RunDataInit (
     var date    : String,
     var term    : String,
-    var tss     : Float,
-    var kcal    : Float,
-    var km      : Float,
+    var tss     : Int,
+    var kcal    : Int,
+    var km      : Int,
     var place   : Int,
     var memo    : String
 )

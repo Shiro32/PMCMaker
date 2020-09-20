@@ -94,22 +94,22 @@ class StartApplication : Application() {
         // データ数ゼロならサンプルを作る
         if (runs.size == 0) {
             val runList = listOf<RunDataInit>(
-                RunDataInit("2020/9/1 23:00", "2020/9/1 23:30", 50F, 300F, 100F, INDOOR_RIDE, "最高にキツイ"),
-                RunDataInit("2020/9/2 23:00", "2020/9/1 23:30", 50F, 300F, 100F, INDOOR_RIDE, "最高にキツイ"),
-                RunDataInit("2020/9/3 23:00", "2020/9/1 23:30", 50F, 300F, 100F, INDOOR_RIDE, "最高にキツイ"),
-                RunDataInit("2020/9/4 23:00", "2020/9/1 23:30", 50F, 300F, 100F, INDOOR_RIDE, "最高にキツイ"),
-                RunDataInit("2020/9/5 23:00", "2020/9/1 23:30", 50F, 300F, 100F, INDOOR_RIDE, "最高にキツイ"),
-                RunDataInit("2020/9/6 23:00", "2020/9/1 23:30", 50F, 300F, 100F, INDOOR_RIDE, "最高にキツイ"),
-                RunDataInit("2020/9/7 23:00", "2020/9/1 23:30", 50F, 300F, 100F, INDOOR_RIDE, "最高にキツイ"),
-                RunDataInit("2020/9/8 23:00", "2020/9/1 23:30", 50F, 300F, 100F, INDOOR_RIDE, "最高にキツイ"),
-                RunDataInit("2020/9/9 23:00", "2020/9/1 23:30", 50F, 300F, 100F, INDOOR_RIDE, "最高にキツイ"),
-                RunDataInit("2020/9/10 23:00", "2020/9/1 23:30", 50F, 300F, 100F, INDOOR_RIDE, "最高にキツイ"),
-                RunDataInit("2020/9/11 23:00", "2020/9/1 23:30", 50F, 300F, 100F, INDOOR_RIDE, "最高にキツイ"),
-                RunDataInit("2020/9/12 23:00", "2020/9/1 23:30", 50F, 300F, 100F, INDOOR_RIDE, "最高にキツイ"),
-                RunDataInit("2020/9/13 23:00", "2020/9/1 23:30", 50F, 300F, 100F, INDOOR_RIDE, "最高にキツイ"),
-                RunDataInit("2020/9/14 23:00", "2020/9/1 23:30", 50F, 300F, 100F, INDOOR_RIDE, "最高にキツイ"),
-                RunDataInit("2020/9/15 23:00", "2020/9/1 23:30", 50F, 300F, 100F, INDOOR_RIDE, "最高にキツイ"),
-                RunDataInit("2020/9/16 10:00", "2020/9/5 12:30", 10F, 30F, 10F, OUTDOOR_RIDE, "最高にキツイ")
+                RunDataInit("2020/9/1 23:00", "2020/9/1 23:30", 50, 300, 100, INDOOR_RIDE, "最高にキツイ"),
+                RunDataInit("2020/9/2 23:00", "2020/9/1 23:30", 100, 300, 100, INDOOR_RIDE, "最高にキツイ"),
+                RunDataInit("2020/9/3 23:00", "2020/9/1 23:30", 20, 300, 100, INDOOR_RIDE, "最高にキツイ"),
+                RunDataInit("2020/9/4 23:00", "2020/9/1 23:30", 30, 300, 100, INDOOR_RIDE, "最高にキツイ"),
+                RunDataInit("2020/9/5 23:00", "2020/9/1 23:30", 300, 300, 100, INDOOR_RIDE, "最高にキツイ"),
+                RunDataInit("2020/9/6 23:00", "2020/9/1 23:30", 30, 300, 100, INDOOR_RIDE, "最高にキツイ"),
+                RunDataInit("2020/9/7 23:00", "2020/9/1 23:30", 20, 300, 100, INDOOR_RIDE, "最高にキツイ"),
+                RunDataInit("2020/9/8 23:00", "2020/9/1 23:30", 10, 300, 100, INDOOR_RIDE, "最高にキツイ"),
+                RunDataInit("2020/9/9 23:00", "2020/9/1 23:30", 100, 300, 100, INDOOR_RIDE, "最高にキツイ"),
+                RunDataInit("2020/9/10 23:00", "2020/9/1 23:30", 50, 300, 100, INDOOR_RIDE, "最高にキツイ"),
+                RunDataInit("2020/9/11 23:00", "2020/9/1 23:30", 300, 300, 100, INDOOR_RIDE, "最高にキツイ"),
+                RunDataInit("2020/9/12 23:00", "2020/9/1 23:30", 270, 300, 100, INDOOR_RIDE, "最高にキツイ"),
+                RunDataInit("2020/9/13 23:00", "2020/9/1 23:30", 30, 300, 100, INDOOR_RIDE, "最高にキツイ"),
+                RunDataInit("2020/9/14 23:00", "2020/9/1 23:30", 10, 300, 100, INDOOR_RIDE, "最高にキツイ"),
+                RunDataInit("2020/9/15 23:00", "2020/9/1 23:30", 80, 300, 100, INDOOR_RIDE, "最高にキツイ"),
+                RunDataInit("2020/9/16 10:00", "2020/9/5 12:30", 10, 30, 10, OUTDOOR_RIDE, "最高にキツイ")
             )
             // DB書き込み
             realm.beginTransaction()
@@ -133,6 +133,5 @@ class StartApplication : Application() {
 
 fun String.toDate(pattern: String = "yyyy/MM/dd HH:mm"): Date {
     val df = SimpleDateFormat(pattern)
-    val dt = df.parse(this)
-    return dt
+    return df.parse(this)
 }

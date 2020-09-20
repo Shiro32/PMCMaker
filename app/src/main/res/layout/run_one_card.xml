@@ -33,10 +33,11 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="2dp"
             android:text="100"
+            android:textColor="@android:color/black"
             android:textSize="30sp"
             android:textStyle="bold"
-            app:layout_constraintBaseline_toBaselineOf="@+id/oneRunDate"
-            app:layout_constraintEnd_toStartOf="@+id/oneRunTSSLabel" />
+            app:layout_constraintEnd_toStartOf="@+id/oneRunTSSLabel"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/oneRunTSSLabel"
@@ -88,8 +89,8 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="parent"
