@@ -23,6 +23,19 @@ lateinit var placeList : Array<String>              // 実施場所（INDOOR_RID
 // で、その実行順位が、Application ＞ AppCompatActivityとなっているので、こっちの方が先
 // 今回は、データベース作成のために最初にここで起動させる
 
+object ApplicationController : Application() {
+   private var sInstance: ApplicationController = this
+
+    override fun onCreate() {
+        super.onCreate()
+        sInstance = this;
+    }
+
+    fun getInstance() : ApplicationController {
+        return sInstance
+    }
+}
+
 class StartApplication : Application() {
     override fun onCreate() {
         super.onCreate()
@@ -94,22 +107,22 @@ class StartApplication : Application() {
         // データ数ゼロならサンプルを作る
         if (runs.size == 0) {
             val runList = listOf<RunDataInit>(
-                RunDataInit("2020/9/1 23:00", "2020/9/1 23:30", 50, 300, 100, INDOOR_RIDE, "最高にキツイ"),
-                RunDataInit("2020/9/2 23:00", "2020/9/1 23:30", 100, 300, 100, INDOOR_RIDE, "最高にキツイ"),
-                RunDataInit("2020/9/3 23:00", "2020/9/1 23:30", 20, 300, 100, INDOOR_RIDE, "最高にキツイ"),
-                RunDataInit("2020/9/4 23:00", "2020/9/1 23:30", 30, 300, 100, INDOOR_RIDE, "最高にキツイ"),
-                RunDataInit("2020/9/5 23:00", "2020/9/1 23:30", 300, 300, 100, INDOOR_RIDE, "最高にキツイ"),
-                RunDataInit("2020/9/6 23:00", "2020/9/1 23:30", 30, 300, 100, INDOOR_RIDE, "最高にキツイ"),
-                RunDataInit("2020/9/7 23:00", "2020/9/1 23:30", 20, 300, 100, INDOOR_RIDE, "最高にキツイ"),
-                RunDataInit("2020/9/8 23:00", "2020/9/1 23:30", 10, 300, 100, INDOOR_RIDE, "最高にキツイ"),
-                RunDataInit("2020/9/9 23:00", "2020/9/1 23:30", 100, 300, 100, INDOOR_RIDE, "最高にキツイ"),
-                RunDataInit("2020/9/10 23:00", "2020/9/1 23:30", 50, 300, 100, INDOOR_RIDE, "最高にキツイ"),
-                RunDataInit("2020/9/11 23:00", "2020/9/1 23:30", 300, 300, 100, INDOOR_RIDE, "最高にキツイ"),
-                RunDataInit("2020/9/12 23:00", "2020/9/1 23:30", 270, 300, 100, INDOOR_RIDE, "最高にキツイ"),
-                RunDataInit("2020/9/13 23:00", "2020/9/1 23:30", 30, 300, 100, INDOOR_RIDE, "最高にキツイ"),
-                RunDataInit("2020/9/14 23:00", "2020/9/1 23:30", 10, 300, 100, INDOOR_RIDE, "最高にキツイ"),
-                RunDataInit("2020/9/15 23:00", "2020/9/1 23:30", 80, 300, 100, INDOOR_RIDE, "最高にキツイ"),
-                RunDataInit("2020/9/16 10:00", "2020/9/5 12:30", 10, 30, 10, OUTDOOR_RIDE, "最高にキツイ")
+                RunDataInit("2020/9/1 23:00", "2020/9/1 23:30", 50, 300, 100, INDOOR_RIDE, "Very Hard !!"),
+                RunDataInit("2020/9/2 23:00", "2020/9/1 23:30", 100, 300, 100, INDOOR_RIDE, "Very Hard !!"),
+                RunDataInit("2020/9/3 23:00", "2020/9/1 23:30", 20, 300, 100, INDOOR_RIDE, "Very Hard !!"),
+                RunDataInit("2020/9/4 23:00", "2020/9/1 23:30", 30, 300, 100, INDOOR_RIDE, "Very Hard !!"),
+                RunDataInit("2020/9/5 23:00", "2020/9/1 23:30", 300, 300, 100, INDOOR_RIDE, "Very Hard !!"),
+                RunDataInit("2020/9/6 23:00", "2020/9/1 23:30", 30, 300, 100, INDOOR_RIDE, "Very Hard !!"),
+                RunDataInit("2020/9/7 23:00", "2020/9/1 23:30", 20, 300, 100, INDOOR_RIDE, "Very Hard !!"),
+                RunDataInit("2020/9/8 23:00", "2020/9/1 23:30", 10, 300, 100, INDOOR_RIDE, "Very Hard !!"),
+                RunDataInit("2020/9/9 23:00", "2020/9/1 23:30", 100, 300, 100, INDOOR_RIDE, "Very Hard !!"),
+                RunDataInit("2020/9/10 23:00", "2020/9/1 23:30", 50, 300, 100, INDOOR_RIDE, "Very Hard !!"),
+                RunDataInit("2020/9/11 23:00", "2020/9/1 23:30", 300, 300, 100, INDOOR_RIDE, "Very Hard !!"),
+                RunDataInit("2020/9/12 23:00", "2020/9/1 23:30", 270, 300, 100, INDOOR_RIDE, "Very Hard !!"),
+                RunDataInit("2020/9/13 23:00", "2020/9/1 23:30", 30, 300, 100, INDOOR_RIDE, "Very Hard !!"),
+                RunDataInit("2020/9/14 23:00", "2020/9/1 23:30", 10, 300, 100, INDOOR_RIDE, "Very Hard !!"),
+                RunDataInit("2020/9/15 23:00", "2020/9/1 23:30", 80, 300, 100, INDOOR_RIDE, "Very Hard !!"),
+                RunDataInit("2020/9/16 10:00", "2020/9/5 12:30", 10, 30, 10, OUTDOOR_RIDE, "Very Hard !!")
             )
             // DB書き込み
             realm.beginTransaction()

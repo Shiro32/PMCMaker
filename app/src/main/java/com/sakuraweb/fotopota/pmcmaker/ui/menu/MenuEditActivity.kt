@@ -1,8 +1,11 @@
 package com.sakuraweb.fotopota.pmcmaker.ui.menu
 
 import android.content.Context
+import android.content.res.Resources
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.Settings
+import android.provider.Settings.Global.getString
 import android.view.MotionEvent
 import android.view.View
 import android.view.inputmethod.InputMethodManager
@@ -134,5 +137,5 @@ fun findMenuNameByID( menuID: Long ): String {
     val menu = realm.where<MenuData>().equalTo("id",menuID).findFirst()
     var name = menu?.name.toString()
     realm.close()
-    if (name != "null") return name else return "データなし"
+    if (name != "null") return name else return "N/A"
 }

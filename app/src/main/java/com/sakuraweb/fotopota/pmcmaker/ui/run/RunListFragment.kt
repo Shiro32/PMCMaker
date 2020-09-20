@@ -89,7 +89,7 @@ class RunListFragment : Fragment() {
         trainingRecylerView.layoutManager = layoutManager
 
         // アダプターを設定する
-        adapter = RunRecyclerViewAdapter(realmResults, realm, this)
+        adapter = RunRecyclerViewAdapter(realmResults, realm, this, context)
         trainingRecylerView.adapter = this.adapter
 
     }

@@ -4,6 +4,7 @@ import android.app.AlertDialog
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
+import android.content.res.Resources
 import android.os.Build
 import android.view.*
 import android.widget.PopupMenu
@@ -17,14 +18,16 @@ import io.realm.RealmResults
 import io.realm.kotlin.where
 import kotlinx.android.synthetic.main.run_one_card.view.*
 import java.text.SimpleDateFormat
+import com.sakuraweb.fotopota.pmcmaker.ApplicationController
 
 
-class RunRecyclerViewAdapter(runRealm: RealmResults<RunData>, realm: Realm, fmt: RunListFragment ) :
+class RunRecyclerViewAdapter(runRealm: RealmResults<RunData>, realm: Realm, fmt: RunListFragment, c:Context? ) :
         RecyclerView.Adapter<RunViewHolder>() {
 
     private val runList: RealmResults<RunData> = runRealm
     private val runRealm = realm
     private val runlistFmt = fmt
+    private val ctx = c
 
     // 新しく1行分のViewをXMLから生成し、1行分のViewHolderを生成してViewをセットする
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RunViewHolder {
@@ -65,7 +68,7 @@ class RunRecyclerViewAdapter(runRealm: RealmResults<RunData>, realm: Realm, fmt:
 
         if (run != null) {
             holder.dateText?.text   = SimpleDateFormat("yyyy/MM/dd").format(run.date)
-            holder.termText?.text   = SimpleDateFormat( "HH時間mm分").format(run.term)
+            holder.termText?.text   = SimpleDateFormat( ctx?.getString(R.string.one_run_time_format)).format(run.term)
             holder.tssText?.text    = run.tss.toString()
             holder.kmText?.text     = run.km.toString()
             holder.kcalText?.text   = run.kcal.toString()

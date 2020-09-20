@@ -71,7 +71,7 @@
     <string name="setting_menu_edit_label">トレーニングメニュー編集</string>
 
     <string name="setting_date_label">日付（必須項目）</string>
-    <string name="setting_tss_label">Earned TSS（必須項目）</string>
+    <string name="setting_tss_label">TSS（必須項目）</string>
     <string name="setting_term_label">継続時間（時：分）</string>
     <string name="setting_km_label">走行距離（km）</string>
     <string name="setting_kcal_label">消費エネルギー（kcal）</string>

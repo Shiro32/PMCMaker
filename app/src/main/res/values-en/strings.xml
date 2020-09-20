@@ -1,0 +1,88 @@
+<resources>
+    <string name="app_name">PMC Maker</string>
+    <string name="nav_title_pmc">PMC</string>
+    <string name="nav_title_diagnosis">Diagnosis</string>
+
+    <!-- 汎用 -->
+    <string name="save_btn_label">Save</string>
+    <string name="cancel_btn_label">Cancel</string>
+    <string name="date_format">%d/%02d/%02d</string>
+    <string name="time_format">%02d:%02d</string>
+    <string name="term_format">%d:%d</string>
+    <string name="ctx_menu_edit">Edit</string>
+    <string name="ctx_menu_delete">Delete</string>
+
+
+    <!-- ダイアログ -->
+    <string name="del_confirm_dialog_cancel">Cancel</string>
+
+    <!-- トレーニングリスト画面 -->
+    <string name="title_run2">Training List</string>
+
+    <!-- トレーニング編集画面 -->
+    <string name="title_run_edit">Edit Tarining Data</string>
+    <string name="title_run_new">New Training Data</string>
+
+    <string name="run_edit_date_label">Ride Day</string>
+    <string name="run_edit_tss_label">TSS</string>
+    <string name="run_edit_km_label">Dist</string>
+    <string name="run_edit_km_hint">Ride distance</string>
+    <string name="run_edit_km_unit_label">km</string>
+    <string name="run_edit_kcal_hint">Burned Calories</string>
+    <string name="run_edit_kcal_unit_label">kcal</string>
+    <string name="run_edit_memo_label">Memo</string>
+    <string name="run_edit_memo_hint">free text</string>
+    <string name="run_edit_place_label">Place</string>
+    <string name="run_edit_place_indoor">Indoor</string>
+    <string name="run_edit_place_outdoor">Outdoor</string>
+    <string name="run_edit_menu_label">Ride Menu</string>
+
+    <!-- メニューリスト画面 -->
+    <string name="title_menu_from_config">Edit Ride Menu</string>
+    <string name="title_menu_from_run_edit">Select Ride Menu</string>
+
+    <!-- メニュー編集画面 -->
+    <string name="title_menu_edit">Edit Ride Menu</string>
+    <string name="title_menu_new">New Menu Data</string>
+
+    <string name="menu_edit_name_label">Name</string>
+    <string name="menu_edit_name_hint">e.g. SST60min</string>
+    <string name="menu_edit_memo_label">Desc</string>
+    <string name="menu_edit_memo_hint">e.g. FTP90%</string>
+
+    <!-- 設定画面 -->
+    <string name="title_setting">Optional Setteings</string>
+    <string name="setting_element_header">Recording Elements</string>
+    <string name="setting_atl_term_label">Term of ATL accumlation (days)</string>
+    <string name="setting_ctl_term_label">Term of CTL accumulation (days)</string>
+    <string name="setting_pmc_term_label">Term of PMC Graph (days)</string>
+    <string name="setting_menu_edit_label">Edit Training Menu</string>
+
+    <string name="setting_date_label">Ride Date (must)</string>
+    <string name="setting_tss_label">TSS (must)</string>
+    <string name="setting_term_label">Duration (h:m)</string>
+    <string name="setting_km_label">Distance (km)</string>
+    <string name="setting_kcal_label">Energy (kcal)</string>
+    <string name="setting_place_label">Place (in/out)</string>
+    <string name="setting_memo_label">Memo</string>
+    <string name="setting_menu_label">Training Menu Name</string>
+    <string name="run_edit_unselected">Unselected</string>
+    <string name="nav_title_home">Home</string>
+    <string name="nav_title_run">Training Data</string>
+    <string name="nav_title_setting">Settings</string>
+    <string name="del_confirm_dialog_title">Confirm</string>
+    <string name="del_confirm_dialog_message">Do you want to delete?</string>
+    <string name="del_confirm_dialog_ok">Yes</string>
+    <string name="run_edit_term_label">Ride Time</string>
+    <string name="one_run_term_label">Ride Time</string>
+    <string name="run_edit_tss_hint">TSS earned</string>
+    <string name="run_edit_kcal_label">Energy</string>
+    <string name="setting_term_header">Terms for Calculating the PMC</string>
+    <string name="setting_days_prompt">Input Days</string>
+    <string name="run_menu_unselected">Unselected</string>
+    <string name="one_run_time_format">HH:mm</string>
+
+
+    <!-- セッティング画面 -->
+
+</resources>

@@ -2,8 +2,8 @@
 <resources>
 
     <array name="place_list">
-        <item>室内</item>
-        <item>屋外</item>
+        <item>@string/run_edit_place_indoor</item>
+        <item>@string/run_edit_place_outdoor</item>
     </array>
 
 </resources>
