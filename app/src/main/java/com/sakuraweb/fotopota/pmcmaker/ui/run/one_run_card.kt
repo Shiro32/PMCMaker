@@ -7,6 +7,6 @@ import com.sakuraweb.fotopota.pmcmaker.R
 class one_run_card : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.run_one_card)
+        setContentView(R.layout.run_one_flat)
     }
 }

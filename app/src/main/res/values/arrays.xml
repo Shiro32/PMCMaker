@@ -6,4 +6,13 @@
         <item>@string/run_edit_place_outdoor</item>
     </array>
 
+    <string-array name="look_labels">
+        <item>@string/look_card</item>
+        <item>@string/look_flat</item>
+    </string-array>
+    <string-array name="look_values">
+        <item>@string/look_card</item>
+        <item>@string/look_flat</item>
+    </string-array>
+
 </resources>

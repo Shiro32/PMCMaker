@@ -1,22 +1,14 @@
 package com.sakuraweb.fotopota.pmcmaker.ui.run
 
-import android.app.AlertDialog
-import android.content.Context
-import android.content.DialogInterface
 import android.content.Intent
-import android.os.Build
 import android.view.*
-import android.widget.PopupMenu
-import androidx.annotation.RequiresApi
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.sakuraweb.fotopota.pmcmaker.R
 import com.sakuraweb.fotopota.pmcmaker.placeList
 import com.sakuraweb.fotopota.pmcmaker.ui.menu.findMenuNameByID
 import io.realm.Realm
 import io.realm.RealmResults
-import io.realm.kotlin.where
-import kotlinx.android.synthetic.main.run_one_card.view.*
+import kotlinx.android.synthetic.main.run_one_flat.view.*
 import java.text.SimpleDateFormat
 
 class RunRecyclerViewAdapter(runRealm: RealmResults<RunData>, realm: Realm, fmt: RunListFragment ) :
@@ -28,7 +20,7 @@ class RunRecyclerViewAdapter(runRealm: RealmResults<RunData>, realm: Realm, fmt:
     // 新しく1行分のViewをXMLから生成し、1行分のViewHolderを生成してViewをセットする
     // 新しいView（1行）を生成する　レイアウト画面で作った、one_Training_card_home（1行）
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RunViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.run_one_card, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate( listLayout, parent, false)
         if( !settingTermSw ) view.oneRunDuration.visibility = View.GONE
         if( !settingMemoSw ) view.oneRunMemo.visibility = View.GONE
         if( !settingPlaceSw ) view.oneRunPlace.visibility = View.GONE

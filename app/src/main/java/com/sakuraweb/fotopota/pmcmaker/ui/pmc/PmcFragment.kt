@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.preference.PreferenceManager
 import com.github.mikephil.charting.animation.Easing
+import com.github.mikephil.charting.components.Legend
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.components.YAxis
 import com.github.mikephil.charting.data.*
@@ -29,6 +30,10 @@ import kotlin.math.exp
 var atlTerm: Int = 0
 var ctlTerm: Int = 0
 var pmcTerm: Int = 0
+
+lateinit var atlList: Array<Float>
+lateinit var ctlList: Array<Float>
+lateinit var tsbList: Array<Float>
 
 //lateinit var tssList: Array<Int?>
 //lateinit var dateList: Array<Date> // 要らないような
@@ -51,10 +56,14 @@ class PmcFragment : Fragment() {
             getString("pmc_term", "31")?.let { pmcTerm = it.toInt() }
         }
 
-        text1.text = "ATL accumulation term : %d".format(atlTerm)
-        text2.text = "CTL accumulation term : %d".format(ctlTerm)
-        text3.text = "PMC drawing term : %d".format(pmcTerm)
+        drawPMC()
+        drawDIAG()
+    }
 
+    private fun drawDIAG() {
+
+    }
+    private fun drawPMC() {
 
         chartArea1.xAxis.position = XAxis.XAxisPosition.BOTTOM
 
@@ -72,7 +81,7 @@ class PmcFragment : Fragment() {
             setDrawLabels(true)
             setAxisMaxValue(200F)
             setAxisMinValue(-200F)
-            setLabelCount(5, true)
+            setLabelCount(9, true)
             enableGridDashedLine(10f,10f,0f)
             setDrawZeroLine(true)
             spaceBottom = 0F
@@ -82,9 +91,9 @@ class PmcFragment : Fragment() {
         // Y軸（右）
         chartArea1.axisRight.apply {
             setDrawLabels(true)
-            setAxisMaxValue(1000F)
+            setAxisMaxValue(800F)
             setAxisMinValue(0F)
-            setLabelCount(5, true)
+            setLabelCount(9, true)
             enableGridDashedLine(10f,10f,0f)
             setDrawZeroLine(true)
             spaceBottom = 0F
@@ -95,6 +104,9 @@ class PmcFragment : Fragment() {
             isClickable = false
             setDescription("")
             setPinchZoom(false)
+
+            legend.setPosition( Legend.LegendPosition.ABOVE_CHART_CENTER )
+
             isDoubleTapToZoomEnabled = false
             //アニメーション
             animateY(1000, Easing.EasingOption.Linear);
@@ -103,45 +115,45 @@ class PmcFragment : Fragment() {
             invalidate()
         }
 
+        pmcRecentText.text = getString(R.string.pmc_recent_values)
+            .format(atlList[atlList.size-1].toInt(), ctlList[ctlList.size-1].toInt(), tsbList[tsbList.size-1].toInt())
+
     }
 
     private fun createBarGraphData() : CombinedData {
         val ma: Activity = activity as Activity
 
-        // PMC期間設定（例によって0:0:0セットが面倒くせえ）
+        // PMC期間設定　←　もしかして時分秒のクリアが必要かも。やってないけど
         var begin = Calendar.getInstance()
         begin.add( Calendar.DAY_OF_MONTH, -1*(pmcTerm))
         var end = Calendar.getInstance()
 
-        // PMC期間中のTSSリストを作る
+        // まずは全期間の TSS/ATL/CTL/TSBを作る
         val realm = Realm.getInstance(runRealmConfig)
+        val runs = realm.where<RunData>().findAll().sort("date", Sort.ASCENDING)
 
-        val runs = realm.where<RunData>().between("date", begin.time, end.time).findAll().sort("date", Sort.DESCENDING)
-        var tssList = IntArray( pmcTerm )
+        // １．開始期間を設定（いずれCONFIG化する
+        val org = Calendar.getInstance()
+        org.time = runs[0]?.date
+        val term = ( (end.timeInMillis - org.timeInMillis) / (1000*24*60*60) ).toInt() + 1
+
+        // ２．全期間のTSSリスト作成
+        var tssList = IntArray( term )
+        var rd = Calendar.getInstance()
 
         for( r in runs) {
-            var rd = Calendar.getInstance()
-            rd.setTime(r.date)
+            rd.time = r.date
             rd.set( Calendar.HOUR_OF_DAY, 0)
             rd.set( Calendar.MINUTE, 0)
             rd.set( Calendar.SECOND, 0)
-            var diff = (rd.timeInMillis - begin.timeInMillis) / (1000*24*60*60)
-
+            var diff = (rd.timeInMillis - org.timeInMillis) / (1000*24*60*60)
             tssList[ diff.toInt() ] += r.tss
         }
 
-        text4.text = "%d records in RunRealm".format(runs.size)
-
-
-
-        // ATL/CTL/TSBを作る （ついでにＸ軸も）
-        var atlList = FloatArray( pmcTerm )
-        var ctlList = FloatArray( pmcTerm )
-        var tsbList = FloatArray( pmcTerm )
-        var xLabels = Array<String>( pmcTerm ){ "" }
-        var bc = Calendar.getInstance()
-        bc = begin
-        bc.add( Calendar.DAY_OF_MONTH, 1 )
+        // ３．ATL/CTL/TSBを作る
+        atlList = Array<Float>( term ) { 0F }
+        ctlList = Array<Float>( term ) { 0F }
+        tsbList = Array<Float>( term ) { 0F }
 
         for( i in 1..tssList.size-1) {
             atlList[i] = ( exp(-1.0 / atlTerm) * (atlList[i-1]-tssList[i]) + tssList[i] ).toFloat()
@@ -149,32 +161,36 @@ class PmcFragment : Fragment() {
             tsbList[i] = ctlList[i-1] - atlList[i-1]
         }
 
-        // とりあえず適当に
-        val xLabels2 = Array<String>( pmcTerm ) {it.toString()}
+        // 全期間のTSS/ATL/CTL/TSBが完成したので、指定期間のPMCを作り始める
+        var xLabels = Array<String>( pmcTerm ){ "" }
+        var bc = Calendar.getInstance()
+        bc = begin
+        bc.add( Calendar.DAY_OF_MONTH, 1 )
+
+        // １．各要素のデータ配列
         val tssValues = arrayOfNulls<BarEntry>( pmcTerm )
         val atlValues = arrayOfNulls<Entry>( pmcTerm )
         val ctlValues = arrayOfNulls<Entry>( pmcTerm )
         val tsbValues = arrayOfNulls<Entry>( pmcTerm )
 
-        for( i in 0..tssList.size-1 ) {
-//            xLabels[i] = i.toString()
+        for( i in 0..pmcTerm-1 ) {
             xLabels[i] = "%2d/%2d".format(bc.get(Calendar.MONTH), bc.get(Calendar.DAY_OF_MONTH))
             bc.add( Calendar.DAY_OF_MONTH, 1)
-            tssValues[i] = BarEntry( tssList[i].toFloat(), i )
-            atlValues[i] = Entry( atlList[i], i )
-            ctlValues[i] = Entry( ctlList[i], i )
-            tsbValues[i] = Entry( tsbList[i], i )
+            val index = i + term - pmcTerm
+            tssValues[i] = BarEntry( if(index>=0)  tssList[index].toFloat() else 0F, i )
+            atlValues[i] = Entry( if(index>=0) atlList[index] else 0F, i )
+            ctlValues[i] = Entry( if(index>=0) ctlList[index] else 0F, i )
+            tsbValues[i] = Entry( if(index>=0) tsbList[index] else 0F, i )
         }
 
+        // CTLカーブ
         val ctlLineDataSet = LineDataSet(ctlValues.toMutableList(), getString(R.string.pmc_ctl_name)).apply {
             setDrawValues(false)
             lineWidth = 4F
             color = ma.getColor(R.color.ctlBarColor)
             axisDependency = YAxis.AxisDependency.LEFT
 
-//        mode = LineDataSet.Mode.HORIZONTAL_BEZIER
             setDrawFilled(true)
-
             isHighlightEnabled = true
             setCircleColor( ma.getColor(R.color.ctlBarColor) )
             setDrawCircles(true)
@@ -192,7 +208,8 @@ class PmcFragment : Fragment() {
         })
         */
         }
-        
+
+        // TSBカーブ
         val tsbLineDataSet = LineDataSet(tsbValues.toMutableList(), getString(R.string.pmc_tsb_name)).apply {
             setDrawValues(false)
             setDrawCircles(false)
@@ -201,6 +218,7 @@ class PmcFragment : Fragment() {
             axisDependency = YAxis.AxisDependency.LEFT
         }
 
+        // ATLカーブ
         val atlLineDataSet = LineDataSet(atlValues.toMutableList(), getString(R.string.pmc_atl_name)).apply {
             setDrawValues(false)
             setDrawCircles(false)
@@ -209,6 +227,7 @@ class PmcFragment : Fragment() {
             axisDependency = YAxis.AxisDependency.LEFT
         }
 
+        // TSSバー
         val barDataSet1 = BarDataSet(tssValues.toMutableList(), getString(R.string.pmc_tss_name)).apply {
             setDrawValues(false)
             color = ma.getColor(R.color.tssBarColor)

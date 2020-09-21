@@ -115,29 +115,28 @@ class StartApplication : Application() {
         // データ数ゼロならサンプルを作る
         if (runs.size == 0) {
             val runList = listOf<RunDataInit>(
-                RunDataInit("2020/9/1", "2020/9/1 1:00", 50, 300, 100, INDOOR_RIDE, "Very Hard !!"),
-                RunDataInit("2020/9/2", "2020/9/1 1:00", 100, 300, 100, INDOOR_RIDE, "Very Hard !!"),
-                RunDataInit("2020/9/3", "2020/9/1 1:00", 20, 300, 100, INDOOR_RIDE, "Very Hard !!"),
-                RunDataInit("2020/9/4", "2020/9/1 1:00", 30, 300, 100, INDOOR_RIDE, "Very Hard !!"),
+                RunDataInit("2020/9/1", "2020/9/1 1:00", 80, 300, 100, INDOOR_RIDE, "Very Hard !!"),
+                RunDataInit("2020/9/1", "2020/9/1 1:00", 80, 300, 100, INDOOR_RIDE, "Very Hard !!"),
+                RunDataInit("2020/9/1", "2020/9/1 1:00", 80, 300, 100, INDOOR_RIDE, "Very Hard !!"),
+                RunDataInit("2020/9/2", "2020/9/1 1:00", 10, 300, 100, INDOOR_RIDE, "Very Hard !!"),
+                RunDataInit("2020/9/3", "2020/9/1 1:00", 80, 300, 100, INDOOR_RIDE, "Very Hard !!"),
+                RunDataInit("2020/9/4", "2020/9/1 1:00", 200, 300, 100, INDOOR_RIDE, "Very Hard !!"),
                 RunDataInit("2020/9/5", "2020/9/1 1:00", 300, 300, 100, INDOOR_RIDE, "Very Hard !!"),
-                RunDataInit("2020/9/6", "2020/9/1 1:00", 30, 300, 100, INDOOR_RIDE, "Very Hard !!"),
-                RunDataInit("2020/9/7", "2020/9/1 1:00", 20, 300, 100, INDOOR_RIDE, "Very Hard !!"),
-                RunDataInit("2020/9/8", "2020/9/1 1:00", 10, 300, 100, INDOOR_RIDE, "Very Hard !!"),
-                RunDataInit("2020/9/9", "2020/9/1 1:00", 100, 300, 100, INDOOR_RIDE, "Very Hard !!"),
-                RunDataInit("2020/9/10", "2020/9/1 1:00", 50, 300, 100, INDOOR_RIDE, "Very Hard !!"),
-                RunDataInit("2020/9/11", "2020/9/1 1:00", 300, 300, 100, INDOOR_RIDE, "Very Hard !!"),
-                RunDataInit("2020/9/12", "2020/9/1 1:00", 270, 300, 100, INDOOR_RIDE, "Very Hard !!"),
-                RunDataInit("2020/9/13", "2020/9/1 1:00", 30, 300, 100, INDOOR_RIDE, "Very Hard !!"),
-                RunDataInit("2020/9/14", "2020/9/1 1:00", 800, 300, 100, INDOOR_RIDE, "Very Hard !!"),
+                RunDataInit("2020/9/6", "2020/9/1 1:00", 10, 300, 100, INDOOR_RIDE, "Very Hard !!"),
+                RunDataInit("2020/9/7", "2020/9/1 1:00", 50, 300, 100, INDOOR_RIDE, "Very Hard !!"),
+                RunDataInit("2020/9/8", "2020/9/1 1:00", 100, 300, 100, INDOOR_RIDE, "Very Hard !!"),
+                RunDataInit("2020/9/9", "2020/9/1 1:00", 200, 300, 100, INDOOR_RIDE, "Very Hard !!"),
+                RunDataInit("2020/9/10", "2020/9/1 1:00", 80, 300, 100, INDOOR_RIDE, "Very Hard !!"),
+                RunDataInit("2020/9/11", "2020/9/1 1:00", 80, 300, 100, INDOOR_RIDE, "Very Hard !!"),
+                RunDataInit("2020/9/12", "2020/9/1 1:00", 400, 300, 100, INDOOR_RIDE, "Very Hard !!"),
                 RunDataInit("2020/9/15", "2020/9/1 1:00", 80, 300, 100, INDOOR_RIDE, "Very Hard !!"),
                 RunDataInit("2020/9/16", "2020/9/5 1:30", 10, 30, 10, OUTDOOR_RIDE, "Very Hard !!"),
                 RunDataInit("2020/9/17", "2020/9/5 1:30", 200, 30, 10, OUTDOOR_RIDE, "Very Hard !!"),
                 RunDataInit("2020/9/18", "2020/9/5 1:30", 300, 30, 10, OUTDOOR_RIDE, "Very Hard !!"),
-                RunDataInit("2020/9/19", "2020/9/5 1:30", 400, 30, 10, OUTDOOR_RIDE, "Very Hard !!"),
-                RunDataInit("2020/9/20", "2020/9/5 1:30", 100, 30, 10, OUTDOOR_RIDE, "Very Hard !!"),
+                RunDataInit("2020/9/19", "2020/9/5 1:30", 100, 30, 10, OUTDOOR_RIDE, "Very Hard !!"),
+                RunDataInit("2020/9/20", "2020/9/5 1:30", 500, 30, 10, OUTDOOR_RIDE, "Very Hard !!"),
                 RunDataInit("2020/9/20", "2020/9/5 1:30", 500, 30, 10, OUTDOOR_RIDE, "Very Hard !!"),
                 RunDataInit("2020/9/21", "2020/9/5 1:30", 100, 30, 10, OUTDOOR_RIDE, "Very Hard !!")
-
             )
             // DB書き込み
             realm.beginTransaction()

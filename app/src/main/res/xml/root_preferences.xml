@@ -76,7 +76,21 @@
                 android:targetPackage="com.sakuraweb.fotopota.pmcmaker"
                 android:targetClass="com.sakuraweb.fotopota.pmcmaker.ui.menu.MenuListActivity" />
         </Preference>
-
     </PreferenceCategory>
 
+    <PreferenceCategory
+        android:title="@string/setting_appearance_header"
+        app:iconSpaceReserved="false">
+
+        <ListPreference
+            android:key="list_sw"
+            android:title="@string/look_label"
+            android:entries="@array/look_labels"
+            android:entryValues="@array/look_values"
+            android:dialogTitle="@string/look_label"
+            android:defaultValue="@string/look_card"
+            app:useSimpleSummaryProvider="true" />
+
+
+    </PreferenceCategory>
 </PreferenceScreen>

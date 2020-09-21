@@ -24,12 +24,6 @@
         tools:layout="@layout/pmc_fragment" />
 
     <fragment
-        android:id="@+id/navigation_diagnosis"
-        android:name="com.sakuraweb.fotopota.pmcmaker.ui.diag.DiagFragment"
-        android:label="@string/nav_title_diagnosis"
-        tools:layout="@layout/diagnosis_fragment" />
-
-    <fragment
         android:id="@+id/navigation_setting"
         android:name="com.sakuraweb.fotopota.pmcmaker.ui.config.ConfigFragment"
         android:label="@string/nav_title_setting"

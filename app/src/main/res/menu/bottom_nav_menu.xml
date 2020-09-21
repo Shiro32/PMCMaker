@@ -16,10 +16,6 @@
         android:icon="@drawable/graph"
         android:title="@string/nav_title_pmc" />
     <item
-        android:id="@+id/navigation_diagnosis"
-        android:icon="@android:drawable/sym_action_chat"
-        android:title="@string/nav_title_diagnosis" />
-    <item
         android:id="@+id/navigation_setting"
         android:icon="@android:drawable/ic_menu_manage"
         android:title="@string/nav_title_setting" />

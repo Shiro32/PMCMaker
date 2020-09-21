@@ -26,6 +26,7 @@ var settingKcalSw   :Boolean = true
 var settingMemoSw   :Boolean = true
 var settingMenuSw   :Boolean = true
 var settingPlaceSw  :Boolean = true
+var listLayout : Int = 0
 
 class RunListFragment : Fragment() {
 
@@ -47,6 +48,7 @@ class RunListFragment : Fragment() {
             settingMemoSw   = getBoolean("memo_sw", true)
             settingMenuSw   = getBoolean("menu_sw", true)
             settingPlaceSw  = getBoolean("place_sw", true)
+            listLayout = if( getString("list_sw", "") == getString(R.string.look_flat)) R.layout.run_one_flat else R.layout.run_one_card
         }
 
         // ーーーーーーーーーー　リスト表示（RecyclerView）　ーーーーーーーーーー
