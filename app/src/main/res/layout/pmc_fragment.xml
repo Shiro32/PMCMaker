@@ -42,7 +42,7 @@
                             style="@style/AnaCardLabelStyle2"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:text="日々のコーヒー摂取回数"
+                            android:text="PMC : Performance Management Chart"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -54,7 +54,7 @@
                             android:layout_marginStart="8dp"
                             android:layout_marginTop="8dp"
                             android:lineSpacingMultiplier="0.7"
-                            android:text="過去30日の、家飲み＋外飲み回数です"
+                            android:text="TSSは右軸。ATL/CTL/TSBは左軸です。"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/statsGraphCard1Title" />
@@ -65,7 +65,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="8dp"
                             android:lineSpacingMultiplier="0.7"
-                            android:text="合計：100杯"
+                            android:text="TERM: ?"
                             android:textColor="@android:color/white"
                             app:layout_constraintBottom_toBottomOf="@+id/statsGraphCard1Title"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -91,18 +91,30 @@
                     android:id="@+id/text1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp"
                     android:text="TextView" />
 
                 <TextView
                     android:id="@+id/text2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
                     android:text="TextView" />
 
                 <TextView
                     android:id="@+id/text3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="TextView" />
+
+                <TextView
+                    android:id="@+id/text4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
                     android:text="TextView" />
 
             </LinearLayout>

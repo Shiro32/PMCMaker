@@ -5,4 +5,9 @@
     <color name="colorAccent">#03DAC5</color>
     <color name="labelLightColor">#B4B4B4</color>
     <color name="colorCardBackground">#e6e6e6</color>
+
+    <color name="tssBarColor">#E0E0E0</color>
+    <color name="atlBarColor">#F44336</color>
+    <color name="ctlBarColor">#2196F3</color>
+    <color name="tsbBarColor">#0097A7</color>
 </resources>

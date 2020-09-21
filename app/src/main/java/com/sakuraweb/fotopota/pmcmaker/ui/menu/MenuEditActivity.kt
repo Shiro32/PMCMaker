@@ -1,5 +1,6 @@
 package com.sakuraweb.fotopota.pmcmaker.ui.menu
 
+import android.app.Application
 import android.content.Context
 import android.content.res.Resources
 import androidx.appcompat.app.AppCompatActivity
@@ -132,10 +133,11 @@ class MenuEditActivity : AppCompatActivity() {
     }
 }
 
-fun findMenuNameByID( menuID: Long ): String {
+fun findMenuNameByID( ctx: Context, menuID: Long ): String {
     val realm = Realm.getInstance(menuRealmConfig)
     val menu = realm.where<MenuData>().equalTo("id",menuID).findFirst()
     var name = menu?.name.toString()
     realm.close()
-    if (name != "null") return name else return "N/A"
+    if (name != "null") return name else return ctx.getString(R.string.run_menu_unselected)
 }
+

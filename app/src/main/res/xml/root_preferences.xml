@@ -6,10 +6,11 @@
         app:iconSpaceReserved="false">
 
         <EditTextPreference
+            android:defaultValue="30"
+            android:dialogTitle="@string/setting_days_prompt"
+            android:inputType="number"
             android:key="pmc_term"
             android:title="@string/setting_pmc_term_label"
-            android:dialogTitle="@string/setting_days_prompt"
-            android:defaultValue="31"
             app:useSimpleSummaryProvider="true" />
 
         <EditTextPreference
@@ -17,6 +18,7 @@
             android:title="@string/setting_atl_term_label"
             android:dialogTitle="@string/setting_days_prompt"
             android:defaultValue="7"
+            android:inputType="number"
             app:useSimpleSummaryProvider="true" />
 
         <EditTextPreference
@@ -24,6 +26,7 @@
             android:title="@string/setting_ctl_term_label"
             android:dialogTitle="@string/setting_days_prompt"
             android:defaultValue="42"
+            android:inputType="number"
             app:useSimpleSummaryProvider="true" />
     </PreferenceCategory>
 

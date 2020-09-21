@@ -74,7 +74,6 @@ class RunListFragment : Fragment() {
         return root
     }
 
-
     // ━━━━━━━━━　いよいよここでリスト表示　━━━━━━━━━
     // RecyclerViewerのレイアウトマネージャーとアダプターを設定してあげれば、あとは自動
     override fun onStart() {
@@ -89,11 +88,10 @@ class RunListFragment : Fragment() {
         trainingRecylerView.layoutManager = layoutManager
 
         // アダプターを設定する
-        adapter = RunRecyclerViewAdapter(realmResults, realm, this, context)
+        adapter = RunRecyclerViewAdapter(realmResults, realm, this )
         trainingRecylerView.adapter = this.adapter
 
     }
-
 
     // 終了処理
     // 特にきめがあって書いたわけではなく、HHCのコースセレクトダイアログに従って書いただけ見たい

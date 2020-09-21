@@ -1,6 +1,14 @@
 package com.sakuraweb.fotopota.pmcmaker
 
 import android.app.Application
+import android.content.Context
+import android.graphics.Color
+import android.graphics.PorterDuff
+import android.graphics.PorterDuffColorFilter
+import android.view.Gravity
+import android.view.View
+import android.widget.TextView
+import android.widget.Toast
 import com.sakuraweb.fotopota.pmcmaker.ui.menu.*
 import com.sakuraweb.fotopota.pmcmaker.ui.run.*
 import io.realm.Realm
@@ -107,29 +115,36 @@ class StartApplication : Application() {
         // データ数ゼロならサンプルを作る
         if (runs.size == 0) {
             val runList = listOf<RunDataInit>(
-                RunDataInit("2020/9/1 23:00", "2020/9/1 23:30", 50, 300, 100, INDOOR_RIDE, "Very Hard !!"),
-                RunDataInit("2020/9/2 23:00", "2020/9/1 23:30", 100, 300, 100, INDOOR_RIDE, "Very Hard !!"),
-                RunDataInit("2020/9/3 23:00", "2020/9/1 23:30", 20, 300, 100, INDOOR_RIDE, "Very Hard !!"),
-                RunDataInit("2020/9/4 23:00", "2020/9/1 23:30", 30, 300, 100, INDOOR_RIDE, "Very Hard !!"),
-                RunDataInit("2020/9/5 23:00", "2020/9/1 23:30", 300, 300, 100, INDOOR_RIDE, "Very Hard !!"),
-                RunDataInit("2020/9/6 23:00", "2020/9/1 23:30", 30, 300, 100, INDOOR_RIDE, "Very Hard !!"),
-                RunDataInit("2020/9/7 23:00", "2020/9/1 23:30", 20, 300, 100, INDOOR_RIDE, "Very Hard !!"),
-                RunDataInit("2020/9/8 23:00", "2020/9/1 23:30", 10, 300, 100, INDOOR_RIDE, "Very Hard !!"),
-                RunDataInit("2020/9/9 23:00", "2020/9/1 23:30", 100, 300, 100, INDOOR_RIDE, "Very Hard !!"),
-                RunDataInit("2020/9/10 23:00", "2020/9/1 23:30", 50, 300, 100, INDOOR_RIDE, "Very Hard !!"),
-                RunDataInit("2020/9/11 23:00", "2020/9/1 23:30", 300, 300, 100, INDOOR_RIDE, "Very Hard !!"),
-                RunDataInit("2020/9/12 23:00", "2020/9/1 23:30", 270, 300, 100, INDOOR_RIDE, "Very Hard !!"),
-                RunDataInit("2020/9/13 23:00", "2020/9/1 23:30", 30, 300, 100, INDOOR_RIDE, "Very Hard !!"),
-                RunDataInit("2020/9/14 23:00", "2020/9/1 23:30", 10, 300, 100, INDOOR_RIDE, "Very Hard !!"),
-                RunDataInit("2020/9/15 23:00", "2020/9/1 23:30", 80, 300, 100, INDOOR_RIDE, "Very Hard !!"),
-                RunDataInit("2020/9/16 10:00", "2020/9/5 12:30", 10, 30, 10, OUTDOOR_RIDE, "Very Hard !!")
+                RunDataInit("2020/9/1", "2020/9/1 1:00", 50, 300, 100, INDOOR_RIDE, "Very Hard !!"),
+                RunDataInit("2020/9/2", "2020/9/1 1:00", 100, 300, 100, INDOOR_RIDE, "Very Hard !!"),
+                RunDataInit("2020/9/3", "2020/9/1 1:00", 20, 300, 100, INDOOR_RIDE, "Very Hard !!"),
+                RunDataInit("2020/9/4", "2020/9/1 1:00", 30, 300, 100, INDOOR_RIDE, "Very Hard !!"),
+                RunDataInit("2020/9/5", "2020/9/1 1:00", 300, 300, 100, INDOOR_RIDE, "Very Hard !!"),
+                RunDataInit("2020/9/6", "2020/9/1 1:00", 30, 300, 100, INDOOR_RIDE, "Very Hard !!"),
+                RunDataInit("2020/9/7", "2020/9/1 1:00", 20, 300, 100, INDOOR_RIDE, "Very Hard !!"),
+                RunDataInit("2020/9/8", "2020/9/1 1:00", 10, 300, 100, INDOOR_RIDE, "Very Hard !!"),
+                RunDataInit("2020/9/9", "2020/9/1 1:00", 100, 300, 100, INDOOR_RIDE, "Very Hard !!"),
+                RunDataInit("2020/9/10", "2020/9/1 1:00", 50, 300, 100, INDOOR_RIDE, "Very Hard !!"),
+                RunDataInit("2020/9/11", "2020/9/1 1:00", 300, 300, 100, INDOOR_RIDE, "Very Hard !!"),
+                RunDataInit("2020/9/12", "2020/9/1 1:00", 270, 300, 100, INDOOR_RIDE, "Very Hard !!"),
+                RunDataInit("2020/9/13", "2020/9/1 1:00", 30, 300, 100, INDOOR_RIDE, "Very Hard !!"),
+                RunDataInit("2020/9/14", "2020/9/1 1:00", 800, 300, 100, INDOOR_RIDE, "Very Hard !!"),
+                RunDataInit("2020/9/15", "2020/9/1 1:00", 80, 300, 100, INDOOR_RIDE, "Very Hard !!"),
+                RunDataInit("2020/9/16", "2020/9/5 1:30", 10, 30, 10, OUTDOOR_RIDE, "Very Hard !!"),
+                RunDataInit("2020/9/17", "2020/9/5 1:30", 200, 30, 10, OUTDOOR_RIDE, "Very Hard !!"),
+                RunDataInit("2020/9/18", "2020/9/5 1:30", 300, 30, 10, OUTDOOR_RIDE, "Very Hard !!"),
+                RunDataInit("2020/9/19", "2020/9/5 1:30", 400, 30, 10, OUTDOOR_RIDE, "Very Hard !!"),
+                RunDataInit("2020/9/20", "2020/9/5 1:30", 100, 30, 10, OUTDOOR_RIDE, "Very Hard !!"),
+                RunDataInit("2020/9/20", "2020/9/5 1:30", 500, 30, 10, OUTDOOR_RIDE, "Very Hard !!"),
+                RunDataInit("2020/9/21", "2020/9/5 1:30", 100, 30, 10, OUTDOOR_RIDE, "Very Hard !!")
+
             )
             // DB書き込み
             realm.beginTransaction()
             var id = 1
             for (i in runList.reversed()) {
                 val t = realm.createObject<RunData>(id++)
-                t.date = i.date.toDate("yyyy/MM/dd HH:mm")
+                t.date = i.date.toDate("yyyy/MM/dd")
                 t.term = i.term.toDate("yyyy/MM/dd HH:mm")
                 t.tss = i.tss
                 t.km = i.km
@@ -147,4 +162,19 @@ class StartApplication : Application() {
 fun String.toDate(pattern: String = "yyyy/MM/dd HH:mm"): Date {
     val df = SimpleDateFormat(pattern)
     return df.parse(this)
+}
+
+// 黒いToast画面を出すだけ
+public fun blackToast(c: Context, s: String) {
+    val toast = Toast.makeText(c, s, Toast.LENGTH_SHORT)
+    val view: View? = toast.view
+
+//    view.background.setColorFilter(Color.rgb(0,0,0), PorterDuff.Mode.SRC_IN)
+    view?.let {
+        it.background.colorFilter =
+            PorterDuffColorFilter(Color.rgb(0, 0, 0), PorterDuff.Mode.SRC_IN)
+        it.findViewById<TextView>(android.R.id.message)?.setTextColor(Color.rgb(255, 255, 255))
+    }
+    toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0)
+    toast.show()
 }

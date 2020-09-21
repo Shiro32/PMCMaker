@@ -257,6 +257,28 @@
     </ScrollView>
 
     <Button
+        android:id="@+id/runEditCancelBtn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/cancel_btn_label"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/runEditDeleteBtn"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/runEditDeleteBtn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/delete_btn_label"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/runEditSaveBtn"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toEndOf="@+id/runEditCancelBtn" />
+
+    <Button
         android:id="@+id/runEditSaveBtn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -264,17 +286,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toEndOf="@+id/runEditCancelBtn" />
-
-    <Button
-        android:id="@+id/runEditCancelBtn"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/cancel_btn_label"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/runEditSaveBtn"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/runEditDeleteBtn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

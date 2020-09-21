@@ -7,6 +7,7 @@ import com.sakuraweb.fotopota.pmcmaker.R
 import com.sakuraweb.fotopota.pmcmaker.ui.menu.MenuListActivity
 import kotlinx.android.synthetic.main.home_fragment.view.*
 
+// TODO: EDIT入力を数字限定に適菜以下？ 落ちそう
 /*
 class SettingFragment : Fragment() {
 

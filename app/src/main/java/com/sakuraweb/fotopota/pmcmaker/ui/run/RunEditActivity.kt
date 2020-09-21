@@ -1,20 +1,22 @@
 package com.sakuraweb.fotopota.pmcmaker.ui.run
 
-import android.app.Activity
+import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.Paint
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MotionEvent
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import androidx.appcompat.app.AppCompatActivity
 import androidx.preference.PreferenceManager
 import com.sakuraweb.fotopota.pmcmaker.R
-import com.sakuraweb.fotopota.pmcmaker.toDate
+import com.sakuraweb.fotopota.pmcmaker.blackToast
 import com.sakuraweb.fotopota.pmcmaker.runRealmConfig
+import com.sakuraweb.fotopota.pmcmaker.toDate
 import com.sakuraweb.fotopota.pmcmaker.ui.menu.MenuListActivity
 import com.sakuraweb.fotopota.pmcmaker.ui.menu.findMenuNameByID
 import io.realm.Realm
@@ -36,7 +38,6 @@ const val REQUEST_CODE_MENU_SELECT = 1
 // FAB  - もちろん何もない
 
 class RunEditActivity : AppCompatActivity() {
-
     private var editMode: Int = 0
     private var runID: Long = 0
     private var menuID: Long = 0
@@ -92,7 +93,6 @@ class RunEditActivity : AppCompatActivity() {
 
         // Realmのインスタンスを生成
         // Edit画面終了まで維持（onDestroy）でclose
-        // configはStartActivityで生成済み
         realm = Realm.getInstance(runRealmConfig)
 
         // 呼び出し元から、どのような動作を求められているか（新規、編集）
@@ -111,6 +111,7 @@ class RunEditActivity : AppCompatActivity() {
         when( editMode ) {
             RUN_EDIT_MODE_NEW -> {
                 supportActionBar?.title = getString(R.string.title_run_new)
+                runEditDeleteBtn.visibility = View.GONE
             }
 
             RUN_EDIT_MODE_EDIT -> {
@@ -128,24 +129,35 @@ class RunEditActivity : AppCompatActivity() {
 
                     // find menu name by idを実装すべし (run.menuIDから探しましょう）
                     menuID = r.menuID
-                    runEditMenuText.text = findMenuNameByID(menuID)
+                    runEditMenuText.text = findMenuNameByID(applicationContext, menuID)
+
+                    // 編集画面の時のみ、削除ボタンを作る
+                    runEditDeleteBtn.setOnClickListener {
+                        AlertDialog.Builder(this).apply {
+                            setTitle(R.string.del_confirm_dialog_title)
+                            setMessage(R.string.del_confirm_dialog_message)
+                            setCancelable(true)
+                            setNegativeButton(R.string.del_confirm_dialog_cancel, null)
+                            setPositiveButton("OK",
+                                object : DialogInterface.OnClickListener {
+                                    override fun onClick(dialog: DialogInterface?, which: Int) {
+                                        realm.executeTransaction { realm.where<RunData>().equalTo("id", r.id)?.findFirst()?.deleteFromRealm() }
+                                        blackToast(applicationContext, "削除しました")
+                                        finish()
+                                    }
+                                })
+                            show()
+                        }
+                    }
                 }
             }
         } // when(editMode )
 
         // ーーーーーーーーーー　ここから各種ボタンのリスナ群設定　－－－－－－－－－－
-        runEditMenuText.setOnClickListener {
-            // ランメニュー選択画面を呼び出しましょう
-            val intent = Intent(this, MenuListActivity::class.java)
-            intent.putExtra("from", "Run")
-            startActivityForResult(intent, REQUEST_CODE_MENU_SELECT)
-        }
-
         // 日付・時刻選択のダイアログボタン用
         val year1   = cal1.get(Calendar.YEAR)
         val month1  = cal1.get(Calendar.MONTH)
         val day1    = cal1.get(Calendar.DAY_OF_MONTH)
-
         val hour1   = cal2.get(Calendar.HOUR_OF_DAY)
         val min1    = cal2.get(Calendar.MINUTE)
 
@@ -169,6 +181,13 @@ class RunEditActivity : AppCompatActivity() {
                     runEditDurationText.text = getString(R.string.time_format).format(h, m)
                 }, hour1, min1, true
             ).show()
+        }
+
+        // ランメニュー選択ボタン
+        runEditMenuText.setOnClickListener {
+            val intent = Intent(this, MenuListActivity::class.java)
+            intent.putExtra("from", "Run")
+            startActivityForResult(intent, REQUEST_CODE_MENU_SELECT)
         }
 
         // SAVEボタンのリスナ。デカいので外だし
@@ -266,9 +285,7 @@ class RunEditActivity : AppCompatActivity() {
         }
     }
 
-
-
-            // 入力箇所（EditText）以外をタップしたときに、フォーカスをオフにする
+    // 入力箇所（EditText）以外をタップしたときに、フォーカスをオフにする
     // おおもとのLayoutにfocusableInTouchModeをtrueにしないといけない
     override fun dispatchTouchEvent(event: MotionEvent?): Boolean {
         // キーボードを隠す
@@ -278,23 +295,3 @@ class RunEditActivity : AppCompatActivity() {
         return super.dispatchTouchEvent(event)
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

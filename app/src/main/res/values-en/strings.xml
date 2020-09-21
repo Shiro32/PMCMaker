@@ -81,6 +81,12 @@
     <string name="setting_days_prompt">Input Days</string>
     <string name="run_menu_unselected">Unselected</string>
     <string name="one_run_time_format">HH:mm</string>
+    <string name="delete_btn_label">Delete</string>
+    <string name="delete_message">Deleted</string>
+    <string name="pmc_atl_name">ATL</string>
+    <string name="pmc_ctl_name">CTL</string>
+    <string name="pmc_tsb_name">TSB</string>
+    <string name="pmc_tss_name">TSS</string>
 
 
     <!-- セッティング画面 -->
