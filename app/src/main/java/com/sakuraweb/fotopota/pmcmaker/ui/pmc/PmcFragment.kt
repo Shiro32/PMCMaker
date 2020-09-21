@@ -26,6 +26,10 @@ import kotlinx.android.synthetic.main.pmc_fragment.*
 import java.util.*
 import kotlin.math.exp
 
+// TODO: RecyclerView方式にするのは？ 余計なファイルが増えて帰って面倒か・・・。
+// TODO: OKにもNGにも引っかからないDIAGどうする？ 存在を消しちゃおうかね（View.GONE）
+// TODO: Cardが増えると画面を出すのが重いかも。 View.GONEじゃなくて、使うときだけ動的にInflateが理想
+// TODO: 診断のON/OFF自体を付けてもいいかも。全部で10こもあるのでCONFIGで
 
 var atlTerm: Int = 0
 var ctlTerm: Int = 0
@@ -34,9 +38,6 @@ var pmcTerm: Int = 0
 lateinit var atlList: Array<Float>
 lateinit var ctlList: Array<Float>
 lateinit var tsbList: Array<Float>
-
-//lateinit var tssList: Array<Int?>
-//lateinit var dateList: Array<Date> // 要らないような
 
 class PmcFragment : Fragment() {
 

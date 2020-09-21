@@ -7,20 +7,8 @@ import com.sakuraweb.fotopota.pmcmaker.R
 import com.sakuraweb.fotopota.pmcmaker.ui.menu.MenuListActivity
 import kotlinx.android.synthetic.main.home_fragment.view.*
 
-// TODO: EDIT入力を数字限定に適菜以下？ 落ちそう
-/*
-class SettingFragment : Fragment() {
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-
-        val root = inflater.inflate(R.layout.setting_fragment, container, false)
-
-//        root.text_notifications.text = "Setting"
-
-        return root
-    }
-}
-*/
+// TODO: EDIT入力を数字限定にできないのか？ 落ちそう
+// TODO: 入力画面にOKやSAVEが無いので、チェックするタイミングすらないぞ？
 
 
 class ConfigFragment : PreferenceFragmentCompat() {
