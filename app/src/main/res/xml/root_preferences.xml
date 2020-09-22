@@ -79,6 +79,47 @@
     </PreferenceCategory>
 
     <PreferenceCategory
+        android:title="@string/setting_diag_header"
+        app:iconSpaceReserved="false">
+        <CheckBoxPreference
+            android:key="diag1_sw"
+            android:title="@string/setting_diag1_label"
+            android:defaultValue="true" />
+        <CheckBoxPreference
+            android:key="diag2_sw"
+            android:title="@string/setting_diag2_label"
+            android:defaultValue="true" />
+        <CheckBoxPreference
+            android:key="diag3_sw"
+            android:title="@string/setting_diag3_label"
+            android:defaultValue="true" />
+        <CheckBoxPreference
+            android:key="diag4_sw"
+            android:title="@string/setting_diag4_label"
+            android:defaultValue="true" />
+        <CheckBoxPreference
+            android:key="diag5_sw"
+            android:title="@string/setting_diag5_label"
+            android:defaultValue="true" />
+        <CheckBoxPreference
+            android:key="diag6_sw"
+            android:title="@string/setting_diag6_label"
+            android:defaultValue="true" />
+        <CheckBoxPreference
+            android:key="diag7_sw"
+            android:title="@string/setting_diag7_label"
+            android:defaultValue="true" />
+        <CheckBoxPreference
+            android:key="diag8_sw"
+            android:title="@string/setting_diag8_label"
+            android:defaultValue="true" />
+        <CheckBoxPreference
+            android:key="diag9_sw"
+            android:title="@string/setting_diag9_label"
+            android:defaultValue="true" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
         android:title="@string/setting_appearance_header"
         app:iconSpaceReserved="false">
 
@@ -90,7 +131,6 @@
             android:dialogTitle="@string/look_label"
             android:defaultValue="@string/look_card"
             app:useSimpleSummaryProvider="true" />
-
 
     </PreferenceCategory>
 </PreferenceScreen>

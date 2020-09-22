@@ -34,8 +34,8 @@
         <item name="android:background">@android:color/holo_blue_light</item>
     </style>
 
-    <style name="DiagCardLabelStyle">
-        <item name="android:paddingLeft">8dp</item>
+    <style name="DiagTSBCardLabelStyle">
+        <item name="android:paddingLeft">4dp</item>
         <item name="android:paddingTop">5dp</item>
         <item name="android:paddingBottom">5dp</item>
         <item name="android:textStyle">bold</item>
@@ -43,4 +43,18 @@
         <item name="android:background">@android:color/holo_green_light</item>
     </style>
 
+    <style name="DiagCTLCardLabelStyle">
+        <item name="android:paddingLeft">4dp</item>
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:paddingBottom">5dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:background">@android:color/holo_orange_light</item>
+    </style>
+
+    <style name="DiagCardNumberStyle">
+        <item name="android:textSize">40sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_height">40sp</item>
+    </style>
 </resources>

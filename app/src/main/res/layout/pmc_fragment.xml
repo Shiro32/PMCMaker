@@ -107,17 +107,17 @@
                 android:layout_height="match_parent" />
 
             <include
+                layout="@layout/diag_card_tsb3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <include
                 layout="@layout/diag_card_ctl5"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
 
             <include
                 layout="@layout/diag_card_tsb2"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-
-            <include
-                layout="@layout/diag_card_tsb3"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
 

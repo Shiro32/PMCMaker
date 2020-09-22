@@ -23,7 +23,7 @@
 
             <TextView
                 android:id="@+id/diagTSB1CardTitle"
-                style="@style/DiagCardLabelStyle"
+                style="@style/DiagTSBCardLabelStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="@string/diag_1_tsb_title_label"
@@ -47,30 +47,32 @@
                 android:id="@+id/constraintLayout2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
-                app:layout_constraintEnd_toStartOf="@+id/diagTSB1CardNowLabel2"
+                app:layout_constraintEnd_toStartOf="@+id/constraintLayout3"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/diagTSB1CardTitle">
 
                 <ImageView
                     android:id="@+id/imageView"
-                    android:layout_width="26dp"
-                    android:layout_height="23dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="32dp"
                     android:layout_marginStart="8dp"
+                    android:adjustViewBounds="true"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/caution" />
+                    app:srcCompat="@drawable/caution2" />
 
                 <TextView
                     android:id="@+id/diagTSB1CardDiag"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
                     android:lineSpacingMultiplier="0.7"
                     android:text="@string/diag_1_tsb_ng"
                     android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/imageView"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -83,7 +85,8 @@
                 android:layout_marginTop="4dp"
                 android:layout_marginEnd="8dp"
                 android:background="?android:attr/listDivider"
-                app:layout_constraintEnd_toStartOf="@+id/diagTSB1CardNowLabel2"
+                app:layout_constraintEnd_toEndOf="@+id/constraintLayout3"
+                app:layout_constraintEnd_toStartOf="@+id/constraintLayout3"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
 
@@ -98,38 +101,40 @@
                 android:lineSpacingMultiplier="0.9"
                 android:text="@string/diag_1_tsb_check"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/diagTSB1CardNowLabel2"
+                app:layout_constraintEnd_toStartOf="@+id/constraintLayout3"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/divider2" />
 
-            <TextView
-                android:id="@+id/diagTSB1CardNowLabel2"
-                android:layout_width="wrap_content"
-                android:layout_height="40sp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:includeFontPadding="false"
-                android:lineSpacingMultiplier="0.7"
-                android:text="-50"
-                android:textSize="40sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/diagTSB1CardTitle" />
-
-            <TextView
-                android:id="@+id/diagTSB1CardNowLabel3"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:includeFontPadding="false"
-                android:lineSpacingMultiplier="0.7"
-                android:text="@string/diag_1_tsb_unit"
-                android:textSize="10sp"
+                android:layout_marginEnd="8dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/diagTSB1CardNowLabel2"
-                app:layout_constraintStart_toStartOf="@+id/diagTSB1CardNowLabel2"
-                app:layout_constraintTop_toBottomOf="@+id/diagTSB1CardNowLabel2"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/diagTSB1CardTitle">
+
+                <TextView
+                    android:id="@+id/diagTSB1CardNowLabel2"
+                    style="@style/DiagCardNumberStyle"
+                    android:layout_width="wrap_content"
+                    android:includeFontPadding="false"
+                    android:lineSpacingMultiplier="0.7"
+                    android:text="-50"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/diagTSB1CardNowLabel3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:includeFontPadding="false"
+                    android:lineSpacingMultiplier="0.7"
+                    android:text="@string/diag_1_tsb_unit"
+                    android:textSize="10sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/diagTSB1CardNowLabel2" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

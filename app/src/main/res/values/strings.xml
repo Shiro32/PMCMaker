@@ -87,6 +87,17 @@
     <string name="look_flat">フラット形式</string>
     <string name="look_label">一覧表の表示形式</string>
 
+    <string name="setting_diag_header">PMCをもとにした分析項目</string>
+    <string name="setting_diag1_label">①体調診断(TSB&lt;50?）</string>
+    <string name="setting_diag2_label">②トレーニング効果(TSB&lt;-20?)</string>
+    <string name="setting_diag3_label">③レース条件(TSB=5?)</string>
+    <string name="setting_diag4_label">④到達目標(TSS≒100?)</string>
+    <string name="setting_diag5_label">⑤適切な強度向上(+CTL>5/w?)</string>
+    <string name="setting_diag6_label">⑥オーバートレーニング(+CTL>7×4w?)</string>
+    <string name="setting_diag7_label">⑦サボり疑惑(-CTL×2w?)</string>
+    <string name="setting_diag8_label">⑧オーバートレーニング(+ATL>70/w?)</string>
+    <string name="setting_diag9_label">⑨オーバートレーニング(ATL>CTL?)</string>
+
     <!-- PMC画面 -->
     <string name="pmc_atl_name">ATL</string>
     <string name="pmc_tsb_name">TSB</string>
@@ -98,26 +109,26 @@
     <string name="pmc_recent_values">【本日】ATL:%2d / CTL:%2d / TSB:%2d</string>
     <string name="pmc_recent_label">【最新のATL/CTL/TSB】</string>
 
-    <string name="diag_1_tsb_title_label">体調診断</string>
+    <string name="diag_1_tsb_title_label">【1】体調診断</string>
     <string name="diag_1_tsb_subtitle_label">【TSB】</string>
     <string name="diag_1_tsb_ng">風邪をひくリスクが非常に高くなっています！</string>
     <string name="diag_1_tsb_ok">特に問題ありません</string>
     <string name="diag_1_tsb_check">TSBが-50以下の状態が続くと風邪をひくリスクが高くなると言われます。</string>
     <string name="diag_1_tsb_unit" >TSS</string>
 
-    <string name="diag_2_tsb_title_label">トレーニングパフォーマンス</string>
+    <string name="diag_2_tsb_title_label">【2】トレーニングパフォーマンス</string>
     <string name="diag_2_tsb_ng">トレーニングのパフォーマンスが低下しています</string>
     <string name="diag_2_tsb_ok">特に問題ありません。</string>
     <string name="diag_2_tsb_check">TSBが10日に1回以上、-20以下になるとトレーニングパフォーマンスが落ちます。</string>
     <string name="diag_2_tsb_unit">回/10日</string>
 
-    <string name="diag_3_tsb_title_label">レースコンディション</string>
-    <string name="diag_3_tsb_ok">レースに理想的な体調になっています！今すぐ出ましょう！</string>
+    <string name="diag_3_tsb_title_label">【3】レースコンディション</string>
+    <string name="diag_3_tsb_ok">レースに理想的な体調になっています！\n今すぐ出ましょう！</string>
     <string name="diag_3_tsb_ng">XXXX 理想的な範囲からは外れています。</string>
     <string name="diag_3_tsb_check">レースや大会では+5前後のTSBが理想的と言われています（諸説あります）</string>
     <string name="diag_3_tsb_unit">TSS</string>
 
-    <string name="diag_5_ctl_title_label">１週間のトレーニング量</string>
+    <string name="diag_5_ctl_title_label">【5】週間トレーニング量</string>
     <string name="diag_5_ctl_subtitle_label">【CTL】</string>
     <string name="diag_5_ctl_ok">最適なトレーニング負荷を維持できています！</string>
     <string name="diag_5_ctl_ng">XXXX 最適なトレーニング負荷ではないでござる</string>

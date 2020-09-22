@@ -30,6 +30,8 @@ import kotlin.math.exp
 // TODO: OKにもNGにも引っかからないDIAGどうする？ 存在を消しちゃおうかね（View.GONE）
 // TODO: Cardが増えると画面を出すのが重いかも。 View.GONEじゃなくて、使うときだけ動的にInflateが理想
 // TODO: 診断のON/OFF自体を付けてもいいかも。全部で10こもあるのでCONFIGで
+// TODO: DIAGのTSB2だけ適正化できている。右上のアイコン＆コメントが整列できている。他のも真似して！
+
 
 var atlTerm: Int = 0
 var ctlTerm: Int = 0

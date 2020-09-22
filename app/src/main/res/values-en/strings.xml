@@ -110,12 +110,22 @@
     <string name="diag_2_tsb_title_label">Training Performance</string>
     <string name="diag_2_tsb_ok">No Problem.</string>
     <string name="diag_2_tsb_unit">count\n/10days</string>
-    <string name="diag_3_tsb_check">+5 TSB is ideal physical condition for race.</string>
+    <string name="diag_3_tsb_check">About +5 TSB is ideal physical condition for race.</string>
     <string name="diag_3_tsb_ng">XXXX out of ideal range.</string>
-    <string name="diag_3_tsb_ok">Ideal physical condition! Let\'s go to race!</string>
+    <string name="diag_3_tsb_ok">Ideal physical condition! \nLet\'s go to race now!</string>
     <string name="diag_3_tsb_title_label">Conditions for Race</string>
     <string name="diag_5_ctl_ng">not for suitable XXXX</string>
     <string name="diag_2_tsb_check">Training performance drops when the TSB is at least once every 10 days and below -20.</string>
+    <string name="setting_diag_header">Diagnosis Elements by PMC</string>
+    <string name="setting_diag1_label">[1] Physical Condition</string>
+    <string name="setting_diag2_label">[2] Training Effect</string>
+    <string name="setting_diag3_label">[3] Race Condition</string>
+    <string name="setting_diag4_label">[4] Target TSS</string>
+    <string name="setting_diag5_label">[5] Suitable Load</string>
+    <string name="setting_diag6_label">[6] Over Training</string>
+    <string name="setting_diag7_label">[7] Poor Training</string>
+    <string name="setting_diag8_label">[8] Over Training</string>
+    <string name="setting_diag9_label">[9] Over Training</string>
 
 
     <!-- セッティング画面 -->
