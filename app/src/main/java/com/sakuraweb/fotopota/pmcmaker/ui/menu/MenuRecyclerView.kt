@@ -16,6 +16,8 @@ import io.realm.Realm
 import io.realm.RealmResults
 import io.realm.kotlin.where
 
+// TODO: 編集用のポップアップをやめましょう。RUNLISTと同じ処理に！
+
 interface SetMenuListener {
     fun okBtnTapped( ret: MenuData? )
 }

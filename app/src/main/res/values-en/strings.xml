@@ -92,29 +92,29 @@
     <string name="pmc_recent_label">[Recent ATL/CTL/TSB]</string>
     <string name="diag_1_tsb_title_label">Stress Diagnosis</string>
     <string name="diag_1_tsb_subtitle_label">[TSB]</string>
-    <string name="diag_1_tsb_ok">No problem.</string>
-    <string name="diag_1_tsb_check">If your TSB remains below -50, you are at increased risk of catching a cold.</string>
-    <string name="diag_1_tsb_ng">Increasasing risk of catching a cold !</string>
+    <string name="diag_1_ok">No problem.</string>
+    <string name="diag_1_check">If your TSB remains below -50, you are at increased risk of catching a cold.</string>
+    <string name="diag_1_ng">Increasasing risk of catching a cold !</string>
     <string name="look_card">Card Style</string>
     <string name="look_flat">Flat Style</string>
     <string name="look_label">Style of List View</string>
     <string name="setting_appearance_header">Appearance</string>
-    <string name="diag_1_tsb_unit">TSS</string>
+    <string name="diag_1_unit">TSS</string>
     <string name="diag_2_tsb_ng">Training performance is low</string>
     <string name="diag_3_tsb_unit">TSS</string>
-    <string name="diag_5_ctl_title_label">Weekly Training Load</string>
-    <string name="diag_5_ctl_ok">Optimal training load continues!</string>
-    <string name="diag_5_ctl_subtitle_label">[CTL]</string>
-    <string name="diag_5_ctl_check">XXXX Incresing 5 (TSS/Week) is ideal training load.</string>
-    <string name="diag_5_ctl_unit">+TSS\n/week</string>
+    <string name="diag_5_title_label">Weekly Training Load</string>
+    <string name="diag_5_ok">Optimal training load continues!</string>
+    <string name="diag_5_subtitle_label">[CTL]</string>
+    <string name="diag_5_check">It is best to raise CTL by about 5 TSS per week.</string>
+    <string name="diag_5_unit">+TSS\n/week</string>
     <string name="diag_2_tsb_title_label">Training Performance</string>
     <string name="diag_2_tsb_ok">No Problem.</string>
     <string name="diag_2_tsb_unit">count\n/10days</string>
     <string name="diag_3_tsb_check">About +5 TSB is ideal physical condition for race.</string>
-    <string name="diag_3_tsb_ng">XXXX out of ideal range.</string>
+    <string name="diag_3_tsb_ng">Not suitable for race</string>
     <string name="diag_3_tsb_ok">Ideal physical condition! \nLet\'s go to race now!</string>
     <string name="diag_3_tsb_title_label">Conditions for Race</string>
-    <string name="diag_5_ctl_ng">not for suitable XXXX</string>
+    <string name="diag_5_ng_under">It seems that the training load is small</string>
     <string name="diag_2_tsb_check">Training performance drops when the TSB is at least once every 10 days and below -20.</string>
     <string name="setting_diag_header">Diagnosis Elements by PMC</string>
     <string name="setting_diag1_label">[1] Physical Condition</string>
@@ -126,6 +126,8 @@
     <string name="setting_diag7_label">[7] Poor Training</string>
     <string name="setting_diag8_label">[8] Over Training</string>
     <string name="setting_diag9_label">[9] Over Training</string>
+    <string name="diag_1_ng2">Note that the weekly average is below -50</string>
+    <string name="diag_5_ng_over">It seems that the training load is too much</string>
 
 
     <!-- セッティング画面 -->

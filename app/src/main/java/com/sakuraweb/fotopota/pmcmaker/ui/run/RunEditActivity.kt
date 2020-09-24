@@ -25,6 +25,8 @@ import io.realm.kotlin.where
 import kotlinx.android.synthetic.main.run_edit_activity.*
 import java.util.*
 
+// TODO: 日付データのゼロサプレスをちゃんとやっちゃおう
+
 // この画面の呼び出しモード
 const val RUN_EDIT_MODE_NEW = 1
 const val RUN_EDIT_MODE_EDIT = 2

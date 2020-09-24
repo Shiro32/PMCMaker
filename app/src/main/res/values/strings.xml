@@ -111,10 +111,11 @@
 
     <string name="diag_1_tsb_title_label">【1】体調診断</string>
     <string name="diag_1_tsb_subtitle_label">【TSB】</string>
-    <string name="diag_1_tsb_ng">風邪をひくリスクが非常に高くなっています！</string>
-    <string name="diag_1_tsb_ok">特に問題ありません</string>
-    <string name="diag_1_tsb_check">TSBが-50以下の状態が続くと風邪をひくリスクが高くなると言われます。</string>
-    <string name="diag_1_tsb_unit" >TSS</string>
+    <string name="diag_1_ng">風邪をひくリスクが高くなっています！</string>
+    <string name="diag_1_ng2">１週間平均では-50を下回っているため注意しましょう</string>
+    <string name="diag_1_ok">特に問題ありません</string>
+    <string name="diag_1_check">TSBが-50以下の状態が続くと風邪をひくリスクが高くなると言われています。</string>
+    <string name="diag_1_unit" >TSS</string>
 
     <string name="diag_2_tsb_title_label">【2】トレーニングパフォーマンス</string>
     <string name="diag_2_tsb_ng">トレーニングのパフォーマンスが低下しています</string>
@@ -124,16 +125,17 @@
 
     <string name="diag_3_tsb_title_label">【3】レースコンディション</string>
     <string name="diag_3_tsb_ok">レースに理想的な体調になっています！\n今すぐ出ましょう！</string>
-    <string name="diag_3_tsb_ng">XXXX 理想的な範囲からは外れています。</string>
     <string name="diag_3_tsb_check">レースや大会では+5前後のTSBが理想的と言われています（諸説あります）</string>
     <string name="diag_3_tsb_unit">TSS</string>
 
-    <string name="diag_5_ctl_title_label">【5】週間トレーニング量</string>
-    <string name="diag_5_ctl_subtitle_label">【CTL】</string>
-    <string name="diag_5_ctl_ok">最適なトレーニング負荷を維持できています！</string>
-    <string name="diag_5_ctl_ng">XXXX 最適なトレーニング負荷ではないでござる</string>
-    <string name="diag_5_ctl_check">CTLは一気に上げるとマズいので、だいたい１週間で5TSSくらい積んでいくのが良いとのことです。</string>
-    <string name="diag_5_ctl_unit">+TSS/週</string>
+    <string name="diag_5_title_label">【5】週間トレーニング量</string>
+    <string name="diag_5_subtitle_label">【CTL】</string>
+    <string name="diag_5_ok">最適なトレーニング負荷を維持できています！</string>
+    <string name="diag_5_ng_under">トレーニング負荷が少ないみたいです</string>
+    <string name="diag_5_ng_over">トレーニング負荷が多すぎるみたいです</string>
+    <string name="diag_5_check">CTLは一気に上げるとマズいので、だいたい１週間で5TSSくらい積んでいくのが良いとのことです。</string>
+    <string name="diag_5_unit">+TSS/週</string>
+    <string name="diag_3_tsb_ng">レース向きのコンディションではありません</string>
 
     <!-- セッティング画面 -->
 

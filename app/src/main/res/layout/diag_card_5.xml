@@ -6,7 +6,7 @@
     android:layout_height="wrap_content">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/diagTSB3Card"
+        android:id="@+id/diagCard5"
         style="@style/DiagCardStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -22,26 +22,26 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/diagTSB3CardTitle"
-                style="@style/DiagTSBCardLabelStyle"
+                android:id="@+id/diagCard5Title"
+                style="@style/DiagCTLCardLabelStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/diag_3_tsb_title_label"
+                android:text="@string/diag_5_title_label"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/diagTSB3CardSubTitle"
+                android:id="@+id/diagCard5SubTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
                 android:lineSpacingMultiplier="0.7"
-                android:text="@string/diag_1_tsb_subtitle_label"
+                android:text="@string/diag_5_subtitle_label"
                 android:textColor="@android:color/white"
-                app:layout_constraintBottom_toBottomOf="@+id/diagTSB3CardTitle"
+                app:layout_constraintBottom_toBottomOf="@+id/diagCard5Title"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/diagTSB3CardTitle" />
+                app:layout_constraintTop_toTopOf="@+id/diagCard5Title" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintLayout2"
@@ -51,10 +51,10 @@
                 android:layout_marginEnd="8dp"
                 app:layout_constraintEnd_toStartOf="@+id/constraintLayout"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/diagTSB3CardTitle">
+                app:layout_constraintTop_toBottomOf="@+id/diagCard5Title">
 
                 <ImageView
-                    android:id="@+id/imageView"
+                    android:id="@+id/diagCard5Icon"
                     android:layout_width="wrap_content"
                     android:layout_height="32dp"
                     android:layout_marginStart="8dp"
@@ -65,16 +65,16 @@
                     app:srcCompat="@drawable/growth" />
 
                 <TextView
-                    android:id="@+id/diagTSB3CardDiag"
+                    android:id="@+id/diagCard5Judge"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:lineSpacingMultiplier="0.9"
-                    android:text="@string/diag_3_tsb_ok"
+                    android:lineSpacingMultiplier="0.7"
+                    android:text="@string/diag_5_ok"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/imageView"
+                    app:layout_constraintStart_toEndOf="@+id/diagCard5Icon"
                     app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -90,7 +90,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
 
             <TextView
-                android:id="@+id/diagTSB3CardDesc"
+                android:id="@+id/diagCard5Check"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -98,7 +98,7 @@
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="4dp"
                 android:lineSpacingMultiplier="0.9"
-                android:text="@string/diag_3_tsb_check"
+                android:text="@string/diag_5_check"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/constraintLayout"
                 app:layout_constraintStart_toStartOf="parent"
@@ -111,29 +111,29 @@
                 android:layout_marginEnd="8dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/diagTSB3CardTitle">
+                app:layout_constraintTop_toBottomOf="@+id/diagCard5Title">
 
                 <TextView
-                    android:id="@+id/diagTSB3CardNowLabel2"
+                    android:id="@+id/diagCard5Score"
                     style="@style/DiagCardNumberStyle"
                     android:layout_width="wrap_content"
                     android:includeFontPadding="false"
                     android:lineSpacingMultiplier="0.7"
                     android:text="5"
-                    android:textAlignment="textEnd"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/diagTSB3CardNowLabel3"
+                    android:id="@+id/diagCard5Unit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:includeFontPadding="false"
                     android:lineSpacingMultiplier="0.7"
-                    android:text="@string/diag_3_tsb_unit"
+                    android:text="@string/diag_5_unit"
+                    android:textAlignment="textEnd"
                     android:textSize="10sp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/diagTSB3CardNowLabel2" />
+                    app:layout_constraintTop_toBottomOf="@+id/diagCard5Score" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 

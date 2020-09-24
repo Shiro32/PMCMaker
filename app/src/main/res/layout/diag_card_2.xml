@@ -6,7 +6,7 @@
     android:layout_height="wrap_content">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/diagTSB2Card"
+        android:id="@+id/diagCard2"
         style="@style/DiagCardStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -22,7 +22,7 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/diagTSB2CardTitle"
+                android:id="@+id/diagCard2Title"
                 style="@style/DiagTSBCardLabelStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -32,16 +32,16 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/diagTSB2CardSubTitle"
+                android:id="@+id/diagCard2SubTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
                 android:lineSpacingMultiplier="0.7"
                 android:text="@string/diag_1_tsb_subtitle_label"
                 android:textColor="@android:color/white"
-                app:layout_constraintBottom_toBottomOf="@+id/diagTSB2CardTitle"
+                app:layout_constraintBottom_toBottomOf="@+id/diagCard2Title"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/diagTSB2CardTitle" />
+                app:layout_constraintTop_toTopOf="@+id/diagCard2Title" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintLayout2"
@@ -51,10 +51,10 @@
                 android:layout_marginEnd="8dp"
                 app:layout_constraintEnd_toStartOf="@+id/constraintLayout"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/diagTSB2CardTitle">
+                app:layout_constraintTop_toBottomOf="@+id/diagCard2Title">
 
                 <ImageView
-                    android:id="@+id/imageView"
+                    android:id="@+id/diagCard2Icon"
                     android:layout_width="wrap_content"
                     android:layout_height="32dp"
                     android:layout_marginStart="8dp"
@@ -65,16 +65,16 @@
                     app:srcCompat="@drawable/growth" />
 
                 <TextView
-                    android:id="@+id/diagTSB2CardDiag"
+                    android:id="@+id/diagCard2Judge"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:lineSpacingMultiplier="0.7"
-                    android:text="@string/diag_2_tsb_ng"
+                    android:text="@string/diag_2_tsb_ok"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/imageView"
+                    app:layout_constraintStart_toEndOf="@+id/diagCard2Icon"
                     app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -90,7 +90,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
 
             <TextView
-                android:id="@+id/diagTSB2CardDesc"
+                android:id="@+id/diagCard2Check"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -111,10 +111,10 @@
                 android:layout_marginEnd="8dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/diagTSB2CardTitle">
+                app:layout_constraintTop_toBottomOf="@+id/diagCard2Title">
 
                 <TextView
-                    android:id="@+id/diagTSB2CardNowLabel2"
+                    android:id="@+id/diagCard2Score"
                     style="@style/DiagCardNumberStyle"
                     android:layout_width="wrap_content"
                     android:includeFontPadding="false"
@@ -124,7 +124,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/diagTSB2CardNowLabel3"
+                    android:id="@+id/diagCard2Unit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:includeFontPadding="false"
@@ -133,7 +133,7 @@
                     android:textAlignment="textEnd"
                     android:textSize="10sp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/diagTSB2CardNowLabel2" />
+                    app:layout_constraintTop_toBottomOf="@+id/diagCard2Score" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 

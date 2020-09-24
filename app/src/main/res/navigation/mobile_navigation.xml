@@ -27,6 +27,6 @@
         android:id="@+id/navigation_setting"
         android:name="com.sakuraweb.fotopota.pmcmaker.ui.config.ConfigFragment"
         android:label="@string/nav_title_setting"
-        tools:layout="@layout/diagnosis_fragment" />
+        tools:layout="@layout/setting_fragment" />
 
 </navigation>

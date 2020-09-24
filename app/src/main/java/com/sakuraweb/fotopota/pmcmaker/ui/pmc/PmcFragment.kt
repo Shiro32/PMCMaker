@@ -1,9 +1,7 @@
 package com.sakuraweb.fotopota.pmcmaker.ui.pmc
 
 import android.app.Activity
-import android.graphics.Color
 import android.os.Bundle
-import android.os.LocaleList
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,14 +12,17 @@ import com.github.mikephil.charting.components.Legend
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.components.YAxis
 import com.github.mikephil.charting.data.*
-import com.github.mikephil.charting.interfaces.dataprovider.LineDataProvider
-import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
 import com.sakuraweb.fotopota.pmcmaker.R
 import com.sakuraweb.fotopota.pmcmaker.runRealmConfig
 import com.sakuraweb.fotopota.pmcmaker.ui.run.RunData
 import io.realm.Realm
 import io.realm.Sort
 import io.realm.kotlin.where
+import kotlinx.android.synthetic.main.diag_card_1.*
+import kotlinx.android.synthetic.main.diag_card_2.*
+import kotlinx.android.synthetic.main.diag_card_3.*
+import kotlinx.android.synthetic.main.diag_card_3.diagCard3Icon
+import kotlinx.android.synthetic.main.diag_card_5.*
 import kotlinx.android.synthetic.main.pmc_fragment.*
 import java.util.*
 import kotlin.math.exp
@@ -40,6 +41,10 @@ var pmcTerm: Int = 0
 lateinit var atlList: Array<Float>
 lateinit var ctlList: Array<Float>
 lateinit var tsbList: Array<Float>
+
+lateinit var revATLs: List<Float>
+lateinit var revCTLs: List<Float>
+lateinit var revTSBs: List<Float>
 
 class PmcFragment : Fragment() {
 
@@ -60,12 +65,84 @@ class PmcFragment : Fragment() {
         }
 
         drawPMC()
-        drawDIAG()
+        revATLs = atlList.reversed()
+        revTSBs = tsbList.reversed()
+        revCTLs = ctlList.reversed()
+
+        PreferenceManager.getDefaultSharedPreferences(activity).apply {
+            if( getBoolean("diag1_sw", true) ) drawDIAG1()
+            if( getBoolean("diag2_sw", true) ) drawDIAG2()
+            if( getBoolean("diag3_sw", true) ) drawDIAG3()
+
+            if( getBoolean("diag5_sw", true) ) drawDIAG5()
+        }
     }
 
-    private fun drawDIAG() {
+    private fun drawDIAG1() {
+        // TSBが-50以下になっていたらCaution2
+        // １週間平均が-50以下ならCaution1
+        val newLayout = activity?.layoutInflater?.inflate(R.layout.diag_card_1, null)
+        diagLayout.addView( newLayout )
 
+        diagCard1Score.text = revTSBs[0].toInt().toString()
+        when {
+            (revTSBs[0] < -50) -> {
+                diagCard1Icon.setImageResource(R.drawable.caution2)
+                diagCard1Judge.text = getString(R.string.diag_1_ng)
+            }
+            (revTSBs.drop(7).average() < -50) -> {
+                diagCard1Icon.setImageResource(R.drawable.caution)
+                diagCard1Judge.text = getString(R.string.diag_1_ng)
+            }
+        }
     }
+
+    private fun drawDIAG2() {
+        // １０日に１回以上、TSBが-20以下でCaution1
+        val newLayout = activity?.layoutInflater?.inflate(R.layout.diag_card_2, null)
+        diagLayout.addView( newLayout )
+
+        val count = revTSBs.drop(10).count {it <= -20}
+        diagCard2Score.text = count.toString()
+        if( count >= 1 ) {
+                diagCard2Icon.setImageResource(R.drawable.caution2)
+                diagCard2Judge.text = getString(R.string.diag_2_tsb_ng)
+        }
+    }
+
+    private fun drawDIAG3() {
+        // +5くらいのTSBがレースに最適
+        val newLayout = activity?.layoutInflater?.inflate(R.layout.diag_card_3, null)
+        diagLayout.addView( newLayout )
+
+        val tsb = revTSBs[0].toInt()
+        diagCard3Score.text = tsb.toString()
+        if( !(tsb in 3..7) ) {
+            diagCard3Icon.setImageResource(R.drawable.caution)
+            diagCard3Judge.text = getString(R.string.diag_3_tsb_ng)
+        }
+    }
+
+    private fun drawDIAG5() {
+        // １週間で５程度、CTLが上昇するとよい
+        val newLayout = activity?.layoutInflater?.inflate(R.layout.diag_card_5, null)
+        diagLayout.addView(newLayout)
+
+        val growth = ( revCTLs[0] - revCTLs[6] ).toInt()
+        diagCard5Score.text = growth.toString()
+
+        when {
+            (growth < 4) -> {
+                diagCard5Icon.setImageResource(R.drawable.caution2)
+                diagCard5Judge.text = getString(R.string.diag_5_ng_under)
+            }
+            (growth > 6) -> {
+                diagCard5Icon.setImageResource(R.drawable.caution2)
+                diagCard5Judge.text = getString(R.string.diag_5_ng_over)
+            }
+        }
+    }
+
     private fun drawPMC() {
 
         chartArea1.xAxis.position = XAxis.XAxisPosition.BOTTOM
@@ -164,6 +241,11 @@ class PmcFragment : Fragment() {
             tsbList[i] = ctlList[i-1] - atlList[i-1]
         }
 
+        // ここでRealmはお役御免では？
+        realm.close()
+
+
+
         // 全期間のTSS/ATL/CTL/TSBが完成したので、指定期間のPMCを作り始める
         var xLabels = Array<String>( pmcTerm ){ "" }
         var bc = Calendar.getInstance()
@@ -247,9 +329,36 @@ class PmcFragment : Fragment() {
         data.setData(barData)
         data.setData(lineData)
 
-        realm.close()
+
+
         return data
 
     }
 }
 
+class diagData (
+    var layout: Int,
+    var icon: Int,
+    var score: String,
+    var msg: Int )
+{}
+
+private fun drawDIAG1_1() : diagData {
+    // TSBが-50以下になっていたらCaution2
+    // １週間平均が-50以下ならCaution1
+    var icon: Int = 0
+    var judge: Int = 0
+
+    when {
+        (revTSBs[0] < -50) -> {
+            icon = R.drawable.caution2
+            judge = R.string.diag_1_ng
+        }
+        (revTSBs.drop(7).average() < -50) -> {
+            icon = R.drawable.caution
+            judge = R.string.diag_1_ng
+        }
+    }
+
+    return diagData(R.layout.diag_card_1,icon, revTSBs[0].toInt().toString(),judge)
+}
