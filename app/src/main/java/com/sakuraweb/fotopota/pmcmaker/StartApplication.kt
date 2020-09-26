@@ -78,12 +78,16 @@ class StartApplication : Application() {
                     "スイート・スポット・トレーニング（FTPの88～94%）で30分"
                 ),
                 MenuDataInit(
-                    "SST45min",
-                    "スイート・スポット・トレーニング（FTPの88～94%）で45分"
-                ),
-                MenuDataInit(
                     "SST60min",
                     "スイート・スポット・トレーニング（FTPの88～94%）で60分"
+                ),
+                MenuDataInit(
+                    "FTP30min × 2",
+                    "FTP30分を2回やる。かなりハード。"
+                ),
+                MenuDataInit(
+                    "こんな風にあらかじめ入れておくと便利です",
+                    "　"
                 )
             )
             // DB書き込み
@@ -113,30 +117,29 @@ class StartApplication : Application() {
         val runs: RealmResults<RunData> = realm.where<RunData>().findAll()
 
         // データ数ゼロならサンプルを作る
-        if (runs.size == 0) {
+        if (runs.size == -1) {
             val runList = listOf<RunDataInit>(
-                RunDataInit("2020/9/1", "2020/9/1 1:00", 80, 300, 100, INDOOR_RIDE, "Very Hard !!"),
-                RunDataInit("2020/9/1", "2020/9/1 1:00", 80, 300, 100, INDOOR_RIDE, "Very Hard !!"),
-                RunDataInit("2020/9/1", "2020/9/1 1:00", 80, 300, 100, INDOOR_RIDE, "Very Hard !!"),
-                RunDataInit("2020/9/2", "2020/9/1 1:00", 10, 300, 100, INDOOR_RIDE, "Very Hard !!"),
-                RunDataInit("2020/9/3", "2020/9/1 1:00", 80, 300, 100, INDOOR_RIDE, "Very Hard !!"),
-                RunDataInit("2020/9/4", "2020/9/1 1:00", 200, 300, 100, INDOOR_RIDE, "Very Hard !!"),
-                RunDataInit("2020/9/5", "2020/9/1 1:00", 300, 300, 100, INDOOR_RIDE, "Very Hard !!"),
-                RunDataInit("2020/9/6", "2020/9/1 1:00", 10, 300, 100, INDOOR_RIDE, "Very Hard !!"),
-                RunDataInit("2020/9/7", "2020/9/1 1:00", 50, 300, 100, INDOOR_RIDE, "Very Hard !!"),
-                RunDataInit("2020/9/8", "2020/9/1 1:00", 100, 300, 100, INDOOR_RIDE, "Very Hard !!"),
-                RunDataInit("2020/9/9", "2020/9/1 1:00", 200, 300, 100, INDOOR_RIDE, "Very Hard !!"),
-                RunDataInit("2020/9/10", "2020/9/1 1:00", 80, 300, 100, INDOOR_RIDE, "Very Hard !!"),
-                RunDataInit("2020/9/11", "2020/9/1 1:00", 80, 300, 100, INDOOR_RIDE, "Very Hard !!"),
-                RunDataInit("2020/9/12", "2020/9/1 1:00", 400, 300, 100, INDOOR_RIDE, "Very Hard !!"),
-                RunDataInit("2020/9/15", "2020/9/1 1:00", 80, 300, 100, INDOOR_RIDE, "Very Hard !!"),
-                RunDataInit("2020/9/16", "2020/9/5 1:30", 10, 30, 10, OUTDOOR_RIDE, "Very Hard !!"),
-                RunDataInit("2020/9/17", "2020/9/5 1:30", 200, 30, 10, OUTDOOR_RIDE, "Very Hard !!"),
-                RunDataInit("2020/9/18", "2020/9/5 1:30", 300, 30, 10, OUTDOOR_RIDE, "Very Hard !!"),
-                RunDataInit("2020/9/19", "2020/9/5 1:30", 100, 30, 10, OUTDOOR_RIDE, "Very Hard !!"),
-                RunDataInit("2020/9/20", "2020/9/5 1:30", 500, 30, 10, OUTDOOR_RIDE, "Very Hard !!"),
-                RunDataInit("2020/9/20", "2020/9/5 1:30", 500, 30, 10, OUTDOOR_RIDE, "Very Hard !!"),
-                RunDataInit("2020/9/21", "2020/9/5 1:30", 100, 30, 10, OUTDOOR_RIDE, "Very Hard !!")
+                RunDataInit("2020/9/1", "2020/9/1 1:00", 80, 300, 100, INDOOR_RIDE, "Very Hard !!", 1),
+                RunDataInit("2020/9/1", "2020/9/1 1:00", 80, 300, 100, INDOOR_RIDE, "Very Hard !!", 0),
+                RunDataInit("2020/9/1", "2020/9/1 1:00", 80, 300, 100, INDOOR_RIDE, "Very Hard !!",1),
+                RunDataInit("2020/9/2", "2020/9/1 1:00", 10, 300, 100, INDOOR_RIDE, "Very Hard !!",2),
+                RunDataInit("2020/9/3", "2020/9/1 1:00", 80, 300, 100, INDOOR_RIDE, "Very Hard !!",1),
+                RunDataInit("2020/9/4", "2020/9/1 1:00", 200, 300, 100, INDOOR_RIDE, "Very Hard !!",0),
+                RunDataInit("2020/9/5", "2020/9/1 3:00", 300, 300, 100, INDOOR_RIDE, "かなりの長時間",0),
+                RunDataInit("2020/9/6", "2020/9/1 2:00", 10, 300, 100, INDOOR_RIDE, "色々大変",0),
+                RunDataInit("2020/9/7", "2020/9/1 1:00", 50, 300, 100, INDOOR_RIDE, "",1),
+                RunDataInit("2020/9/8", "2020/9/1 1:00", 100, 300, 100, INDOOR_RIDE, "",1),
+                RunDataInit("2020/9/9", "2020/9/1 1:00", 200, 300, 100, OUTDOOR_RIDE, "屋外",2),
+                RunDataInit("2020/9/10", "2020/9/1 1:00", 80, 300, 100, INDOOR_RIDE, "1時間は長い",2),
+                RunDataInit("2020/9/11", "2020/9/1 1:00", 80, 300, 100, INDOOR_RIDE, "疲労こそ命",0),
+                RunDataInit("2020/9/12", "2020/9/1 1:00", 400, 300, 100, INDOOR_RIDE, "very hard",1),
+                RunDataInit("2020/9/15", "2020/9/1 4:00", 80, 300, 100, INDOOR_RIDE, "want to cry",2),
+                RunDataInit("2020/9/16", "2020/9/5 1:30", 10, 30, 10, OUTDOOR_RIDE, "want to quit",1),
+                RunDataInit("2020/9/17", "2020/9/5 1:30", 200, 30, 10, OUTDOOR_RIDE, "little hard",2),
+                RunDataInit("2020/9/18", "2020/9/5 1:30", 50, 30, 10, OUTDOOR_RIDE, "recovery",2),
+                RunDataInit("2020/9/19", "2020/9/5 1:30", 100, 30, 10, OUTDOOR_RIDE, "Extremely hard...",1),
+                RunDataInit("2020/9/20", "2020/9/5 1:30", 250, 30, 10, OUTDOOR_RIDE, "Go to long ride",1),
+                RunDataInit("2020/9/21", "2020/9/5 1:30", 100, 30, 10, OUTDOOR_RIDE, "Very Hard",2)
             )
             // DB書き込み
             realm.beginTransaction()
@@ -150,6 +153,7 @@ class StartApplication : Application() {
                 t.kcal = i.kcal
                 t.place = i.place
                 t.memo = i.memo
+                t.menuID = i.menu
             }
             realm.commitTransaction()
         }

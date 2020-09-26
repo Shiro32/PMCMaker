@@ -8,7 +8,6 @@
         <EditTextPreference
             android:defaultValue="30"
             android:dialogTitle="@string/setting_days_prompt"
-            android:inputType="number"
             android:key="pmc_term"
             android:title="@string/setting_pmc_term_label"
             app:useSimpleSummaryProvider="true" />
@@ -113,10 +112,6 @@
             android:key="diag8_sw"
             android:title="@string/setting_diag8_label"
             android:defaultValue="true" />
-        <CheckBoxPreference
-            android:key="diag9_sw"
-            android:title="@string/setting_diag9_label"
-            android:defaultValue="true" />
     </PreferenceCategory>
 
     <PreferenceCategory
@@ -129,7 +124,7 @@
             android:entries="@array/look_labels"
             android:entryValues="@array/look_values"
             android:dialogTitle="@string/look_label"
-            android:defaultValue="@string/look_card"
+            android:defaultValue="@string/look_flat"
             app:useSimpleSummaryProvider="true" />
 
     </PreferenceCategory>

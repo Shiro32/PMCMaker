@@ -2,6 +2,8 @@ package com.sakuraweb.fotopota.pmcmaker.ui.home
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.Html
+import android.text.method.LinkMovementMethod
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,10 +21,18 @@ class HomeFragment : Fragment() {
 
         val root = inflater.inflate(R.layout.home_fragment, container, false)
 
-        root.setMenuBtn.setOnClickListener {
-            val intent = Intent(activity, MenuListActivity::class.java)
-            startActivity(intent)
-        }
+//        root.setMenuBtn.setOnClickListener {
+//            val intent = Intent(activity, MenuListActivity::class.java)
+//            startActivity(intent)
+//        }
+
+        // copyrightメッセージにURLを埋め込む
+        root.copyRightText.setText(Html.fromHtml("v1.0 Copyright ©2020 Shiro, <a href=\"http://fotopota.sakuraweb.com\">フォトポタ日記2.0</a>"))
+        root.copyRightText.movementMethod = LinkMovementMethod.getInstance()
+
+        // privacy policyにURLを埋め込む
+        root.ppText.setText(Html.fromHtml("<a href=\"http://fotopota.sakuraweb.com/privacy-pmc.html\">プライバシーポリシー</a>"))
+        root.ppText.movementMethod = LinkMovementMethod.getInstance()
 
         return root
     }

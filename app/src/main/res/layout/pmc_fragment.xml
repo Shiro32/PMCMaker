@@ -43,17 +43,18 @@
                     android:layout_height="wrap_content">
 
                     <TextView
-                        android:id="@+id/statsGraphCard1Title"
+                        android:id="@+id/pmcCardTitle"
                         style="@style/DiagPMCCardLabelStyle"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="PMC : Performance Management Chart"
+                        android:text="PMC"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
+<!--
                     <TextView
-                        android:id="@+id/statsGraphCard1Hint"
+                        android:id="@+id/pmcCardHint"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
@@ -62,28 +63,32 @@
                         android:text="@string/pmc_chart_description"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/statsGraphCard1Title" />
+                        app:layout_constraintTop_toBottomOf="@+id/pmcCardTitle" />
+-->
 
+<!--
                     <TextView
-                        android:id="@+id/statsGraphCard1Hint2"
+                        android:id="@+id/pmcCardSubTitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="8dp"
                         android:lineSpacingMultiplier="0.7"
                         android:text="TERM: ?"
                         android:textColor="@android:color/white"
-                        app:layout_constraintBottom_toBottomOf="@+id/statsGraphCard1Title"
+                        app:layout_constraintBottom_toBottomOf="@+id/pmcCardTitle"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
+-->
 
                     <com.github.mikephil.charting.charts.CombinedChart
                         android:id="@+id/chartArea1"
                         android:layout_width="0dp"
                         android:layout_height="300dp"
+                        android:layout_marginTop="3dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="1.0"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/statsGraphCard1Hint">
+                        app:layout_constraintTop_toTopOf="parent">
 
                     </com.github.mikephil.charting.charts.CombinedChart>
 
@@ -93,7 +98,6 @@
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="8dp"
                         android:layout_marginBottom="8dp"
-                        android:text="TextView"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/chartArea1" />

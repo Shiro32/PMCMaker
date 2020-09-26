@@ -26,7 +26,7 @@
                 style="@style/DiagTSBCardLabelStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/diag_1_tsb_title_label"
+                android:text="@string/diag_1_title_label"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -37,7 +37,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
                 android:lineSpacingMultiplier="0.7"
-                android:text="@string/diag_1_tsb_subtitle_label"
+                android:text="@string/diag_1_subtitle_label"
                 android:textColor="@android:color/white"
                 app:layout_constraintBottom_toBottomOf="@+id/diagCard1Title"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -54,7 +54,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/diagCard1Title">
 
                 <ImageView
-                    android:id="@+id/diagCard1Icon"
+                    android:id="@+id/diagCardIcon"
                     android:layout_width="wrap_content"
                     android:layout_height="32dp"
                     android:layout_marginStart="8dp"
@@ -65,16 +65,16 @@
                     app:srcCompat="@drawable/safety2" />
 
                 <TextView
-                    android:id="@+id/diagCard1Judge"
+                    android:id="@+id/diagCardMsg"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:lineSpacingMultiplier="0.7"
-                    android:text="@string/diag_1_ok"
+                    android:text="---"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/diagCard1Icon"
+                    app:layout_constraintStart_toEndOf="@+id/diagCardIcon"
                     app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -91,7 +91,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
 
             <TextView
-                android:id="@+id/diagCard1Check"
+                android:id="@+id/diagCard1Description"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -99,7 +99,7 @@
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="4dp"
                 android:lineSpacingMultiplier="0.9"
-                android:text="@string/diag_1_check"
+                android:text="@string/diag_1_description"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/constraintLayout3"
                 app:layout_constraintStart_toStartOf="parent"
@@ -115,7 +115,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/diagCard1Title">
 
                 <TextView
-                    android:id="@+id/diagCard1Score"
+                    android:id="@+id/diagCardScore"
                     style="@style/DiagCardNumberStyle"
                     android:layout_width="wrap_content"
                     android:includeFontPadding="false"
@@ -133,7 +133,7 @@
                     android:text="@string/diag_1_unit"
                     android:textSize="10sp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/diagCard1Score" />
+                    app:layout_constraintTop_toBottomOf="@+id/diagCardScore" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 

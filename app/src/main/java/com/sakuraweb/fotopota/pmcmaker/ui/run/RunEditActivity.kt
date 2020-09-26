@@ -114,6 +114,11 @@ class RunEditActivity : AppCompatActivity() {
             RUN_EDIT_MODE_NEW -> {
                 supportActionBar?.title = getString(R.string.title_run_new)
                 runEditDeleteBtn.visibility = View.GONE
+
+                // cal2（継続時間）を30分にリセット。cal1は本日の日付でＯＫ
+                cal2.set( Calendar.HOUR_OF_DAY, 0)
+                cal2.set( Calendar.MINUTE, 30)
+                cal2.set( Calendar.SECOND, 0)
             }
 
             RUN_EDIT_MODE_EDIT -> {

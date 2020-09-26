@@ -90,36 +90,36 @@
     <string name="pmc_chart_description">TSSは右軸。ATL/CTL/TSBは左軸です。</string>
     <string name="pmc_recent_values">【本日】ATL:%2d / CTL:%2d / TSB:%2d</string>
     <string name="pmc_recent_label">【最新のATL/CTL/TSB】</string>
-    <string name="diag_1_tsb_subtitle_label">【TSB】</string>
+    <string name="diag_1_subtitle_label">【TSB】</string>
     <string name="diag_1_ng">風邪をひくリスクが高くなっています！</string>
-    <string name="diag_1_tsb_title_label">【1】体調診断</string>
+    <string name="diag_1_title_label">【1】体調診断</string>
     <string name="diag_1_ok">特に問題ありません</string>
-    <string name="diag_1_check">TSBが-50以下の状態が続くと風邪をひくリスクが高くなると言われています。</string>
+    <string name="diag_1_description">TSBが-50以下の状態が続くと風邪をひくリスクが高くなると言われています。</string>
     <string name="setting_appearance_header">見栄えなどの設定</string>
     <string name="look_card">カード形式</string>
     <string name="look_flat">フラット形式</string>
     <string name="look_label">一覧表の表示形式</string>
     <string name="diag_1_unit">TSS</string>
-    <string name="diag_2_tsb_ng">トレーニングのパフォーマンスが低下しています</string>
-    <string name="diag_2_tsb_unit">回/10日</string>
-    <string name="diag_2_tsb_title_label">【2】トレーニングパフォーマンス</string>
-    <string name="diag_3_tsb_title_label">【3】レースコンディション</string>
-    <string name="diag_3_tsb_ok">レースに理想的な体調になっています！\n今すぐ出ましょう！</string>
-    <string name="diag_3_tsb_check">レースや大会では+5前後のTSBが理想的と言われています（諸説あります）</string>
-    <string name="diag_3_tsb_unit">TSS</string>
+    <string name="diag_2_ng">トレーニングのパフォーマンスが低下しています</string>
+    <string name="diag_2_unit">回/10日</string>
+    <string name="diag_2_title_label">【2】トレーニングパフォーマンス</string>
+    <string name="diag_3_title_label">【3】レースコンディション</string>
+    <string name="diag_3_ok">レースに理想的な体調になっています！\n今すぐ出ましょう！</string>
+    <string name="diag_3_description">レースや大会では+5前後のTSBが理想的と言われています（諸説あります）</string>
+    <string name="diag_3_unit">TSS</string>
     <string name="diag_5_title_label">【5】週間トレーニング量</string>
     <string name="diag_5_subtitle_label">【CTL】</string>
     <string name="diag_5_ok">最適なトレーニング負荷を維持できています！</string>
-    <string name="diag_5_check">CTLは一気に上げるとマズいので、だいたい１週間で5TSSくらい積んでいくのが良いとのことです。</string>
+    <string name="diag_5_description">CTLは一気に上げるとマズいので、だいたい１週間で5TSSくらい積んでいくのが良いとのことです。</string>
     <string name="diag_5_unit">+TSS/週</string>
-    <string name="diag_2_tsb_ok">特に問題ありません。</string>
-    <string name="diag_2_tsb_check">TSBが10日に1回以上、-20以下になるとトレーニングパフォーマンスが落ちます。</string>
-    <string name="diag_3_tsb_ng">レース向きのコンディションではありません</string>
+    <string name="diag_2_ok">特に問題ありません。</string>
+    <string name="diag_2_description">TSBが10日に1回以上、-20以下になるとトレーニングパフォーマンスが落ちます。</string>
+    <string name="diag_3_ng">レース向きのコンディションではありません</string>
     <string name="diag_5_ng_under">トレーニング負荷が少ないみたいです</string>
     <string name="setting_diag1_label">①体調診断(TSB&lt;50?）</string>
     <string name="setting_diag2_label">②トレーニング効果(TSB&lt;-20?)</string>
     <string name="setting_diag3_label">③レース条件(TSB=5?))</string>
-    <string name="setting_diag4_label">④到達目標(TSS≒100?)</string>
+    <string name="setting_diag4_label">④到達目標(CTL≒100?)</string>
     <string name="setting_diag5_label">⑤適切な強度向上(+CTL>5/w?)</string>
     <string name="setting_diag6_label">⑥過負荷(+CTL>7×4w?)</string>
     <string name="setting_diag7_label">⑦サボり疑惑(-CTL×2w?)</string>
@@ -128,6 +128,36 @@
     <string name="setting_diag_header">PMCをもとにした分析項目</string>
     <string name="diag_1_ng2">１週間平均では-50を下回っているため注意しましょう</string>
     <string name="diag_5_ng_over">トレーニング負荷が多すぎるみたいです</string>
+    <string name="app_help">【用語】\nTSS : 日々のトレーニング負荷\n
+ATL : 短期(7日)の累積負荷。疲労度に相当\n
+CTL : 長期(42日)の累積負荷。強さに相当\n
+TSB : ATL-TSB。好調さに相当</string>
+    <string name="diag_2_subtitle_label">【TSB】</string>
+    <string name="diag_3_subtitle_label">【TSB】</string>
+    <string name="diag_4_title_label">【4】強さの目標レベル</string>
+    <string name="diag_4_subtitle_label">【CTL】</string>
+    <string name="diag_4_ok">目標到達！！</string>
+    <string name="diag_4_ng">CTL=50TSS目指して頑張りましょう</string>
+    <string name="diag_4_description">一般人ではCTL=50TSSくらいを目標にすると良いようです（プロ選手だと100TSSくらいいくようですが・・・）</string>
+    <string name="diag_4_unit">TSS</string>
+    <string name="diag_6_title_label">【6】オーバートレーニング</string>
+    <string name="diag_6_subtitle_label">【CTL】</string>
+    <string name="diag_6_ok">特に問題なしです。</string>
+    <string name="diag_6_ng">ザ・オーバートレーニング</string>
+    <string name="diag_6_description">CTLが1週間で7TSS以上増加が、4週間以上続くのはオーバートレーニングだそうですよ。</string>
+    <string name="diag_6_unit">週連続</string>
+    <string name="diag_7_title_label">【7】サボり疑惑チェック</string>
+    <string name="diag_7_subtitle_label">【CTL】</string>
+    <string name="diag_7_ok">マジメにやっているようです。</string>
+    <string name="diag_7_ng">サボり疑惑発生中。</string>
+    <string name="diag_7_description">CTLが2週間連続で低下していると、練習量（負荷・頻度）が不足しているとのこと。</string>
+    <string name="diag_7_unit">週連続</string>
+    <string name="diag_8_title_label">【8】オーバートレーニング</string>
+    <string name="diag_8_subtitle_label">【ATL】</string>
+    <string name="diag_8_ok">特に問題なしです。</string>
+    <string name="diag_8_ng">急激にオーバートレーニングになっています！</string>
+    <string name="diag_8_description">ATLは短期間の練習負荷で、これが1週間で70TSSを上回るのは、急に頑張りすぎ、オーバートレーニングです。</string>
+    <string name="diag_8_unit">TSS</string>
 
 
     <!-- セッティング画面 -->

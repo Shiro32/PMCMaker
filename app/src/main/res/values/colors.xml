@@ -10,4 +10,10 @@
     <color name="atlBarColor">#F44336</color>
     <color name="ctlBarColor">#2196F3</color>
     <color name="tsbBarColor">#0097A7</color>
+
+<!--    <color name="tssTitleColor">@android:color/holo_green_light</color>-->
+    <color name="tsbTitleColor">@android:color/holo_orange_light</color>
+    <color name="ctlTitleColor">@android:color/holo_blue_light</color>
+    <color name="atlTitleColor">@android:color/holo_green_dark</color>
+
 </resources>

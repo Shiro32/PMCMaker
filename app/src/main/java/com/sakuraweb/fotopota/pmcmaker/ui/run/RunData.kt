@@ -62,6 +62,7 @@ class RunDataInit (
     var kcal    : Int,
     var km      : Int,
     var place   : Int,
-    var memo    : String
+    var memo    : String,
+    var menu    : Long
 )
 {}
