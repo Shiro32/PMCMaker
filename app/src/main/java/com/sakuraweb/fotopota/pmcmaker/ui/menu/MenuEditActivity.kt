@@ -22,6 +22,7 @@ import kotlinx.android.synthetic.main.menu_edit_activity.*
 import kotlinx.android.synthetic.main.run_edit_activity.*
 
 // TODO: ポップアップを廃止する
+// TODO: すっかり忘れていたけど、カード形式の選択ができるように
 
 const val MENU_EDIT_MODE_NEW = 1
 const val MENU_EDIT_MODE_EDIT = 2

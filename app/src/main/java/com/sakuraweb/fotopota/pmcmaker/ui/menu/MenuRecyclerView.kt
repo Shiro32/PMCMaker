@@ -22,6 +22,9 @@ interface SetMenuListener {
     fun okBtnTapped( ret: MenuData? )
 }
 
+// RunEditから呼ばれたときはタップで選択
+// Configから呼ばれたときはMenuEditというように動きが違うため、色々やってるみたい
+// TODO: でも、ポップアップやめると、普通になるのでは・・・？
 class MenuRecyclerViewAdapter(
     menuRealm: RealmResults<MenuData>,
     realm: Realm,

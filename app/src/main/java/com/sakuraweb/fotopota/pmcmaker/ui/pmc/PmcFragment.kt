@@ -32,35 +32,38 @@ import kotlin.math.exp
 // TODO: 診断のON/OFFボタンを付けたい。多すぎる
 // TODO: なんども配列を作るせいか、非常～～～に遅い！ グラフかもしれないけど
 
+// RunDataのRealm
+lateinit var runs: RealmResults<RunData>
+
 var atlTerm: Int = 0
 var ctlTerm: Int = 0
 var pmcTerm: Int = 0
 
+// PMCグラフを描くための各データ
 lateinit var atlList: Array<Float>
 lateinit var ctlList: Array<Float>
 lateinit var tsbList: Array<Float>
 
+// 診断に使うときは、逆順の方が楽なので向きを逆に・・・ ちゃんとやったほうがいいか？
 lateinit var revATLs: List<Float>
 lateinit var revCTLs: List<Float>
 lateinit var revTSBs: List<Float>
 
-lateinit var runs: RealmResults<RunData>
-
 class PmcFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val root = inflater.inflate(R.layout.pmc_fragment, container, false)
-
-        return root
+        // onCreateではとりあえずコンテナを作るだけで終了～
+        return inflater.inflate(R.layout.pmc_fragment, container, false)
     }
 
     override fun onStart() {
         super.onStart()
 
+        // onStartから、実際にPMCを描いたり、DIAGをしたりする
+
         // まずは全期間の TSS/ATL/CTL/TSBを作る
         val realm = Realm.getInstance(runRealmConfig)
         runs = realm.where<RunData>().findAll().sort("date", Sort.ASCENDING)
-
         // 一応ゼロチェック
         if( runs.size==0 ) return
 
@@ -71,14 +74,14 @@ class PmcFragment : Fragment() {
             getString("pmc_term", "31")?.let { pmcTerm = it.toInt() }
         }
 
+        // PMCを描いて、Realmを閉める
         drawPMC()
+        realm.close()
+
+        // ここから、各DIAGをやり始める
         revATLs = atlList.reversed()
         revTSBs = tsbList.reversed()
         revCTLs = ctlList.reversed()
-
-        // ここでRealmはお役御免では？
-        realm.close()
-
         PreferenceManager.getDefaultSharedPreferences(activity).apply {
             if(getBoolean("diag1_sw", true)) addCard( drawDIAG1() )
             if(getBoolean("diag2_sw", true)) addCard( drawDIAG2() )
@@ -92,7 +95,7 @@ class PmcFragment : Fragment() {
     }
 
     private fun addCard( data:diagData ) {
-
+        // DIAGを作るサブルーチン（レイアウトパラメータ、診断パラメータから作る）
         val newLayout = activity?.layoutInflater?.inflate(R.layout.diag_card_1, null)
         newLayout?.apply {
             findViewById<TextView>(R.id.diagCard1Title).setBackgroundColor(resources.getColor(data.colorID))
@@ -108,9 +111,8 @@ class PmcFragment : Fragment() {
         diagLayout.addView( newLayout )
     }
 
-
-
     private fun drawPMC() {
+        // PMCグラフを描きましょう
         chartArea1.xAxis.position = XAxis.XAxisPosition.BOTTOM
 
         // X軸を作る
@@ -175,7 +177,6 @@ class PmcFragment : Fragment() {
         begin.add( Calendar.DAY_OF_MONTH, -1*(pmcTerm))
         var end = Calendar.getInstance()
 
-
         // １．開始期間を設定（いずれCONFIG化する
         val org = Calendar.getInstance()
         org.time = runs[0]?.date
@@ -199,18 +200,14 @@ class PmcFragment : Fragment() {
         ctlList = Array<Float>( term ) { 0F }
         tsbList = Array<Float>( term ) { 0F }
 
-
         atlList[0] = ( (1- exp(-1.0 / atlTerm)) * tssList[0] ).toFloat()
         ctlList[0] = ( (1- exp(-1.0 / ctlTerm)) * tssList[0] ).toFloat()
         tsbList[0] = 0F
-
-
         for( i in 1..tssList.size-1) {
             atlList[i] = ( ( 1- exp(-1.0 / atlTerm)) * tssList[i] + atlList[i-1] * exp( -1.0/ atlTerm) ).toFloat()
             ctlList[i] = ( ( 1- exp(-1.0 / ctlTerm)) * tssList[i] + ctlList[i-1] * exp( -1.0/ ctlTerm) ).toFloat()
             tsbList[i] = ctlList[i-1] - atlList[i-1]
         }
-
 
         // 全期間のTSS/ATL/CTL/TSBが完成したので、指定期間のPMCを作り始める
         var xLabels = Array<String>( pmcTerm ){ "" }
@@ -295,10 +292,7 @@ class PmcFragment : Fragment() {
         data.setData(barData)
         data.setData(lineData)
 
-
-
         return data
-
     }
 }
 
