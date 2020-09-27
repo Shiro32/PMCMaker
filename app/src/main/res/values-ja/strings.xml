@@ -128,7 +128,8 @@
     <string name="setting_diag_header">PMCをもとにした分析項目</string>
     <string name="diag_1_ng2">１週間平均では-50を下回っているため注意しましょう</string>
     <string name="diag_5_ng_over">トレーニング負荷が多すぎるみたいです</string>
-    <string name="app_help">【用語】\nTSS : 日々のトレーニング負荷\n
+    <string name="app_help">【用語】\n
+TSS : 日々のトレーニング負荷\n
 ATL : 短期(7日)の累積負荷。疲労度に相当\n
 CTL : 長期(42日)の累積負荷。強さに相当\n
 TSB : ATL-TSB。好調さに相当</string>

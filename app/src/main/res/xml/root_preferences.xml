@@ -123,8 +123,8 @@
             android:title="@string/look_label"
             android:entries="@array/look_labels"
             android:entryValues="@array/look_values"
+            android:defaultValue="flat"
             android:dialogTitle="@string/look_label"
-            android:defaultValue="@string/look_flat"
             app:useSimpleSummaryProvider="true" />
 
     </PreferenceCategory>

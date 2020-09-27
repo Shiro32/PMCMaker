@@ -1,7 +1,9 @@
 package com.sakuraweb.fotopota.pmcmaker.ui.menu
 
+import android.app.AlertDialog
 import android.app.Application
 import android.content.Context
+import android.content.DialogInterface
 import android.content.res.Resources
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -10,10 +12,7 @@ import android.provider.Settings.Global.getString
 import android.view.MotionEvent
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import com.sakuraweb.fotopota.pmcmaker.R
-import com.sakuraweb.fotopota.pmcmaker.menuRealmConfig
-import com.sakuraweb.fotopota.pmcmaker.runRealmConfig
-import com.sakuraweb.fotopota.pmcmaker.toDate
+import com.sakuraweb.fotopota.pmcmaker.*
 import com.sakuraweb.fotopota.pmcmaker.ui.run.*
 import io.realm.Realm
 import io.realm.kotlin.createObject
@@ -21,14 +20,10 @@ import io.realm.kotlin.where
 import kotlinx.android.synthetic.main.menu_edit_activity.*
 import kotlinx.android.synthetic.main.run_edit_activity.*
 
-// TODO: ポップアップを廃止する
-// TODO: すっかり忘れていたけど、カード形式の選択ができるように
-
 const val MENU_EDIT_MODE_NEW = 1
 const val MENU_EDIT_MODE_EDIT = 2
 
 class MenuEditActivity : AppCompatActivity() {
-
     private var editMode: Int = 0
     private var menuID: Long = 0
     private lateinit var realm: Realm
@@ -60,6 +55,7 @@ class MenuEditActivity : AppCompatActivity() {
         when (editMode) {
             MENU_EDIT_MODE_NEW -> {
                 supportActionBar?.title = getString(R.string.title_menu_new)
+                menuEditDeleteBtn.visibility = View.GONE
             }
 
             MENU_EDIT_MODE_EDIT -> {
@@ -69,6 +65,25 @@ class MenuEditActivity : AppCompatActivity() {
                 if (m != null) {
                     menuEditNameEdit.setText(m.name)
                     menuEditDescEdit.setText(m.desc)
+
+                    // 編集画面の時のみ、削除ボタンを作る
+                    menuEditDeleteBtn.setOnClickListener {
+                        AlertDialog.Builder(this).apply {
+                            setTitle(R.string.del_confirm_dialog_title)
+                            setMessage(R.string.del_confirm_dialog_message)
+                            setCancelable(true)
+                            setNegativeButton(R.string.del_confirm_dialog_cancel, null)
+                            setPositiveButton("OK",
+                                object : DialogInterface.OnClickListener {
+                                    override fun onClick(dialog: DialogInterface?, which: Int) {
+                                        realm.executeTransaction { realm.where<MenuData>().equalTo("id", m.id)?.findFirst()?.deleteFromRealm() }
+                                        blackToast(applicationContext, "削除しました")
+                                        finish()
+                                    }
+                                })
+                            show()
+                        }
+                    }
                 }
             }
         } // when(editMode )

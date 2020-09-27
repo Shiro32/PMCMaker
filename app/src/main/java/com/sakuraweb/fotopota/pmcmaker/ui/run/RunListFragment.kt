@@ -48,7 +48,7 @@ class RunListFragment : Fragment() {
             settingMemoSw   = getBoolean("memo_sw", true)
             settingMenuSw   = getBoolean("menu_sw", true)
             settingPlaceSw  = getBoolean("place_sw", true)
-            listLayout = if( getString("list_sw", "") == getString(R.string.look_card)) R.layout.run_one_card else R.layout.run_one_flat
+            listLayout = if( getString("list_sw", "") == "card" ) R.layout.run_one_card else R.layout.run_one_flat
         }
 
         // ーーーーーーーーーー　リスト表示（RecyclerView）　ーーーーーーーーーー
@@ -90,7 +90,7 @@ class RunListFragment : Fragment() {
         trainingRecylerView.layoutManager = layoutManager
 
         // アダプターを設定する
-        adapter = RunRecyclerViewAdapter(realmResults, realm, this )
+        adapter = RunRecyclerViewAdapter(realmResults)
         trainingRecylerView.adapter = this.adapter
 
     }

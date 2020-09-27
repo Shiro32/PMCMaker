@@ -16,28 +16,20 @@ import io.realm.Realm
 import io.realm.RealmResults
 import io.realm.kotlin.where
 
-// TODO: 編集用のポップアップをやめましょう。RUNLISTと同じ処理に！
-
 interface SetMenuListener {
     fun okBtnTapped( ret: MenuData? )
 }
 
 // RunEditから呼ばれたときはタップで選択
 // Configから呼ばれたときはMenuEditというように動きが違うため、色々やってるみたい
-// TODO: でも、ポップアップやめると、普通になるのでは・・・？
-class MenuRecyclerViewAdapter(
-    menuRealm: RealmResults<MenuData>,
-    realm: Realm,
-    private val listener: SetMenuListener,
-    main: AppCompatActivity) : RecyclerView.Adapter<MenuViewHolder>() {
+class MenuRecyclerViewAdapter( menuRealm: RealmResults<MenuData>, private val listener: SetMenuListener )
+    : RecyclerView.Adapter<MenuViewHolder>() {
 
     private val menuList: RealmResults<MenuData> = menuRealm
-    private val menuRealm = realm
-    private val runListAct = main
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MenuViewHolder {
         // 新しいView（1行）を生成する　レイアウト画面で作った、one_Training_card_home（1行）
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.menu_one_card, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(menuListLayout, parent, false)
         // 1行ビューをもとに、ViewHolder（←自分で作ったヤツ）インスタンスを生成
         // 今作ったView（LinearLayout）を渡す
         return MenuViewHolder(view)
@@ -49,22 +41,35 @@ class MenuRecyclerViewAdapter(
         if (menu != null) {
             holder.name?.text = menu.name
             holder.desc?.text = menu.desc
-            // 行そのもの（Card）のリスナ
-            // TODO: 本当はロングタップでやりたいんだけど分からず・・・
 
+            // 行（Card）のリスナ
             if( isCalledFromRunEdit ) {
                 // RunEditから呼ばれた場合は、選択して終了
                 holder.itemView.setOnClickListener {
                     listener.okBtnTapped(menu)
                 }
             } else {
-                    // 設定画面から呼ばれた場合はポップアップへ
-                holder.itemView.setOnClickListener(ItemClickListener(holder.itemView.context, menu))
+                // 設定画面から呼ばれた場合はEditへ（以前はポップアップだったけど）
+                holder.itemView.setOnClickListener {
+                    it.context.startActivity(Intent(it.context, MenuEditActivity::class.java).apply {
+                        putExtra("id", menu.id)
+                        putExtra("mode", RUN_EDIT_MODE_EDIT)
+                    })
+                }
             }
-
         }
     }
 
+
+    // アダプターの必須の、サイズを返すメソッド
+    override fun getItemCount(): Int {
+        return menuList.size
+
+    }
+}
+
+
+/*
     // 行タップ時のリスナ（メニュー表示）
     private inner class ItemClickListener(c: Context, m: MenuData) : View.OnClickListener {
         val ctx = c
@@ -123,9 +128,4 @@ class MenuRecyclerViewAdapter(
             return false
         }
     }
-                    // アダプターの必須昨日の、サイズを返すメソッド
-    override fun getItemCount(): Int {
-        return menuList.size
-
-    }
-}
+ */

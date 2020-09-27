@@ -73,21 +73,21 @@ class StartApplication : Application() {
 
         if( menus.size == 0 ) {
             val menuList = listOf<MenuDataInit> (
-                MenuDataInit(
-                    "SST30min",
-                    "スイート・スポット・トレーニング（FTPの88～94%）で30分"
-                ),
-                MenuDataInit(
-                    "SST60min",
-                    "スイート・スポット・トレーニング（FTPの88～94%）で60分"
-                ),
+//                MenuDataInit(
+//                    "SST30min",
+//                    "スイート・スポット・トレーニング（FTPの88～94%）で30分"
+//                ),
+//                MenuDataInit(
+//                    "SST60min",
+//                    "スイート・スポット・トレーニング（FTPの88～94%）で60分AAAAAAAAAAAAAAABB CC"
+//                ),
                 MenuDataInit(
                     "FTP30min × 2",
                     "FTP30分を2回やる。かなりハード。"
                 ),
                 MenuDataInit(
-                    "こんな風にあらかじめ入れておくと便利です",
-                    "　"
+                    "SST90min",
+                    "こんな風にあらかじめ入れておくと便利です"
                 )
             )
             // DB書き込み
@@ -117,7 +117,7 @@ class StartApplication : Application() {
         val runs: RealmResults<RunData> = realm.where<RunData>().findAll()
 
         // データ数ゼロならサンプルを作る
-        if (runs.size == -1) {
+        if (runs.size == -1 ) {
             val runList = listOf<RunDataInit>(
                 RunDataInit("2020/9/1", "2020/9/1 1:00", 80, 300, 100, INDOOR_RIDE, "Very Hard !!", 1),
                 RunDataInit("2020/9/1", "2020/9/1 1:00", 80, 300, 100, INDOOR_RIDE, "Very Hard !!", 0),

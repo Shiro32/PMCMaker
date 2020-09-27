@@ -5,19 +5,20 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.sakuraweb.fotopota.pmcmaker.R
 import com.sakuraweb.fotopota.pmcmaker.menuRealmConfig
+import com.sakuraweb.fotopota.pmcmaker.ui.run.*
 import io.realm.Realm
 import io.realm.RealmResults
 import io.realm.Sort
 import io.realm.kotlin.where
 import kotlinx.android.synthetic.main.menu_list_activity.*
 
-// TODO: ポップアップメニューやめようかな。List→Editに遷移して、キャンセル・削除・保存の３ボタンで
-
 var isCalledFromRunEdit: Boolean = false
+var menuListLayout: Int = 0
 
 class MenuListActivity : AppCompatActivity(), SetMenuListener {
 
@@ -27,6 +28,10 @@ class MenuListActivity : AppCompatActivity(), SetMenuListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        PreferenceManager.getDefaultSharedPreferences(applicationContext).apply {
+            menuListLayout = if( getString("list_sw", "") == "card" ) R.layout.menu_one_card else R.layout.menu_one_flat
+        }
 
         // レイアウトインフレート
         setContentView(R.layout.menu_list_activity)
@@ -75,7 +80,7 @@ class MenuListActivity : AppCompatActivity(), SetMenuListener {
         menuRecylerView.layoutManager = layoutManager
 
         // アダプターを設定する
-        adapter = MenuRecyclerViewAdapter(realmResults, realm, this, this)
+        adapter = MenuRecyclerViewAdapter(realmResults, this)
         menuRecylerView.adapter = this.adapter
 
     }

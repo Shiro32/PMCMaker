@@ -3,7 +3,8 @@
     <string name="app_description">パワートレーニングに欠かせないPMCを描いてくれるアプリです。 \n
 日々のTSSを入れると、PMCグラフの他、オーバートレーニング、最適負荷などについて簡単な診断もしてくれます\n
 Let\'s get tired!!　(^^)</string>
-    <string name="app_help">【用語】\nTSS : 日々のトレーニング負荷\n
+    <string name="app_help">【用語】\n
+TSS : 日々のトレーニング負荷\n
 ATL : 短期(7日)の累積負荷。疲労度に相当\n
 CTL : 長期(42日)の累積負荷。強さに相当\n
 TSB : ATL-TSB。好調さに相当</string>

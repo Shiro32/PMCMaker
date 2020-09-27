@@ -11,11 +11,9 @@ import io.realm.RealmResults
 import kotlinx.android.synthetic.main.run_one_flat.view.*
 import java.text.SimpleDateFormat
 
-class RunRecyclerViewAdapter(runRealm: RealmResults<RunData>, realm: Realm, fmt: RunListFragment ) :
+class RunRecyclerViewAdapter(runRealm: RealmResults<RunData> ) :
         RecyclerView.Adapter<RunViewHolder>() {
     private val runList: RealmResults<RunData> = runRealm
-    private val runRealm = realm
-    private val runListFmt = fmt
 
     // 新しく1行分のViewをXMLから生成し、1行分のViewHolderを生成してViewをセットする
     // 新しいView（1行）を生成する　レイアウト画面で作った、one_Training_card_home（1行）

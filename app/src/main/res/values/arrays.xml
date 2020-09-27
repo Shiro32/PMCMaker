@@ -12,8 +12,8 @@
     </string-array>
 
     <string-array name="look_values">
-        <item>@string/look_card</item>
-        <item>@string/look_flat</item>
+        <item>card</item>
+        <item>flat</item>
     </string-array>
 
 </resources>
