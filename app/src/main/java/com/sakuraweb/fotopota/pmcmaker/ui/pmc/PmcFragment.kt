@@ -43,6 +43,8 @@ var pmcTerm: Int = 0
 lateinit var atlList: Array<Float>
 lateinit var ctlList: Array<Float>
 lateinit var tsbList: Array<Float>
+var pmcYMax : Float = 150.0F
+var pmcYmin : Float = -150.0F
 
 // 診断に使うときは、逆順の方が楽なので向きを逆に・・・ ちゃんとやったほうがいいか？
 lateinit var revATLs: List<Float>
@@ -72,6 +74,8 @@ class PmcFragment : Fragment() {
             getString("atl_term", "7")?.let { atlTerm = it.toInt() }
             getString("ctl_term", "42")?.let { ctlTerm = it.toInt() }
             getString("pmc_term", "31")?.let { pmcTerm = it.toInt() }
+            getString("pmc_y_max", "150")?.let { pmcYMax = it.toFloat() }
+            getString("pmc_y_min", "-150")?.let { pmcYmin = it.toFloat() }
         }
 
         // PMCを描いて、Realmを閉める
@@ -127,8 +131,8 @@ class PmcFragment : Fragment() {
         // Y軸（左）
         chartArea1.axisLeft.apply {
             setDrawLabels(true)
-            setAxisMaxValue(150F)
-            setAxisMinValue(-150F)
+            setAxisMaxValue(pmcYMax)
+            setAxisMinValue(pmcYmin)
             setLabelCount(7, true)
             enableGridDashedLine(10f,10f,0f)
             setDrawZeroLine(true)
@@ -200,12 +204,16 @@ class PmcFragment : Fragment() {
         ctlList = Array<Float>( term ) { 0F }
         tsbList = Array<Float>( term ) { 0F }
 
-        atlList[0] = ( (1- exp(-1.0 / atlTerm)) * tssList[0] ).toFloat()
-        ctlList[0] = ( (1- exp(-1.0 / ctlTerm)) * tssList[0] ).toFloat()
+        // EXPを定数化して少しは速くしてみる
+        val atlExp = exp(-1.0 / atlTerm)
+        val ctlExp = exp(-1.0 / ctlTerm)
+
+        atlList[0] = ( (1- atlExp) * tssList[0] ).toFloat()
+        ctlList[0] = ( (1- ctlExp) * tssList[0] ).toFloat()
         tsbList[0] = 0F
         for( i in 1..tssList.size-1) {
-            atlList[i] = ( ( 1- exp(-1.0 / atlTerm)) * tssList[i] + atlList[i-1] * exp( -1.0/ atlTerm) ).toFloat()
-            ctlList[i] = ( ( 1- exp(-1.0 / ctlTerm)) * tssList[i] + ctlList[i-1] * exp( -1.0/ ctlTerm) ).toFloat()
+            atlList[i] = ( (1-atlExp) * tssList[i] + atlList[i-1] * atlExp ).toFloat()
+            ctlList[i] = ( (1-ctlExp) * tssList[i] + ctlList[i-1] * ctlExp ).toFloat()
             tsbList[i] = ctlList[i-1] - atlList[i-1]
         }
 

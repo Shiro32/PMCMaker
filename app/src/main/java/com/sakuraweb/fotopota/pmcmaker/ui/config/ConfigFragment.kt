@@ -27,6 +27,16 @@ class ConfigFragment : PreferenceFragmentCompat() {
         findPreference<EditTextPreference>("ctl_term")?.setOnBindEditTextListener { editText ->
             editText.inputType = InputType.TYPE_CLASS_NUMBER
         }
+
+        findPreference<EditTextPreference>("pmc_y_max")?.setOnBindEditTextListener { editText ->
+            editText.inputType = InputType.TYPE_CLASS_NUMBER
+        }
+
+        findPreference<EditTextPreference>("pmc_y_min")?.setOnBindEditTextListener { editText ->
+            editText.inputType = InputType.TYPE_CLASS_NUMBER
+        }
+
+
 //        root.setMenuBtn.setOnClickListener {
 //            val intent = Intent(activity, MenuListActivity::class.java)
 //            startActivity(intent)

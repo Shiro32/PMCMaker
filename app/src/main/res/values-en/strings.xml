@@ -53,9 +53,9 @@
     <!-- 設定画面 -->
     <string name="title_setting">Optional Setteings</string>
     <string name="setting_element_header">Recording Elements</string>
-    <string name="setting_atl_term_label">Term of ATL accumlation (days)</string>
-    <string name="setting_ctl_term_label">Term of CTL accumulation (days)</string>
-    <string name="setting_pmc_term_label">Term of PMC Graph (days)</string>
+    <string name="setting_atl_term_label">Term of ATL accumlation (default:7days)</string>
+    <string name="setting_ctl_term_label">Term of CTL accumulation (default:42days)</string>
+    <string name="setting_pmc_term_label">Term of PMC Graph (default:30days)</string>
     <string name="setting_menu_edit_label">Edit Training Menu</string>
 
     <string name="setting_date_label">Ride Date (must)</string>
@@ -156,6 +156,8 @@
     <string name="diag_8_ng">It\'s suddenly overtraining!</string>
     <string name="diag_8_description">ATL is a short term training load. It\'s overtraining that exceeds 70 TSS in a week.</string>
     <string name="diag_8_unit">TSS</string>
+    <string name="setting_y_axis_max">Max Y of PMC</string>
+    <string name="setting_y_axis_min">Min Y of PMC</string>
 
 
     <!-- セッティング画面 -->

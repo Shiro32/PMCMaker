@@ -117,7 +117,7 @@ class StartApplication : Application() {
         val runs: RealmResults<RunData> = realm.where<RunData>().findAll()
 
         // データ数ゼロならサンプルを作る
-        if (runs.size == -1 ) {
+        if (runs.size == 0 ) {
             val runList = listOf<RunDataInit>(
                 RunDataInit("2020/9/1", "2020/9/1 1:00", 80, 300, 100, INDOOR_RIDE, "Very Hard !!", 1),
                 RunDataInit("2020/9/1", "2020/9/1 1:00", 80, 300, 100, INDOOR_RIDE, "Very Hard !!", 0),

@@ -75,9 +75,9 @@ TSB : ATL-TSB。好調さに相当</string>
     <string name="title_setting">各種設定画面</string>
     <string name="setting_element_header">トレーニングデータとして記録する要素</string>
     <string name="setting_term_header">PMC計算用の各種期間（日数）</string>
-    <string name="setting_atl_term_label">ATLの累積期間</string>
-    <string name="setting_ctl_term_label">CTLの累積期間</string>
-    <string name="setting_pmc_term_label">PMCの描画期間</string>
+    <string name="setting_atl_term_label">ATLの累積期間(初期値7日)</string>
+    <string name="setting_ctl_term_label">CTLの累積期間(初期値42日)</string>
+    <string name="setting_pmc_term_label">PMCの描画期間(初期値30)</string>
     <string name="setting_days_prompt">日数を入力してください</string>
     <string name="setting_menu_edit_label">トレーニングメニュー編集</string>
 
@@ -175,6 +175,8 @@ TSB : ATL-TSB。好調さに相当</string>
     <string name="diag_8_ng">急激にオーバートレーニングになっています！</string>
     <string name="diag_8_description">ATLは短期間の練習負荷で、これが1週間で70TSSを上回るのは、急に頑張りすぎ、オーバートレーニングです。</string>
     <string name="diag_8_unit">TSS</string>
+    <string name="setting_y_axis_max">PMCのY軸最大値</string>
+    <string name="setting_y_axis_min">PMCのY軸最小値</string>
 
     <!-- セッティング画面 -->
 
