@@ -161,6 +161,11 @@ TSB : ATL-TSB。好調さに相当</string>
     <string name="diag_8_unit">TSS</string>
     <string name="setting_y_axis_max">PMCのY軸最大値</string>
     <string name="setting_y_axis_min">PMCのY軸最小値</string>
+    <string name="diag_hide_button_label">非表示</string>
+    <string name="hide_confirm_dialog_title">確認</string>
+    <string name="hide_confirm_dialog_message">この診断項目を非表示にしますか？(設定画面から再表示できます）</string>
+    <string name="hide_confirm_dialog_yes">はい</string>
+    <string name="hide_confirm_dialog_no">いいえ</string>
 
 
     <!-- セッティング画面 -->

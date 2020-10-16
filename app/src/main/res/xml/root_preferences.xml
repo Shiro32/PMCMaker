@@ -134,12 +134,14 @@
             android:title="@string/setting_y_axis_max"
             app:useSimpleSummaryProvider="true" />
 
+        <!--
         <EditTextPreference
             android:defaultValue="-150"
             android:dialogTitle="@string/setting_y_axis_min"
             android:key="pmc_y_min"
             android:title="@string/setting_y_axis_min"
             app:useSimpleSummaryProvider="true" />
+        -->
 
     </PreferenceCategory>
 </PreferenceScreen>

@@ -1,10 +1,13 @@
 package com.sakuraweb.fotopota.pmcmaker.ui.pmc
 
 import android.app.Activity
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
@@ -15,16 +18,14 @@ import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.components.YAxis
 import com.github.mikephil.charting.data.*
 import com.sakuraweb.fotopota.pmcmaker.R
+import com.sakuraweb.fotopota.pmcmaker.blackToast
 import com.sakuraweb.fotopota.pmcmaker.runRealmConfig
 import com.sakuraweb.fotopota.pmcmaker.ui.run.RunData
 import io.realm.Realm
 import io.realm.RealmResults
 import io.realm.Sort
 import io.realm.kotlin.where
-import kotlinx.android.synthetic.main.diag_card_1.*
-import kotlinx.android.synthetic.main.diag_card_3.*
 
-import kotlinx.android.synthetic.main.diag_card_5.*
 import kotlinx.android.synthetic.main.pmc_fragment.*
 import java.util.*
 import kotlin.math.exp
@@ -43,8 +44,8 @@ var pmcTerm: Int = 0
 lateinit var atlList: Array<Float>
 lateinit var ctlList: Array<Float>
 lateinit var tsbList: Array<Float>
-var pmcYMax : Float = 150.0F
-var pmcYmin : Float = -150.0F
+var pmcYMax : Float = 60.0F
+var pmcYmin : Float = -60.0F
 
 // 診断に使うときは、逆順の方が楽なので向きを逆に・・・ ちゃんとやったほうがいいか？
 lateinit var revATLs: List<Float>
@@ -74,8 +75,8 @@ class PmcFragment : Fragment() {
             getString("atl_term", "7")?.let { atlTerm = it.toInt() }
             getString("ctl_term", "42")?.let { ctlTerm = it.toInt() }
             getString("pmc_term", "31")?.let { pmcTerm = it.toInt() }
-            getString("pmc_y_max", "150")?.let { pmcYMax = it.toFloat() }
-            getString("pmc_y_min", "-150")?.let { pmcYmin = it.toFloat() }
+            getString("pmc_y_max", "60")?.let { pmcYMax = it.toFloat() }
+            pmcYmin = -1 * pmcYMax
         }
 
         // PMCを描いて、Realmを閉める
@@ -83,24 +84,23 @@ class PmcFragment : Fragment() {
         realm.close()
 
         // ここから、各DIAGをやり始める
-        revATLs = atlList.reversed()
-        revTSBs = tsbList.reversed()
-        revCTLs = ctlList.reversed()
+        revATLs = atlList.reversed(); revTSBs = tsbList.reversed(); revCTLs = ctlList.reversed()
+
         PreferenceManager.getDefaultSharedPreferences(activity).apply {
-            if(getBoolean("diag1_sw", true)) addCard( drawDIAG1() )
-            if(getBoolean("diag2_sw", true)) addCard( drawDIAG2() )
-            if(getBoolean("diag3_sw", true)) addCard( drawDIAG3() )
-            if(getBoolean("diag4_sw", true)) addCard( drawDIAG4() )
-            if(getBoolean("diag5_sw", true)) addCard( drawDIAG5() )
-            if(getBoolean("diag6_sw", true)) addCard( drawDIAG6() )
-            if(getBoolean("diag7_sw", true)) addCard( drawDIAG7() )
-            if(getBoolean("diag8_sw", true)) addCard( drawDIAG8() )
+            if(getBoolean("diag1_sw", true)) addCard( drawDIAG1(),"diag1_sw")
+            if(getBoolean("diag2_sw", true)) addCard( drawDIAG2(),"diag2_sw")
+            if(getBoolean("diag3_sw", true)) addCard( drawDIAG3(),"diag3_sw" )
+            if(getBoolean("diag4_sw", true)) addCard( drawDIAG4(),"diag4_sw" )
+            if(getBoolean("diag5_sw", true)) addCard( drawDIAG5(),"diag5_sw" )
+            if(getBoolean("diag6_sw", true)) addCard( drawDIAG6(),"diag6_sw" )
+            if(getBoolean("diag7_sw", true)) addCard( drawDIAG7(),"diag7_sw" )
+            if(getBoolean("diag8_sw", true)) addCard( drawDIAG8(),"diag8_sw" )
         }
     }
 
-    private fun addCard( data:diagData ) {
+    private fun addCard( data:DiagDrawData, sw:String ) {
         // DIAGを作るサブルーチン（レイアウトパラメータ、診断パラメータから作る）
-        val newLayout = activity?.layoutInflater?.inflate(R.layout.diag_card_1, null)
+        val newLayout = activity?.layoutInflater?.inflate(R.layout.diag_card, null)
         newLayout?.apply {
             findViewById<TextView>(R.id.diagCard1Title).setBackgroundColor(resources.getColor(data.colorID))
             findViewById<TextView>(R.id.diagCard1Title).text        = getString(data.titleID)
@@ -111,6 +111,23 @@ class PmcFragment : Fragment() {
             findViewById<ImageView>(R.id.diagCardIcon).setImageResource(data.iconID)
             findViewById<TextView>(R.id.diagCardScore).text         = data.score
             findViewById<TextView>(R.id.diagCardMsg).text           = getString(data.messageID)
+
+            // カードごとについているHideボタンの処理
+            findViewById<Button>(R.id.diagHideButton).setOnClickListener {
+                AlertDialog.Builder(activity).apply {
+                    setTitle(R.string.hide_confirm_dialog_title); setMessage(R.string.hide_confirm_dialog_message); setCancelable(true)
+                    setNegativeButton(R.string.hide_confirm_dialog_no, null)
+                    setPositiveButton("OK",
+                        object : DialogInterface.OnClickListener {
+                            override fun onClick(dialog: DialogInterface?, which: Int) {
+                                // やっとこ本題。設定項目をfalseにし、表示済みのカードはGONEにして消しちゃう
+                                PreferenceManager.getDefaultSharedPreferences(activity).edit().putBoolean(sw, false).apply()
+                                newLayout.visibility = View.GONE
+                            }
+                        })
+                    show()
+                }
+            }
         }
         diagLayout.addView( newLayout )
     }

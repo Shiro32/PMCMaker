@@ -16,4 +16,7 @@
     <color name="ctlTitleColor">@android:color/holo_blue_light</color>
     <color name="atlTitleColor">@android:color/holo_green_dark</color>
 
+    <color name="diagNoProblem">@android:color/holo_green_light</color>
+    <color name="diagGood">@android:color/holo_blue_light</color>
+    <color name="diagBad">@android:color/holo_red_light</color>
 </resources>

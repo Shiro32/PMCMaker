@@ -134,6 +134,19 @@
                     android:textSize="10sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/diagCardScore" />
+
+                <Button
+                    android:id="@+id/diagHideButton"
+                    style="@style/Widget.AppCompat.Button.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="4dp"
+                    android:background="@android:drawable/btn_default_small"
+                    android:text="@string/diag_hide_button_label"
+                    android:textSize="8sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/diagCard1Unit" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 

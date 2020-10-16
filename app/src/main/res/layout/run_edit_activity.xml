@@ -93,7 +93,7 @@
                 android:layout_marginTop="16dp"
                 android:ems="5"
                 android:hint="@string/run_edit_tss_hint"
-                android:inputType="number"
+                android:inputType="number|numberDecimal"
                 app:layout_constraintStart_toStartOf="@+id/guideline2"
                 app:layout_constraintTop_toBottomOf="@+id/runEditDurationText" />
 

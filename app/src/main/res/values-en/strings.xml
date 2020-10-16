@@ -158,6 +158,11 @@
     <string name="diag_8_unit">TSS</string>
     <string name="setting_y_axis_max">Max Y of PMC</string>
     <string name="setting_y_axis_min">Min Y of PMC</string>
+    <string name="diag_hide_button_label">Hide</string>
+    <string name="hide_confirm_dialog_title">Confirm</string>
+    <string name="hide_confirm_dialog_message">Hide this diagnosis item? (Show again at setting view)</string>
+    <string name="hide_confirm_dialog_yes">Yes</string>
+    <string name="hide_confirm_dialog_no">No</string>
 
 
     <!-- セッティング画面 -->

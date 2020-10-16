@@ -177,7 +177,22 @@ TSB : ATL-TSB。好調さに相当</string>
     <string name="diag_8_unit">TSS</string>
     <string name="setting_y_axis_max">PMCのY軸最大値</string>
     <string name="setting_y_axis_min">PMCのY軸最小値</string>
+    <string name="diag_hide_button_label">非表示</string>
+    <string name="hide_confirm_dialog_title">確認</string>
+    <string name="hide_confirm_dialog_message">この診断項目を非表示にしますか？(設定画面から再表示できます）</string>
+    <string name="hide_confirm_dialog_yes">はい</string>
+    <string name="hide_confirm_dialog_no">いいえ</string>
 
-    <!-- セッティング画面 -->
+    <!-- MENU -->
+    <string name="menu_2x15ftp">15分のFTPレベルを、短い休憩を挟んで2回</string>
+    <string name="menu_3x15ftp">15分のFTPレベルを、短い休憩を挟んで3回</string>
+    <string name="menu_SST30min">Sweet Spot Trainingレベルで30分</string>
+    <string name="menu_SST45min">Sweet Spot Trainingレベルで45分</string>
+    <string name="menu_SST60min">Sweet Spot Trainingレベルで60分</string>
+    <string name="menu_mix30min">Zwiftで用意されているMIXメニュー(30分)</string>
+    <string name="menu_mix60min">Zwiftで用意されているMIXメニュー(60分)</string>
+    <string name="menu_tabata">タバタ式(FPT200%×20s、FTP50%×10sの8セット)</string>
+    <string name="menu_fpt_test_short">FPTテスト(20分短縮版)</string>
+    <string name="menu_fpt_test_long">FPTテスト（フル60分)</string>
 
 </resources>
