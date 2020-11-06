@@ -47,11 +47,11 @@ class RunDataMigration : RealmMigration {
         val realmSchema = realm.schema
         var oldVersion = oldVersion
 
-//        if( oldVersion==0L ) {
-//            realmSchema.get("BrewData")!!
-//                .addField("takeoutID", Long::class.java)
-//            oldVersion++
-//        }
+        if( oldVersion==0L ) {
+            realmSchema.get("BrewData")!!
+                .addField("takeoutID", Long::class.java)
+            oldVersion++
+        }
     }
 }
 
