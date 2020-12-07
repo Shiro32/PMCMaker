@@ -163,6 +163,17 @@
     <string name="hide_confirm_dialog_message">Hide this diagnosis item? (Show again at setting view)</string>
     <string name="hide_confirm_dialog_yes">Yes</string>
     <string name="hide_confirm_dialog_no">No</string>
+    <string name="setting_backup_label">Backup to Storage</string>
+    <string name="setting_restore_label">Restore from Strage</string>
+    <string name="setting_backup_header">Data Backup &amp; Restore</string>
+    <string name="overwrite_confirm_dialog_title">Overwrite Confirm</string>
+    <string name="overwrite_confirm_dialog_cancel">Cancel</string>
+    <string name="overwrite_confirm_dialog_message_run">Overwrite your training data by backupped data?</string>
+    <string name="overwrite_confirm_dialog_done_run">Your training data has been restored.</string>
+    <string name="overwrite_confirm_dialog_done_menu">Your training menu data has been restored.</string>
+    <string name="overwrite_confirm_dialog_message_menu">Overwite your training menu data by backupped data?</string>
+    <string name="dialog_backup_done_title">Complete</string>
+    <string name="dialog_backup_nothing_title">File not found.</string>
 
 
     <!-- セッティング画面 -->

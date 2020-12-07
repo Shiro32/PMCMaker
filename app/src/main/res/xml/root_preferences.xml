@@ -2,6 +2,20 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <PreferenceCategory
+        android:title="@string/setting_backup_header"
+        app:iconSpaceReserved="false">
+
+        <Preference
+            app:key="backup"
+            app:title="@string/setting_backup_label">
+        </Preference>
+        <Preference
+            app:key="restore"
+            app:title="@string/setting_restore_label">
+        </Preference>
+    </PreferenceCategory>
+
+    <PreferenceCategory
         android:title="@string/setting_term_header"
         app:iconSpaceReserved="false">
 
@@ -75,6 +89,8 @@
                 android:targetPackage="com.sakuraweb.fotopota.pmcmaker"
                 android:targetClass="com.sakuraweb.fotopota.pmcmaker.ui.menu.MenuListActivity" />
         </Preference>
+
+
     </PreferenceCategory>
 
     <PreferenceCategory
@@ -144,4 +160,7 @@
         -->
 
     </PreferenceCategory>
+
+
+
 </PreferenceScreen>

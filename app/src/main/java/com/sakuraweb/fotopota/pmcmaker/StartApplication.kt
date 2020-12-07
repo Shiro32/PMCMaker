@@ -16,12 +16,15 @@ import io.realm.RealmConfiguration
 import io.realm.RealmResults
 import io.realm.kotlin.createObject
 import io.realm.kotlin.where
+import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
 
 // グローバル変数たち
 lateinit var runRealmConfig: RealmConfiguration     // 走行（トレーニング）データベース
 lateinit var menuRealmConfig: RealmConfiguration    // トレーニングメニューデータベース
+const val run_list_backup   = "training_list_backup.realm"
+const val menu_list_backup  = "menu_list_backup.realm"
 
 lateinit var placeList : Array<String>              // 実施場所（INDOOR_RIDE:インドア、OUTDOOR_RIDE:外）
 
@@ -109,29 +112,27 @@ class StartApplication : Application() {
         val runs: RealmResults<RunData> = realm.where<RunData>().findAll()
 
         // データ数ゼロならサンプルを作る
-        if (runs.size == -1 ) {
+        if (runs.size == 0 ) {
             val runList = listOf<RunDataInit>(
-                RunDataInit("2020/9/1", "2020/9/1 1:00", 80, 300, 100, INDOOR_RIDE, "Very Hard !!", 1),
-                RunDataInit("2020/9/1", "2020/9/1 1:00", 80, 300, 100, INDOOR_RIDE, "Very Hard !!", 0),
-                RunDataInit("2020/9/1", "2020/9/1 1:00", 80, 300, 100, INDOOR_RIDE, "Very Hard !!",1),
-                RunDataInit("2020/9/2", "2020/9/1 1:00", 10, 300, 100, INDOOR_RIDE, "Very Hard !!",2),
-                RunDataInit("2020/9/3", "2020/9/1 1:00", 80, 300, 100, INDOOR_RIDE, "Very Hard !!",1),
-                RunDataInit("2020/9/4", "2020/9/1 1:00", 200, 300, 100, INDOOR_RIDE, "Very Hard !!",0),
-                RunDataInit("2020/9/5", "2020/9/1 3:00", 300, 300, 100, INDOOR_RIDE, "かなりの長時間",0),
-                RunDataInit("2020/9/6", "2020/9/1 2:00", 10, 300, 100, INDOOR_RIDE, "色々大変",0),
-                RunDataInit("2020/9/7", "2020/9/1 1:00", 50, 300, 100, INDOOR_RIDE, "",1),
-                RunDataInit("2020/9/8", "2020/9/1 1:00", 100, 300, 100, INDOOR_RIDE, "",1),
-                RunDataInit("2020/9/9", "2020/9/1 1:00", 200, 300, 100, OUTDOOR_RIDE, "屋外",2),
-                RunDataInit("2020/9/10", "2020/9/1 1:00", 80, 300, 100, INDOOR_RIDE, "1時間は長い",2),
-                RunDataInit("2020/9/11", "2020/9/1 1:00", 80, 300, 100, INDOOR_RIDE, "疲労こそ命",0),
-                RunDataInit("2020/9/12", "2020/9/1 1:00", 400, 300, 100, INDOOR_RIDE, "very hard",1),
-                RunDataInit("2020/9/15", "2020/9/1 4:00", 80, 300, 100, INDOOR_RIDE, "want to cry",2),
-                RunDataInit("2020/9/16", "2020/9/5 1:30", 10, 30, 10, OUTDOOR_RIDE, "want to quit",1),
-                RunDataInit("2020/9/17", "2020/9/5 1:30", 200, 30, 10, OUTDOOR_RIDE, "little hard",2),
-                RunDataInit("2020/9/18", "2020/9/5 1:30", 50, 30, 10, OUTDOOR_RIDE, "recovery",2),
-                RunDataInit("2020/9/19", "2020/9/5 1:30", 100, 30, 10, OUTDOOR_RIDE, "Extremely hard...",1),
-                RunDataInit("2020/9/20", "2020/9/5 1:30", 250, 30, 10, OUTDOOR_RIDE, "Go to long ride",1),
-                RunDataInit("2020/9/21", "2020/9/5 1:30", 100, 30, 10, OUTDOOR_RIDE, "Very Hard",2)
+                RunDataInit("2020/10/29", "2020/11/1 1:00", 80, 300, 100, INDOOR_RIDE, "Very Hard !!", 1),
+                RunDataInit("2020/10/30", "2020/11/1 1:00", 80, 300, 100, INDOOR_RIDE, "Very Hard !!", 0),
+                RunDataInit("2020/11/1", "2020/11/1 1:00", 80, 300, 100, INDOOR_RIDE, "Very Hard !!",1),
+                RunDataInit("2020/11/2", "2020/11/1 1:00", 10, 300, 100, INDOOR_RIDE, "Very Hard !!",2),
+                RunDataInit("2020/11/3", "2020/11/1 1:00", 80, 300, 100, INDOOR_RIDE, "Very Hard !!",1),
+                RunDataInit("2020/11/4", "2020/11/1 1:00", 20, 300, 100, INDOOR_RIDE, "Very Hard !!",0),
+                RunDataInit("2020/11/5", "2020/11/1 3:00", 30, 300, 100, INDOOR_RIDE, "かなりの長時間",0),
+                RunDataInit("2020/11/6", "2020/11/1 2:00", 10, 300, 100, INDOOR_RIDE, "色々大変",0),
+                RunDataInit("2020/11/7", "2020/11/1 1:00", 50, 300, 100, INDOOR_RIDE, "",1),
+                RunDataInit("2020/11/8", "2020/11/1 1:00", 10, 300, 100, INDOOR_RIDE, "",1),
+                RunDataInit("2020/11/9", "2020/11/1 1:00", 20, 300, 100, OUTDOOR_RIDE, "屋外",2),
+                RunDataInit("2020/11/10", "2020/11/1 1:00", 80, 300, 100, INDOOR_RIDE, "1時間は長い",2),
+                RunDataInit("2020/11/11", "2020/11/1 1:00", 80, 300, 100, INDOOR_RIDE, "疲労こそ命",0),
+                RunDataInit("2020/11/12", "2020/11/1 1:00", 40, 300, 100, INDOOR_RIDE, "very hard",1),
+                RunDataInit("2020/11/15", "2020/11/1 4:00", 80, 300, 100, INDOOR_RIDE, "want to cry",2),
+                RunDataInit("2020/11/16", "2020/11/5 1:30", 10, 30, 10, OUTDOOR_RIDE, "want to quit",1),
+                RunDataInit("2020/11/17", "2020/11/5 1:30", 20, 30, 10, OUTDOOR_RIDE, "little hard",2),
+                RunDataInit("2020/11/18", "2020/11/5 1:30", 30, 30, 10, OUTDOOR_RIDE, "recovery",2),
+                RunDataInit("2020/11/19", "2020/11/5 1:30", 10, 30, 10, OUTDOOR_RIDE, "Extremely hard...",1)
             )
             // DB書き込み
             realm.beginTransaction()
@@ -150,6 +151,24 @@ class StartApplication : Application() {
             realm.commitTransaction()
         }
         realm.close()
+    }
+
+    public fun backupData() {
+        // ランリスト
+        var realm = Realm.getInstance(runRealmConfig)
+        var src = File(realm.path)
+        var dst = File(getExternalFilesDir(null).toString() + "/" + run_list_backup)
+        src.copyTo(dst, overwrite = true)
+        realm.close()
+
+        // トレーニングメニューリスト
+        realm = Realm.getInstance(menuRealmConfig)
+        src = File(realm.path)
+        dst = File(applicationContext.getExternalFilesDir(null).toString() + "/" + menu_list_backup)
+        src.copyTo(dst, overwrite = true)
+        realm.close()
+
+        blackToast(applicationContext, "バックアップ完了！")
     }
 }
 
@@ -173,3 +192,4 @@ public fun blackToast(c: Context, s: String) {
     toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0)
     toast.show()
 }
+

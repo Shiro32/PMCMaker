@@ -1,8 +1,6 @@
 <resources>
     <string name="app_name">PMC Maker</string>
-    <string name="app_description">パワートレーニングに欠かせないPMCを描いてくれるアプリです。 \n
-日々のTSSを入れると、PMCグラフの他、オーバートレーニング、最適負荷などについて簡単な診断もしてくれます\n
-Let\'s get tired!!　(^^)</string>
+    <string name="app_description">パワートレーニングに欠かせないPMCを描いてくれるアプリです。   日々のTSSを入れると、PMCグラフの他、オーバートレーニング、最適負荷などについて簡単な診断もしてくれます  Let\'s get tired!!　(^^)</string>
     <string name="app_help">【用語】\n
 TSS : 日々のトレーニング負荷\n
 ATL : 短期(7日)の累積負荷。疲労度に相当\n
@@ -107,6 +105,17 @@ TSB : ATL-TSB。好調さに相当</string>
     <string name="setting_diag8_label">⑧オーバートレーニング(+ATL>70/w?)</string>
     <string name="setting_diag9_label">⑨オーバートレーニング(ATL>CTL?)</string>
 
+    <string name="setting_backup_header">トレーニングデータのバックアップ</string>
+    <string name="setting_restore_label">ストレージから復旧</string>
+    <string name="setting_backup_label">ストレージへバックアップ</string>
+
+    <string name="overwrite_confirm_dialog_title">上書き確認</string>
+    <string name="overwrite_confirm_dialog_cancel">キャンセル</string>
+    <string name="overwrite_confirm_dialog_message_run">既存の練習記録をバックアップデータで上書きしますか？</string>
+    <string name="overwrite_confirm_dialog_done_run">練習記録復旧完了</string>
+    <string name="overwrite_confirm_dialog_message_menu">既存の練習メニューデータをバックアップデータで上書きしますか？</string>
+    <string name="overwrite_confirm_dialog_done_menu">メニューデータ復旧完了</string>
+
     <!-- PMC画面 -->
     <string name="pmc_atl_name">ATL</string>
     <string name="pmc_tsb_name">TSB</string>
@@ -194,5 +203,11 @@ TSB : ATL-TSB。好調さに相当</string>
     <string name="menu_tabata">タバタ式(FPT200%×20s、FTP50%×10sの8セット)</string>
     <string name="menu_fpt_test_short">FPTテスト(20分短縮版)</string>
     <string name="menu_fpt_test_long">FPTテスト（フル60分)</string>
+    <string name="dialog_backup_done_title">バックアップ完了</string>
+    <string name="dialog_backup_done_message">"練習記録、練習メニューのデータを以下の場所にバックアップ保存しました。  PCとUSB接続、メールやSNSに添付するなどして取り出して活用してください。  機種変更時は、新しい端末の同じ場所にフォルダを作ってコピーし、「ストレージから復旧」ボタンで復旧できます。   ■保存場所 %s  ■練習記録 %s  ■練習メニュー %s     "</string>
+    <string name="dialog_backup_nothing_title">ファイルが見つからんです</string>
+    <string name="dialog_backup_run_nothing_message">"練習記録のバックアップデータが見つかりません。  以下の場所にバックアップファイルを保存してから実行してみてください。\n\n■保存場所\n%s\n■練習記録\n%s"</string>
+    <string name="dialog_backup_menu_nothing_message">"練習メニューのバックアップデータが見つかりません。 以下の場所にバックアップファイルを保存してから実行してみてください。\n\n■保存場所\n%s\n■練習メニュー\n%s"</string>
+
 
 </resources>
