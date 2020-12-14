@@ -25,6 +25,7 @@ class HomeFragment : androidx.fragment.app.Fragment() {
 //        }
 
         // テスト用に置いたボタン（本来なら設定画面に作りましょう）
+/*
         root.mainBackupBtn.setOnClickListener {
             // ランリスト
             var realm = Realm.getInstance(runRealmConfig)
@@ -41,29 +42,12 @@ class HomeFragment : androidx.fragment.app.Fragment() {
             realm.close()
 
             blackToast(context as Context, "バックアップ完了！")
-/*
-            // RunListのrealmを開く
-            var realm = Realm.getInstance(runRealmConfig)
-
-            val fname = "pmc_run_list.realm"
-            val dir = context?.getExternalFilesDir(null)
-            val file = File(dir, fname)
-
-            // 外部ストレージ直下に作る
-            if( file.exists() ) {
-                // すでに存在している場合
-                file.delete()
-            }
-
-            realm.writeCopyTo(file)
-            realm.close()
-*/
-
         }
+*/
 
 
         // copyrightメッセージにURLを埋め込む
-        root.copyRightText.setText(Html.fromHtml("v1.5 Copyright ©2020 Shiro, <a href=\"http://fotopota.sakuraweb.com\">フォトポタ日記2.0</a>"))
+        root.copyRightText.setText(Html.fromHtml("v2.0 Copyright ©2020 Shiro, <a href=\"http://fotopota.sakuraweb.com\">フォトポタ日記2.0</a>"))
         root.copyRightText.movementMethod = LinkMovementMethod.getInstance()
 
         // privacy policyにURLを埋め込む

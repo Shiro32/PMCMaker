@@ -111,6 +111,7 @@ TSB : ATL-TSB。好調さに相当</string>
 
     <string name="overwrite_confirm_dialog_title">上書き確認</string>
     <string name="overwrite_confirm_dialog_cancel">キャンセル</string>
+    <string name="overwrite_confirm_backup_dialog_message">練習記録・練習メニューをバックアップ保存しますか？</string>
     <string name="overwrite_confirm_dialog_message_run">既存の練習記録をバックアップデータで上書きしますか？</string>
     <string name="overwrite_confirm_dialog_done_run">練習記録復旧完了</string>
     <string name="overwrite_confirm_dialog_message_menu">既存の練習メニューデータをバックアップデータで上書きしますか？</string>
@@ -208,6 +209,5 @@ TSB : ATL-TSB。好調さに相当</string>
     <string name="dialog_backup_nothing_title">ファイルが見つからんです</string>
     <string name="dialog_backup_run_nothing_message">"練習記録のバックアップデータが見つかりません。  以下の場所にバックアップファイルを保存してから実行してみてください。\n\n■保存場所\n%s\n■練習記録\n%s"</string>
     <string name="dialog_backup_menu_nothing_message">"練習メニューのバックアップデータが見つかりません。 以下の場所にバックアップファイルを保存してから実行してみてください。\n\n■保存場所\n%s\n■練習メニュー\n%s"</string>
-
 
 </resources>

@@ -2,20 +2,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <PreferenceCategory
-        android:title="@string/setting_backup_header"
-        app:iconSpaceReserved="false">
-
-        <Preference
-            app:key="backup"
-            app:title="@string/setting_backup_label">
-        </Preference>
-        <Preference
-            app:key="restore"
-            app:title="@string/setting_restore_label">
-        </Preference>
-    </PreferenceCategory>
-
-    <PreferenceCategory
         android:title="@string/setting_term_header"
         app:iconSpaceReserved="false">
 
@@ -161,6 +147,19 @@
 
     </PreferenceCategory>
 
+    <PreferenceCategory
+        android:title="@string/setting_backup_header"
+        app:iconSpaceReserved="false">
+
+        <Preference
+            app:key="backup"
+            app:title="@string/setting_backup_label">
+        </Preference>
+        <Preference
+            app:key="restore"
+            app:title="@string/setting_restore_label">
+        </Preference>
+    </PreferenceCategory>
 
 
 </PreferenceScreen>
