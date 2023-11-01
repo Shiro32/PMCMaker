@@ -86,6 +86,8 @@ class PmcFragment : Fragment() {
         // ここから、各DIAGをやり始める
         revATLs = atlList.reversed(); revTSBs = tsbList.reversed(); revCTLs = ctlList.reversed()
 
+        // 全DIAGを消してから作り上げる
+        diagArea.removeAllViews()
         PreferenceManager.getDefaultSharedPreferences(activity).apply {
             if(getBoolean("diag1_sw", true)) addCard( drawDIAG1(),"diag1_sw")
             if(getBoolean("diag2_sw", true)) addCard( drawDIAG2(),"diag2_sw")
@@ -129,7 +131,7 @@ class PmcFragment : Fragment() {
                 }
             }
         }
-        diagLayout.addView( newLayout )
+        diagArea.addView( newLayout )
     }
 
     private fun drawPMC() {
