@@ -2,6 +2,7 @@ package com.sakuraweb.fotopota.pmcmaker.ui.pmc
 
 import android.app.Activity
 import android.app.AlertDialog
+import android.content.Context
 import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -71,7 +72,7 @@ class PmcFragment : Fragment() {
         if( runs.size==0 ) return
 
         // ーーーーーーーーーー　各期間を設定情報から読み込んでおく　ーーーーーーーーーー
-        PreferenceManager.getDefaultSharedPreferences(activity).apply {
+        PreferenceManager.getDefaultSharedPreferences(context as Context).apply {
             getString("atl_term", "7")?.let { atlTerm = it.toInt() }
             getString("ctl_term", "42")?.let { ctlTerm = it.toInt() }
             getString("pmc_term", "31")?.let { pmcTerm = it.toInt() }
@@ -88,7 +89,7 @@ class PmcFragment : Fragment() {
 
         // 全DIAGを消してから作り上げる
         diagArea.removeAllViews()
-        PreferenceManager.getDefaultSharedPreferences(activity).apply {
+        PreferenceManager.getDefaultSharedPreferences(context as Context).apply {
             if(getBoolean("diag1_sw", true)) addCard( drawDIAG1(),"diag1_sw")
             if(getBoolean("diag2_sw", true)) addCard( drawDIAG2(),"diag2_sw")
             if(getBoolean("diag3_sw", true)) addCard( drawDIAG3(),"diag3_sw" )
@@ -123,7 +124,7 @@ class PmcFragment : Fragment() {
                         object : DialogInterface.OnClickListener {
                             override fun onClick(dialog: DialogInterface?, which: Int) {
                                 // やっとこ本題。設定項目をfalseにし、表示済みのカードはGONEにして消しちゃう
-                                PreferenceManager.getDefaultSharedPreferences(activity).edit().putBoolean(sw, false).apply()
+                                PreferenceManager.getDefaultSharedPreferences(context as Context).edit().putBoolean(sw, false).apply()
                                 newLayout.visibility = View.GONE
                             }
                         })

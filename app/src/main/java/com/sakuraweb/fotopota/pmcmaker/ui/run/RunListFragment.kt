@@ -1,6 +1,7 @@
 package com.sakuraweb.fotopota.pmcmaker.ui.run
 
 import android.app.AlertDialog
+import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
@@ -41,7 +42,7 @@ class RunListFragment : Fragment() {
         val root = inflater.inflate(R.layout.run_list_fragment, container, false)
 
         // ーーーーーーーーーー　表示項目のON/OFFをPreferenceから読んでおく　ーーーーーーーーーー
-        PreferenceManager.getDefaultSharedPreferences(context).apply {
+        PreferenceManager.getDefaultSharedPreferences(context as Context).apply {
             settingTermSw   = getBoolean("term_sw", true)
             settingKmSw     = getBoolean("km_sw", true)
             settingKcalSw   = getBoolean("kcal_sw", true)
