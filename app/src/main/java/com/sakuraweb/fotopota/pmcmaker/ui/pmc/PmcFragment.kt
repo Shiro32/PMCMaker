@@ -19,7 +19,6 @@ import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.components.YAxis
 import com.github.mikephil.charting.data.*
 import com.sakuraweb.fotopota.pmcmaker.R
-import com.sakuraweb.fotopota.pmcmaker.blackToast
 import com.sakuraweb.fotopota.pmcmaker.runRealmConfig
 import com.sakuraweb.fotopota.pmcmaker.ui.run.RunData
 import io.realm.Realm
@@ -181,7 +180,7 @@ class PmcFragment : Fragment() {
 
             isDoubleTapToZoomEnabled = false
             //アニメーション
-            animateY(1000, Easing.EasingOption.Linear);
+            animateY(1000, Easing.EasingOption.Linear)
             // データ作成は別関数で
             data = createBarGraphData()
             if( data==null ) return
@@ -197,9 +196,9 @@ class PmcFragment : Fragment() {
         val ma: Activity = activity as Activity
 
         // PMC期間設定　←　もしかして時分秒のクリアが必要かも。やってないけど
-        var begin = Calendar.getInstance()
+        val begin = Calendar.getInstance()
         begin.add( Calendar.DAY_OF_MONTH, -1*(pmcTerm))
-        var end = Calendar.getInstance()
+        val end = Calendar.getInstance()
 
         // １．開始期間を設定（いずれCONFIG化する
         val org = Calendar.getInstance()
@@ -207,22 +206,22 @@ class PmcFragment : Fragment() {
         val term = ( (end.timeInMillis - org.timeInMillis) / (1000*24*60*60) ).toInt() + 1
 
         // ２．全期間のTSSリスト作成
-        var tssList = IntArray( term )
-        var rd = Calendar.getInstance()
+        val tssList = IntArray( term )
+        val rd = Calendar.getInstance()
 
         for( r in runs) {
             rd.time = r.date
             rd.set( Calendar.HOUR_OF_DAY, 0)
             rd.set( Calendar.MINUTE, 0)
             rd.set( Calendar.SECOND, 0)
-            var diff = (rd.timeInMillis - org.timeInMillis) / (1000*24*60*60)
+            val diff = (rd.timeInMillis - org.timeInMillis) / (1000*24*60*60)
             tssList[ diff.toInt() ] += r.tss
         }
 
         // ３．ATL/CTL/TSBを作る
-        atlList = Array<Float>( term ) { 0F }
-        ctlList = Array<Float>( term ) { 0F }
-        tsbList = Array<Float>( term ) { 0F }
+        atlList = Array( term ) { 0F }
+        ctlList = Array( term ) { 0F }
+        tsbList = Array( term ) { 0F }
 
         // EXPを定数化して少しは速くしてみる
         val atlExp = exp(-1.0 / atlTerm)
@@ -238,7 +237,7 @@ class PmcFragment : Fragment() {
         }
 
         // 全期間のTSS/ATL/CTL/TSBが完成したので、指定期間のPMCを作り始める
-        var xLabels = Array<String>( pmcTerm ){ "" }
+        val xLabels = Array( pmcTerm ){ "" }
         var bc = Calendar.getInstance()
         bc = begin
         bc.add( Calendar.DAY_OF_MONTH, 1 )

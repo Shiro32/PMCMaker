@@ -193,7 +193,7 @@ PCとUSB接続、メールやSNSに添付するなどして取り出して活用
     <string name="overwrite_confirm_dialog_title">上書き確認</string>
     <string name="overwrite_confirm_dialog_cancel">キャンセル</string>
     <string name="overwrite_confirm_dialog_done_menu">メニューデータ復旧完了</string>
-    <string name="app_ctl">現在の強さ（CTL）は</string>
+    <string name="app_ctl">現在の強さ（CTL）は%2dです</string>
 
 
     <!-- セッティング画面 -->

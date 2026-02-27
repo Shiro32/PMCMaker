@@ -1,6 +1,5 @@
 package com.sakuraweb.fotopota.pmcmaker.ui.home
 
-import android.content.Context
 import android.os.Bundle
 import android.text.Html
 import android.text.method.LinkMovementMethod
@@ -8,12 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.sakuraweb.fotopota.pmcmaker.*
-import com.sakuraweb.fotopota.pmcmaker.ui.pmc.atlList
-import com.sakuraweb.fotopota.pmcmaker.ui.pmc.ctlList
-import com.sakuraweb.fotopota.pmcmaker.ui.pmc.tsbList
-import io.realm.Realm
 import kotlinx.android.synthetic.main.home_fragment.view.*
-import java.io.File
 
 
 
@@ -48,8 +42,7 @@ class HomeFragment : androidx.fragment.app.Fragment() {
         }
 */
         // 現在のCTLを引っ張り出して、テキストに埋め込む
-//        root.todays_ctl.text = "Today's CTL is %2d".format( ctlList[ctlList.size-1].toInt() )
-        root.todays_ctl.text = "sample"
+        root.todays_ctl.text = (root.todays_ctl.text.toString()).format( 59 )
 
         // copyrightメッセージにURLを埋め込む
         root.copyRightText.text = Html.fromHtml("v2.0 Copyright ©2020 Shiro, <a href=\"http://fotopota.sakuraweb.com\">フォトポタ日記2.0</a>")
@@ -63,6 +56,3 @@ class HomeFragment : androidx.fragment.app.Fragment() {
     }
 }
 
-//lateinit var atlList: Array<Float>
-//lateinit var ctlList: Array<Float>
-//lateinit var tsbList: Array<Float>
