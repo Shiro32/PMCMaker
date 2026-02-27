@@ -68,6 +68,7 @@ class StartApplication : Application() {
             .modules(MenuDataModule())
             .schemaVersion(MENU_DATA_VERSION)
             .migration(MenuDataMigration())
+            .allowWritesOnUiThread(true)
             .build()
 
         // インスタンス化
@@ -105,6 +106,7 @@ class StartApplication : Application() {
             .modules(RunDataModule())
             .schemaVersion(RUN_DATA_VERSION)
             .migration(RunDataMigration())
+            .allowWritesOnUiThread(true)
             .build()
 
         // インスタンス化

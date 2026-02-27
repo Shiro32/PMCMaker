@@ -209,5 +209,6 @@ TSB : ATL-TSB。好調さに相当</string>
     <string name="dialog_backup_nothing_title">ファイルが見つからんです</string>
     <string name="dialog_backup_run_nothing_message">"練習記録のバックアップデータが見つかりません。  以下の場所にバックアップファイルを保存してから実行してみてください。\n\n■保存場所\n%s\n■練習記録\n%s"</string>
     <string name="dialog_backup_menu_nothing_message">"練習メニューのバックアップデータが見つかりません。 以下の場所にバックアップファイルを保存してから実行してみてください。\n\n■保存場所\n%s\n■練習メニュー\n%s"</string>
+    <string name="app_ctl">現在の強さ（CTL）は</string>
 
 </resources>

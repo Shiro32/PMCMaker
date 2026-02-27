@@ -8,6 +8,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.sakuraweb.fotopota.pmcmaker.*
+import com.sakuraweb.fotopota.pmcmaker.ui.pmc.atlList
+import com.sakuraweb.fotopota.pmcmaker.ui.pmc.ctlList
+import com.sakuraweb.fotopota.pmcmaker.ui.pmc.tsbList
 import io.realm.Realm
 import kotlinx.android.synthetic.main.home_fragment.view.*
 import java.io.File
@@ -44,16 +47,22 @@ class HomeFragment : androidx.fragment.app.Fragment() {
             blackToast(context as Context, "バックアップ完了！")
         }
 */
-
+        // 現在のCTLを引っ張り出して、テキストに埋め込む
+//        root.todays_ctl.text = "Today's CTL is %2d".format( ctlList[ctlList.size-1].toInt() )
+        root.todays_ctl.text = "sample"
 
         // copyrightメッセージにURLを埋め込む
-        root.copyRightText.setText(Html.fromHtml("v2.0 Copyright ©2020 Shiro, <a href=\"http://fotopota.sakuraweb.com\">フォトポタ日記2.0</a>"))
+        root.copyRightText.text = Html.fromHtml("v2.0 Copyright ©2020 Shiro, <a href=\"http://fotopota.sakuraweb.com\">フォトポタ日記2.0</a>")
         root.copyRightText.movementMethod = LinkMovementMethod.getInstance()
 
         // privacy policyにURLを埋め込む
-        root.ppText.setText(Html.fromHtml("<a href=\"http://fotopota.sakuraweb.com/privacy-pmc.html\">プライバシーポリシー</a>"))
+        root.ppText.text = Html.fromHtml("<a href=\"http://fotopota.sakuraweb.com/privacy-pmc.html\">プライバシーポリシー</a>")
         root.ppText.movementMethod = LinkMovementMethod.getInstance()
 
         return root
     }
 }
+
+//lateinit var atlList: Array<Float>
+//lateinit var ctlList: Array<Float>
+//lateinit var tsbList: Array<Float>
