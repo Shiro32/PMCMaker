@@ -18,7 +18,7 @@ android {
     defaultConfig {
         applicationId "com.sakuraweb.fotopota.pmcmaker"
         minSdkVersion 26
-        targetSdkVersion 36
+        targetSdkVersion 34
         versionCode 6
         versionName "2.0"
 

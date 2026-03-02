@@ -5,6 +5,7 @@ import io.realm.RealmMigration
 import io.realm.RealmObject
 import io.realm.annotations.PrimaryKey
 import io.realm.annotations.RealmModule
+import io.realm.annotations.Required
 import java.util.*
 
 // 日々のトレーニングデータ
@@ -28,8 +29,9 @@ open class RunData : RealmObject() {
     @PrimaryKey
     var id: Long = 0
 
-    lateinit var date: Date    // 実施日
-    lateinit var term: Date    // 継続時間
+    @Required
+    var date: Date = Date()    // 実施日
+    var term: Date = Date()   // 継続時間
 
     var tss     : Int  = 0 // もちろんTSS
     var kcal    : Int  = 0 // 消費エネルギー
